@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url(background.png);
+            background-image: cover;
+            background-repeat: no-repeat;
+        }
+
+        .inputsss {
+            margin: 20px;
+            width: 160px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding-left: 7px;
+            outline: none;
+        }
+
+        .inputs {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        li {
+            margin: 0px 20px 0px 20px;
+            color: black;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .mainli {
+            font-size: 25px;
+        }
+
+        nav {
+            background-color: rgb(152 160 159);
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+        }
+
+        #btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 32px;
+            font-size: 15px;
+            background-color: white;
+            color: blue;
+            border: 1px solid blue;
+            border-radius: 5px;
+        }
+
+        #btn:hover {
+            width: 72%;
+            height: 35px;
+        }
+
+        .submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            height: 32px;
+            font-size: 15px;
+            background-color: white;
+            color: blue;
+            border: 1px solid blue;
+            border-radius: 5px;
+        }
+
+        #submit:hover {
+            width: 72%;
+            height: 35px;
+        }
+
+        .hhh {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <a href="index.html">
+                <li class="mainli">Utility</li>
+            </a>
+            <a href="sastacalculator.html">
+                <li>Calculator</li>
+            </a>
+            <a href="table.html">
+                <li>Table</li>
+            </a>
+        </ul>
+    </nav>
+    <h2>Make your everyday hard work SIMPLE</h2>
+    <h3>Arrange in ascending / alphabetical order:</h3>
+    <div class="btn">
+        <button id="btn" onclick="main()">Start</button>
+    </div>
+    <div class="inputs"></div>
+    <div class="submit">
+        <button id="submit">Submit</button>
+    </div>
+    <input type="radio" class="descend">Descending order:
+    <h3 class="hhh">RESULTS:</h3>
+    <p class="resultpara"></p>
+    <script>
+        let inputs = document.querySelector(".inputs")
+        let sub = document.querySelector(".submit")
+        let hhh = document.querySelector(".hhh")
+        let descend = document.querySelector(".descend")
+        let resultpara = document.querySelector(".resultpara")
+        function main() {
+            let a = prompt("Enter number of items:")
+            a = parseInt(a)
+            localStorage.setItem("Items", a)
+            for (let i = 0; i < a; i++) {
+                let div = document.createElement("div");
+                let input = document.createElement("input");
+                input.setAttribute("id", `${i}`)
+                input.setAttribute("placeholder", `Enter the number:`)
+                input.setAttribute("class", "inputsss")
+                inputs.appendChild(div)
+                div.appendChild(input)
+            }
+            sub.style.display = "flex"
+            hhh.style.display = "flex"
+            let inputsss = document.querySelectorAll(".inputsss");
+            inputsss[0].focus()
+            Array.from(inputsss).forEach(function (element, index) {
+                element.addEventListener("keypress", (e) => {
+                    if (e.keyCode === 13) {
+                        index = index + 1
+                        if (index == a) {
+                            submit.focus()
+                        }
+                        else {
+                                inputsss[index].focus()
+                        }
+                    }
+                })
+            })
+            let array = []
+
+            submit.addEventListener("click", function () {
+                let b = localStorage.getItem("Items");
+                b = parseInt(b)
+                Array.from(document.querySelectorAll(".inputsss")).forEach(function (element, index) {
+                    let val = element.value
+                    val = parseInt(val)
+                    array.push(val);
+                    if (index == b - 1) {
+                        if(descend.checked){
+                            array.sort(function (a, b) { return a - b; })
+                            array.reverse()
+                            resultpara.innerHTML = array;
+                        }else{
+                            array.sort(function (a, b) { return a - b; })
+                            resultpara.innerHTML = array;
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+
+</html>
