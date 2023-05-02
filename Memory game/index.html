@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Memory Game</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif, 'Roboto';
+    }
+
+    /* CSS styles for the game board and cards */
+    h2 {
+      text-align: center;
+      color: red;
+      text-decoration: underline;
+    }
+
+    .playerOne {
+      float: left;
+      margin-left: 20px;
+    }
+
+    .playerName {
+      color: red;
+    }
+
+    .playerNameTwo {
+      color: blue;
+    }
+
+    .playerTwo {
+      float: right;
+      margin-right: 20px;
+    }
+
+    .game-board {
+      display: flex;
+      flex-wrap: wrap;
+      width: 50%;
+      height: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      display: flex;
+      background-color: rgb(0, 240, 136);
+      border: 1.5px solid gray;
+      border-radius: 15px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .card img {
+      display: none;
+      border: 0.5px solid gray;
+      border-radius: 6px;
+      width: 70%;
+      height: 70%;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Memory Game - Check your memory!!!</h2>
+  <div class="playerOne">
+    <span class="playerName">Player 1</span><br><br>
+    <span id="turnOne">Turn for RED!</span>
+    <br><br>
+    <span class="firstPointsSpan"></span>
+  </div>
+  <div class="playerTwo">
+    <span class="playerNameTwo">Player 2</span><br><br>
+    <span id="turnTwo"></span>
+    <br><br>
+    <span class="secondPointsSpan"></span>
+  </div>
+  <div class="game-board">
+    <div class="card" data-card="1" id="card-1"><img src="card1.png" alt="Card 1" id="img-1" class="image"></div>
+    <div class="card" data-card="2" id="card-2"><img src="card2.png" alt="Card 2" id="img-2" class="image"></div>
+    <div class="card" data-card="3" id="card-3"><img src="card3.png" alt="Card 3" id="img-3" class="image"></div>
+    <div class="card" data-card="4" id="card-4"><img src="card4.png" alt="Card 4" id="img-4" class="image"></div>
+    <div class="card" data-card="5" id="card-5"><img src="card1.png" alt="Card 5" id="img-5" class="image"></div>
+    <div class="card" data-card="1" id="card-6"><img src="card2.png" alt="Card 1" id="img-6" class="image"></div>
+    <div class="card" data-card="2" id="card-7"><img src="card3.png" alt="Card 2" id="img-7" class="image"></div>
+    <div class="card" data-card="3" id="card-8"><img src="card4.png" alt="Card 3" id="img-8" class="image"></div>
+    <div class="card" data-card="4" id="card-9"><img src="card4.png" alt="Card 4" id="img-9" class="image"></div>
+    <div class="card" data-card="5" id="card-10"><img src="card4.png" alt="Card 5" id="img10" class="image"></div>
+    <div class="card" data-card="1" id="card-11"><img src="card4.png" alt="Card 1" id="img11" class="image"></div>
+    <div class="card" data-card="2" id="card-12"><img src="card4.png" alt="Card 2" id="img12" class="image"></div>
+    <div class="card" data-card="3" id="card-13"><img src="card4.png" alt="Card 3" id="img13" class="image"></div>
+    <div class="card" data-card="4" id="card-14"><img src="card4.png" alt="Card 4" id="img14" class="image"></div>
+    <div class="card" data-card="5" id="card-15"><img src="card4.png" alt="Card 5" id="img15" class="image"></div>
+    <div class="card" data-card="1" id="card-16"><img src="card4.png" alt="Card 1" id="img16" class="image"></div>
+    <div class="card" data-card="2" id="card-17"><img src="card4.png" alt="Card 2" id="img17" class="image"></div>
+    <div class="card" data-card="3" id="card-18"><img src="card4.png" alt="Card 3" id="img18" class="image"></div>
+    <div class="card" data-card="4" id="card-19"><img src="card4.png" alt="Card 4" id="img19" class="image"></div>
+    <div class="card" data-card="5" id="card-20"><img src="card4.png" alt="Card 5" id="img20" class="image"></div>
+  </div>
+  <script>
+    let cards = document.querySelectorAll(".card");
+    let card_1 = document.querySelector("#card-1");
+    let card_2 = document.querySelector("#card-2");
+    let card_3 = document.querySelector("#card-3");
+    let card_4 = document.querySelector("#card-4");
+    let card_5 = document.querySelector("#card-5");
+    let card_6 = document.querySelector("#card-6");
+    let card_7 = document.querySelector("#card-7");
+    let card_8 = document.querySelector("#card-8");
+    let card_9 = document.querySelector("#card-9");
+    let card_10 = document.querySelector("#card-10");
+    let card_11 = document.querySelector("#card-11");
+    let card_12 = document.querySelector("#card-12");
+    let card_13 = document.querySelector("#card-13");
+    let card_14 = document.querySelector("#card-14");
+    let card_15 = document.querySelector("#card-15");
+    let card_16 = document.querySelector("#card-16");
+    let card_17 = document.querySelector("#card-17");
+    let card_18 = document.querySelector("#card-18");
+    let card_19 = document.querySelector("#card-19");
+    let card_20 = document.querySelector("#card-20");
+    let image = document.querySelectorAll(".image")
+    let img_1 = document.querySelector("#img-1");
+    let img_2 = document.querySelector("#img-2");
+    let img_3 = document.querySelector("#img-3");
+    let img_4 = document.querySelector("#img-4");
+    let img_5 = document.querySelector("#img-5");
+    let img_6 = document.querySelector("#img-6");
+    let img_7 = document.querySelector("#img-7");
+    let img_8 = document.querySelector("#img-8");
+    let img_9 = document.querySelector("#img-9");
+    let img_10 = document.querySelector("#img-10");
+    let img_11 = document.querySelector("#img-11");
+    let img_12 = document.querySelector("#img-12");
+    let img_13 = document.querySelector("#img-13");
+    let img_14 = document.querySelector("#img-14");
+    let img_15 = document.querySelector("#img-15");
+    let img_16 = document.querySelector("#img-16");
+    let img_17 = document.querySelector("#img-17");
+    let img_18 = document.querySelector("#img-18");
+    let img_19 = document.querySelector("#img-19");
+    let img_20 = document.querySelector("#img-20");
+    let turnOne = document.querySelector("#turnOne");
+    let turnTwo = document.querySelector("#turnTwo");
+    let firstPointsSpan = document.querySelector(".firstPointsSpan");
+    let secondPointsSpan = document.querySelector(".secondPointsSpan");
+
+    //making an array to shuffle alll the src of the images 
+    //every src is written 2 times 
+    //total images is 10 X 2
+    let urls = ["burger.png", "camera.png", "clock.png", "dog.png", "fish.png", "moon.png", "pizza.png", "spectacles.png", "umbrella.png", "watermelon.png", "burger.png", "camera.png", "clock.png", "dog.png", "fish.png", "moon.png", "pizza.png", "spectacles.png", "umbrella.png", "watermelon.png"];
+    function shuffle(array) {//function to shuffle it
+      let currentIndex = array.length, randomIndex;//length of an array
+      while (currentIndex != 0) {//jab tak array ki lenght isse bdi h ya 0 ke bara bar nahi h tab tak chalate raho
+        randomIndex = Math.floor(Math.random() * currentIndex);//jo current index usko multiply karo math.random se
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+
+      return array;
+    }
+    shuffle(urls);
+    console.log(urls);
+    image[0].setAttribute("src", `${urls[0]}`)//1st card me 1st image i.e shuffled
+    image[1].setAttribute("src", `${urls[1]}`)
+    image[2].setAttribute("src", `${urls[2]}`)
+    image[3].setAttribute("src", `${urls[3]}`)
+    image[4].setAttribute("src", `${urls[4]}`)
+    image[5].setAttribute("src", `${urls[5]}`)
+    image[6].setAttribute("src", `${urls[6]}`)
+    image[7].setAttribute("src", `${urls[7]}`)
+    image[8].setAttribute("src", `${urls[8]}`)
+    image[9].setAttribute("src", `${urls[9]}`)
+    image[10].setAttribute("src", `${urls[10]}`)
+    image[11].setAttribute("src", `${urls[11]}`)
+    image[12].setAttribute("src", `${urls[12]}`)
+    image[13].setAttribute("src", `${urls[13]}`)
+    image[14].setAttribute("src", `${urls[14]}`)
+    image[15].setAttribute("src", `${urls[15]}`)
+    image[16].setAttribute("src", `${urls[16]}`)
+    image[17].setAttribute("src", `${urls[17]}`)
+    image[18].setAttribute("src", `${urls[18]}`)
+    image[19].setAttribute("src", `${urls[19]}`)
+    let firstSelection = "";//first shown card
+    let secondSelection = "";//second shown card
+    firstPoints = 0;
+    secondPoints = 0;
+    let counter = 0;//max is 1 jo ki h ki 2 baar select kar sakte ho
+    let turn = "";//it's turn for blue or red
+    let n = 1;
+    // console.log(turn)
+    Array.from(cards).forEach(element => {
+      element.addEventListener("click", function () {
+        let imagee = element.getElementsByTagName("img")[0];//taking image of that card
+        imagee.style.display = "block";//usko dikha do
+        element.classList.add("showed");//card me class add kar do
+        let src = JSON.stringify(imagee.src)//image ka src le lo jo ki help karega match kar ne me
+        let length = src.length//src ki length lelo
+        src = src.slice(37, length - 1)//slice kar do taki exact mil sake for ex- clock.png  pahle https;///kar ke tha
+        element.style.transform = "rotateY(180deg) 2s"
+        if (n == 1 || n == 2 || n == 5 || n == 6 || n == 9 || n == 10 || n == 13 || n == 14 || n == 17 || n == 18 || n == 21 || n == 22 || n == 25 || n == 26 || n == 29 || n == 30 || n == 33 || n == 34 || n == 37 || n == 38 || n == 41 || n == 42 || n == 45 || n == 46) {
+          turn = "RED"
+          console.log(turn)
+          turnOne.innerHTML = `Turn for RED`;
+          turnTwo.innerHTML = "";
+        }
+        else {
+          turn = "BLUE"
+          console.log(turn)
+          turnTwo.innerText = `Turn for BLUE`;
+          turnOne.innerHTML = ""
+        }
+        n = n + 1;
+        element.style.backgroundColor = "orange";
+        if (counter == 0) {//agar counter 0 h to
+          firstSelection = src
+          counter++;
+        }
+        else {
+          secondSelection = src
+          counter = 0;
+        }
+        if (firstSelection === secondSelection) {//agr first card ki image aur second card ki image match hui to
+          document.querySelectorAll(".showed").forEach(element => {//jis jis me showed class add h uska display none kar do agar match hua 
+            element.style.backgroundColor = "green";
+            setTimeout(() => {
+              element.style.display = "none";
+            }, 1000);
+          })
+          if (turn == "RED") {
+            let firstPlayerPoints = localStorage.getItem("firstPlayerPoints");
+            if (firstPlayerPoints == null) {
+              firstPoints = 1;
+              localStorage.setItem("firstPlayerPoints", firstPoints)
+            }
+            else {
+              firstPoints++
+              localStorage.setItem("firstPlayerPoints", firstPoints)
+            }
+            firstPointsSpan.innerHTML = `${firstPoints}`
+          }
+          else if (turn == "BLUE") {
+            let secondPlayerPoints = localStorage.getItem("secondPlayerPoints");
+            if (secondPlayerPoints == null) {
+              secondPoints = 1
+              localStorage.setItem("secondPlayerPoints", secondPoints)
+            }
+            else {
+              secondPoints++
+              localStorage.setItem("secondPlayerPoints", secondPoints)
+            }
+            secondPointsSpan.innerHTML = `${secondPoints}`
+          }
+        }
+        else {
+          if (firstSelection != "" && secondSelection != "") {
+            document.querySelectorAll(".showed").forEach(element => {
+              setTimeout(() => {
+                element.getElementsByTagName("img")[0].style.display = "none";
+                firstSelection = "";
+                secondSelection = "";
+                element.style.backgroundColor = "rgb(0, 240, 136)"
+              }, 700);
+              element.classList.remove("showed")//agar match nhi to class remove kar do 
+            })
+          }
+          //And the same process repeats 
+        }
+        console.log(firstSelection, secondSelection)
+      })
+    })
+  </script>
+</body>
+
+</html>

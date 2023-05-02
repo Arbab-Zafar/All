@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PianoTiles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300&family=Lato&family=Lobster&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Anuphan', sans-serif;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .mainDiv {
+            background-color: rgb(233, 145, 145);
+            width: 40vw;
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .grid {
+            background-color: red;
+            width: 90%;
+            height: 90%;
+            display: grid;
+            grid-template-columns: repeat(5, 7.2vw);
+            grid-template-rows: repeat(4, 22.5vh);
+        }
+
+        .tiles {
+            background-color: white;
+            border: 2px solid black;
+        }
+
+        #timePerTilesSpan,
+        #timer,
+        #expected,
+        #levelSpan {
+            font-size: 20px;
+            margin: 10px 0px 10px 0px;
+        }
+
+        #start {
+            position: relative;
+            /* left: 1000px; */
+            /* bottom: 400px; */
+            left: calc(50vw - 100px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 35px;
+            outline: none;
+            border: 1.5px solid black;
+            border-radius: 7px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+        }
+
+        #start:hover {
+            background-color: rgb(37, 34, 34);
+            color: white;
+            border: 1.5px solid rgb(242, 222, 222);
+            width: 110px;
+            height: 45px;
+        }
+
+        #restart {
+            position: relative;
+            left: 1000px;
+            bottom: 300px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 35px;
+            outline: none;
+            border: 1.5px solid black;
+            border-radius: 7px;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+        }
+
+        #restart:hover {
+            background-color: rgb(37, 34, 34);
+            color: white;
+            border: 1.5px solid rgb(242, 222, 222);
+            width: 110px;
+            height: 45px;
+        }
+
+        #startTimer {
+            font-size: 50px;
+            display: none;
+        }
+
+        .wholeBody {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* position: relative; */
+            /* bottom: calc(50vh + 125px) */
+        }
+
+        .infoDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            height: 170px;
+            position: relative;
+        }
+
+        .tiles:focus {
+            background-color: yellow;
+            border: 3px solid yellow;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainDiv">
+        <div class="grid">
+            <button class="tiles" id="tile1"></button>
+            <button class="tiles" id="tile2"></button>
+            <button class="tiles" id="tile3"></button>
+            <button class="tiles" id="tile4"></button>
+            <button class="tiles" id="tile5"></button>
+            <button class="tiles" id="tile6"></button>
+            <button class="tiles" id="tile7"></button>
+            <button class="tiles" id="tile8"></button>
+            <button class="tiles" id="tile9"></button>
+            <button class="tiles" id="tile10"></button>
+            <button class="tiles" id="tile11"></button>
+            <button class="tiles" id="tile12"></button>
+            <button class="tiles" id="tile13"></button>
+            <button class="tiles" id="tile14"></button>
+            <button class="tiles" id="tile15"></button>
+            <button class="tiles" id="tile16"></button>
+            <button class="tiles" id="tile17"></button>
+            <button class="tiles" id="tile18"></button>
+            <button class="tiles" id="tile19"></button>
+            <button class="tiles" id="tile20"></button>
+        </div>
+    </div>
+    <div class="infoDiv">
+        <span id="levelSpan">Level: 1</span>
+        <span id="expected">Maximum time per tile: 3</span>
+        <span id="timer">Time taken: 0</span>
+        <span id="timePerTilesSpan">Time per tile: 0</span>
+    </div>
+    <button id="start">Start</button>
+    <button id="restart">Restart</button>
+    <div class="wholeBody">
+        <span id="startTimer">Starting in..</span>
+    </div>
+
+    <script>
+        document.querySelector("#tile20").focus()
+        let level = 1;
+        let speed = 4;//mtlb hr row me 1 hoga 1X4;
+        let tilesIndex4 = [0, 1, 2, 3, 4];
+        let tilesIndex9 = [5, 6, 7, 8, 9];
+        let tilesIndex14 = [10, 11, 12, 13, 14];
+        let tilesIndex19 = [15, 16, 17, 18, 19];
+        let tiles = document.querySelectorAll(".tiles");//saara 
+        let timePerTilesSpan = document.querySelector("#timePerTilesSpan");
+        let timer = document.querySelector("#timer");
+        let startButton = document.querySelector("#start");
+        let restart = document.querySelector("#restart");
+        let started = false;
+        let startTimer = document.querySelector("#startTimer");
+        let audio = new Audio("../TicTacToe/1 second music.mp3");
+        restart.addEventListener("click", function () {
+            location.reload();
+        });
+        let i = 0;
+        function stopGame() {
+            if (!started) {
+                timePerTiles(stoped);
+                startButton.style.display = "none";
+                document.querySelector(".mainDiv").style.display = "none";
+                document.querySelector(".infoDiv").style.bottom = "0px";
+                startTimer.style.display = "block";
+                let jhjh = setInterval(() => {
+                    console.log("Running")
+                    if (i == 0) {
+                        startTimer.innerHTML = "3...";
+                        i++
+                    }
+                    else if (i == 1) {
+                        startTimer.innerHTML = "2...";
+                        i++
+                    }
+                    else if (i == 2) {
+                        startTimer.innerHTML = "1...";
+                        i++
+                    }
+                    else if (i == 3) {
+                        startTimer.innerHTML = "G0!!!";
+                        i++
+                    }
+                    else if (i == 4) {
+                        clearInterval(jhjh)
+                        started = true;
+                        startGame()
+                        i = 0;
+                        startTimer.innerHTML = "Starting in...";
+                    }
+                }, 1000);
+            }
+
+        }
+
+        function startGame() {
+            if (started) {
+                startButton.style.display = "none";
+                document.querySelector(".mainDiv").style.display = "flex";
+                document.querySelector(".infoDiv").style.bottom = "300px";
+                document.querySelector("#levelSpan").innerHTML = `Level: ${level}`
+                changeColor();
+                timePerTiles(start)
+            }
+        }
+
+        Array.from(tiles).forEach(function (element, index) {
+            element.addEventListener("click", function () {
+                audio.currentTime = 0;
+                audio.play()
+                if (element.classList.contains("black")) {
+                    element.style.backgroundColor = "white";
+                    element.classList.remove("black");
+                }
+                else {
+                    alert("LOSE");
+                    restart.style.display = "flex";
+                }
+                window.tilesLeft = [];
+                checkWin()
+            })
+        });
+
+
+        Array.from(tiles).forEach(function (element, index) {//sare button pe
+            element.addEventListener("keydown", function (e) {
+                if (e.keyCode == 37) {//37=left or <--  piche wala box
+                    if (index != 0) { // agar pahla box nhi h to
+                        console.log(e.keyCode)
+                        tiles[index - 1].focus()
+                    }
+                }
+                else if (e.keyCode == 38) {//38=up or ^^  upar wala box
+                    if (index >= 5) {//agar pahla 3 box nhi h to
+                        console.log(e.keyCode)
+                        tiles[index - 5].focus()
+                    }
+                }
+                else if (e.keyCode == 39) {//39= right or -->  agla box
+                    if (index < 19) { //agar last box nhi h to
+                        console.log(e.keyCode)
+                        tiles[index + 1].focus()
+                    }
+                }
+                else if (e.keyCode == 40) {//40 = bottom or down   niche wala
+                    if (index < 15) {//agar last 3 box nhi h to
+                        console.log(e.keyCode)
+                        tiles[index + 5].focus()
+                    }
+                }
+            })
+        })
+
+        start = "start"
+        stoped = "stoped";
+        let timeTaken = 0;
+        function timePerTiles(p) {
+            if (p == "start") {
+                timeTaken = 0;
+                window.timePerTilesInterval = setInterval(() => {
+                    timeTaken++;
+                    timer.innerHTML = `Time taken: ${timeTaken}`
+                    timePerTilesSpan.innerHTML = `Time taken per tile:${timeTaken / speed}`
+                }, 1000);
+            }
+            else if (p == "stoped") {
+                clearInterval(window.timePerTilesInterval)
+                timePerTilesSpan.innerHTML = `Time taken per tile:${timeTaken / speed}`
+            }
+        }
+
+
+
+        startButton.addEventListener("click", function () {
+            stopGame()
+        })
+
+        function changeColor() {
+            for (let i = 0; i < speed; i++) {
+                if (speed == 4) {
+                    document.querySelector("#expected").innerHTML = `Maximum time taken: 3`
+                    let a = Math.floor(Math.random() * 5);
+                    if (i == 0) {
+                        tiles[tilesIndex4[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[a]].classList.add("black");
+                    }
+                    else if (i == 1) {
+                        tiles[tilesIndex9[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[a]].classList.add("black");
+                    }
+                    else if (i == 2) {
+                        tiles[tilesIndex14[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[a]].classList.add("black");
+                    }
+                    else if (i == 3) {
+                        tiles[tilesIndex19[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[a]].classList.add("black");
+                    }
+                }
+                else if (speed == 8) {
+                    document.querySelector("#expected").innerHTML = `Maximum time taken: 6`
+                    let abc = [0, 1, 2, 3, 4];
+                    let a = Math.floor(Math.random() * 5);
+                    index = abc.indexOf(a);
+                    abc.splice(index, 1)
+                    let f = Math.floor(Math.random() * 4);
+                    let b = abc[f]
+
+                    if (i == 0) {
+                        tiles[tilesIndex4[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[a]].classList.add("black");
+                        tiles[tilesIndex4[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[b]].classList.add("black");
+                    }
+                    else if (i == 1) {
+                        tiles[tilesIndex9[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[a]].classList.add("black");
+                        tiles[tilesIndex9[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[b]].classList.add("black");
+                    }
+                    else if (i == 2) {
+                        tiles[tilesIndex14[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[a]].classList.add("black");
+                        tiles[tilesIndex14[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[b]].classList.add("black");
+                    }
+                    else if (i == 3) {
+                        tiles[tilesIndex19[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[a]].classList.add("black");
+                        tiles[tilesIndex19[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[b]].classList.add("black");
+                    }
+                }
+                else if (speed == 12) {
+                    document.querySelector("#expected").innerHTML = `Maximum time taken: 9`
+                    let abc = [0, 1, 2, 3, 4];
+                    let a = Math.floor(Math.random() * 5);
+                    index = abc.indexOf(a);
+                    abc.splice(index, 1)
+                    let f = Math.floor(Math.random() * 4);
+                    let b = abc[f]
+                    let index2 = abc.indexOf(b);
+                    abc.splice(index2, 1)
+                    let g = Math.floor(Math.random() * 3);
+                    let c = abc[g]
+                    if (i == 0) {
+                        tiles[tilesIndex4[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[a]].classList.add("black");
+                        tiles[tilesIndex4[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[b]].classList.add("black");
+                        tiles[tilesIndex4[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[c]].classList.add("black");
+                    }
+                    else if (i == 1) {
+                        tiles[tilesIndex9[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[a]].classList.add("black");
+                        tiles[tilesIndex9[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[b]].classList.add("black");
+                        tiles[tilesIndex9[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[c]].classList.add("black");
+                    }
+                    else if (i == 2) {
+                        tiles[tilesIndex14[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[a]].classList.add("black");
+                        tiles[tilesIndex14[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[b]].classList.add("black");
+                        tiles[tilesIndex14[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[c]].classList.add("black");
+                    }
+                    else if (i == 3) {
+                        tiles[tilesIndex19[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[a]].classList.add("black");
+                        tiles[tilesIndex19[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[b]].classList.add("black");
+                        tiles[tilesIndex19[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[c]].classList.add("black");
+                    }
+                }
+                else if (speed == 16) {
+                    document.querySelector("#expected").innerHTML = `Maximum time taken: 12`
+                    let abc = [0, 1, 2, 3, 4];
+                    let a = Math.floor(Math.random() * 5);
+                    index = abc.indexOf(a);
+                    abc.splice(index, 1)
+                    let f = Math.floor(Math.random() * 4);
+                    let b = abc[f]
+                    let index2 = abc.indexOf(b);
+                    abc.splice(index2, 1)
+                    let g = Math.floor(Math.random() * 3);
+                    let c = abc[g]
+                    let index3 = abc.indexOf(c);
+                    abc.splice(index3, 1);
+                    let j = Math.floor(Math.random() * 2);
+                    d = abc[j]
+                    if (i == 0) {
+                        tiles[tilesIndex4[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[a]].classList.add("black");
+                        tiles[tilesIndex4[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[b]].classList.add("black");
+                        tiles[tilesIndex4[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[c]].classList.add("black");
+                        tiles[tilesIndex4[d]].style.backgroundColor = "black";
+                        tiles[tilesIndex4[d]].classList.add("black");
+                    }
+                    else if (i == 1) {
+                        tiles[tilesIndex9[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[a]].classList.add("black");
+                        tiles[tilesIndex9[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[b]].classList.add("black");
+                        tiles[tilesIndex9[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[c]].classList.add("black");
+                        tiles[tilesIndex9[d]].style.backgroundColor = "black";
+                        tiles[tilesIndex9[d]].classList.add("black");
+                    }
+                    else if (i == 2) {
+                        tiles[tilesIndex14[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[a]].classList.add("black");
+                        tiles[tilesIndex14[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[b]].classList.add("black");
+                        tiles[tilesIndex14[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[c]].classList.add("black");
+                        tiles[tilesIndex14[d]].style.backgroundColor = "black";
+                        tiles[tilesIndex14[d]].classList.add("black");
+                    }
+                    else if (i == 3) {
+                        tiles[tilesIndex19[a]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[a]].classList.add("black");
+                        tiles[tilesIndex19[b]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[b]].classList.add("black");
+                        tiles[tilesIndex19[c]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[c]].classList.add("black");
+                        tiles[tilesIndex19[d]].style.backgroundColor = "black";
+                        tiles[tilesIndex19[d]].classList.add("black");
+                    }
+                }
+            }
+        }
+        function checkWin() {
+            for (let e = 0; e < 19; e++) {
+                if (tiles[e].classList.contains("black")) {
+                    window.tilesLeft.push("black")
+                }
+                console.log(tilesLeft)
+
+                if (e == 18) {
+                    if (window.tilesLeft.length == 0) {
+                        timePerTiles(stoped)
+                        if (speed == 4) {
+                            if (timeTaken <= 3) {
+                                console.log("Won")
+                                started = false;
+                                stopGame()
+                                speed = 8;
+                                level = 2;
+                            }
+                            else {
+                                alert("You time per tile is more than 0.75s!!");
+                                alert("You Lose");
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else if (speed == 8) {
+                            if (timeTaken <= 6) {
+                                console.log("Won")
+                                started = false;
+                                stopGame()
+                                speed = 12;
+                                level = 3;
+                            }
+                            else {
+                                alert("You time per tile is more than 0.75s!!");
+                                alert("You Lose");
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else if (speed == 12) {
+                            if (timeTaken <= 9) {
+                                console.log("Won")
+                                started = false;
+                                stopGame()
+                                speed = 16;
+                                level = 4;
+                            }
+                            else {
+                                alert("You time per tile is more than 0.83s!!");
+                                alert("You Lose");
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else if (speed == 16) {
+                            if (timeTaken <= 12) {
+                                console.log("Won");
+                                timePerTiles(stoped)
+                                document.querySelector(".mainDiv").style.display = "none";
+                                document.querySelector(".infoDiv").style.bottom = "0px";
+                                startTimer.style.display = "block";
+                                startTimer.innerHTML = `YOU WON<img src="../TicTacToe/win gif.gif" alt="" width="100">`
+                                restart.style.display = "flex";
+                            }
+                            else {
+                                alert("You time per tile is more than 0.8125s!!");
+                                alert("You Lose");
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else {
+                            alert("YOU ARE THE CHAMPION")
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC & TAC for Toe</title>
+    <link rel="icon" href="TicTacToe Icon.png" type="x-icon">
+    <style>
+        ul {
+            list-style: none;
+            color: white;
+            margin: 7px;
+            font-size: 27px;
+            margin-left: 34px;
+        }
+
+        .prevent-select {
+            /* -webkit-user-select: none; */
+            /* Safari */
+            /* -ms-user-select: none; */
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+        }
+
+
+        #btl-0 {
+            border-top: 0;
+            border-left: 0;
+        }
+
+        #btr-0 {
+            border-top: 0;
+            border-right: 0;
+        }
+
+        #bt-0 {
+            border-top: 0;
+        }
+
+        #br-0 {
+            border-right: 0;
+        }
+
+        #bl-0 {
+            border-left: 0;
+        }
+
+        #bbr-0 {
+            border-bottom: 0;
+            border-right: 0;
+        }
+
+        #bbl-0 {
+            border-bottom: 0;
+            border-left: 0;
+        }
+
+        #bb-0 {
+            border-bottom: 0;
+        }
+
+
+        nav {
+            background-color: rgb(0, 0, 0);
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .boxtext:focus {
+            background-color: rgb(255, 212, 255);
+            cursor: pointer;
+        }
+
+        .boxtext:hover {
+            background-color: rgb(255, 212, 255);
+            cursor: pointer;
+        }
+
+        .mainbox {
+            display: none;
+            grid-template-columns: repeat(3, 20vh);
+            grid-template-rows: repeat(3, 20vh);
+            margin: 20px 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .gameinfo {
+            font-size: large;
+            font-weight: 550;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            font-family: system-ui;
+            margin-bottom: 20px;
+        }
+
+        #p {
+            position: relative;
+            top: -215px;
+            right: -935px;
+            display: none;
+            transition: font-size ease-in 1s;
+            font-size: 22px;
+            font-family: monospace;
+        }
+
+        .oscore {
+            position: relative;
+            top: -270px;
+            right: -800px;
+            display: none;
+            transition: font-size ease-in 1s;
+            font-size: 22px;
+            font-family: monospace;
+        }
+
+        .xscore {
+            position: relative;
+            top: -305px;
+            right: -736px;
+            display: none;
+            transition: font-size ease-in 1s;
+            font-size: 22px;
+            font-family: monospace;
+        }
+
+
+        .boxtext {
+            font-size: 35px;
+            font-family: cursive;
+            width: 20vw;
+            height: 20vh;
+            background-color: white;
+            outline: none;
+            border: none;
+        }
+
+        .m {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popupdiv {
+            border: 1.5px solid grey;
+            border-radius: 7px;
+            box-shadow: 5px 5px 5px 5px grey;
+            margin: 4px;
+        }
+
+        .inputs {
+            margin: 10px;
+            padding: 10px;
+            position: relative;
+            left: 80px;
+            height: 18px;
+            width: 18px;
+            font-family: sans-serif;
+        }
+
+        .noofrounds {
+            margin: 10px 30px 10px 30px;
+            font-weight: 100;
+            font-family: sans-serif;
+        }
+
+        label {
+            position: relative;
+            bottom: 3px;
+            left: 80px;
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+
+        .btn {
+            background-color: #2874f0;
+            height: 33px;
+            color: white;
+            border: 1px solid white;
+            width: 96px;
+            position: relative;
+            left: 66px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            background-color: #0c3981;
+            width: 100px;
+            height: 35px;
+        }
+
+        #restart {
+            width: 150px;
+            height: 35px;
+            border: 2px solid #393131;
+            color: #393131;
+            border-radius: 7px;
+            font-size: 15px;
+            outline: none;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            margin: auto;
+        }
+
+        #restart:hover {
+            background-color: #393131;
+            color: white;
+            border: 2px solid white;
+        }
+
+        #winGif {
+            position: relative;
+            width: 122px;
+            position: relative;
+            bottom: 201px;
+            left: 954px;
+            border: 1px solid white;
+            border-radius: 100%;
+            display: none;
+            transition: width ease-out 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="TicTacToe Logo.png" alt="" width="310">
+        </nav>
+    </header>
+    <main>
+        <div class="gameinfo">
+            <p style="margin-top:20px ;">Welcome to my TICTACTOE game</p>
+        </div>
+        <div class="m">
+            <div class="popupdiv">
+                <h3 class="noofrounds">Select number of rounds:</h3><br>
+                <input type="radio" name="rounds" value="" id="1" class="inputs radone">
+                <label for="radone">1</label><br><br>
+                <input type="radio" name="rounds" value="" id="3" class="inputs radthree">
+                <label for="radthree">3</label><br><br>
+                <input type="radio" name="rounds" value="" id="5" class="inputs radfive">
+                <label for="radfive">5</label><br><br>
+                <input type="radio" name="rounds" value="" id="7" class="inputs radseven">
+                <label for="radseven">7</label><br><br>
+                <input type="radio" name="vs" value="" id="anotherPlayer" class="inputs" checked>
+                <label for="anotherPlayer">Two Player</label><br><br>
+                <input type="radio" name="vs" value="" id="vscomp" class="inputs">
+                <label for="vscomp">VS Computer</label><br><br>
+                <button class="btn">Select</button>
+            </div>
+            <div class="mainbox" id="maindiv">
+                <div class="box" id="btl-0"><button class="boxtext prevent-select" id=""></button>
+                </div>
+                <div class="box" id="bt-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="btr-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="bl-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="br-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="bbl-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="bb-0"><button class="boxtext prevent-select" id=""></button></div>
+                <div class="box" id="bbr-0"><button class="boxtext prevent-select" id=""></button></div>
+            </div>
+        </div>
+        <p id="p">Turn for: X</p>
+        <p class="oscore prevent-select">O : 0</p>
+        <p class="xscore prevent-select">X : 0</p>
+        <button id="restart">Restart</button>
+        <img src="win gif.gif" alt="" id="winGif">
+    </main>
+    <script>
+        window.turn = "X";
+        let boxes = document.querySelectorAll(".box");
+        let p = document.querySelector("#p");
+        let btxt = document.querySelectorAll(".boxtext");
+        let radio1 = document.querySelector(".radone");
+        let radio3 = document.querySelector(".radthree");
+        let radio5 = document.querySelector(".radfive");
+        let radio7 = document.querySelector(".radseven");
+        let vscomp = document.querySelector("#vscomp");
+        let xscore = document.querySelector(".xscore");
+        let mainbox = document.querySelector(".mainbox");
+        let popup = document.querySelector(".popupdiv");
+        let oscore = document.querySelector(".oscore");
+        let btn = document.querySelector(".btn");
+        let body = document.getElementsByTagName("body");
+        let restart = document.querySelector("#restart");
+        let xxx = 0;
+        let ooo = 0;
+        let xAudio = new Audio("1 second music.mp3");
+        let oAudio = new Audio("punch(musicEffect).mp3");
+
+        restart.addEventListener("click", function () {
+            location.reload();//after tournament button will appear and when you will click it will reload the page
+        })
+
+        btn.addEventListener("click", function () {//submit button
+            if (radio1.checked || radio3.checked || radio5.checked || radio7.checked) {//agar koi ek checked tabhi aage badho
+                mainbox.style.display = "grid";
+                xscore.style.display = "inline";
+                oscore.style.display = "inline";
+                p.style.display = "inline";
+                popup.style.display = "none";
+
+                if (radio1.checked) {//agar radio 1 checked h to
+                    let interval1 = setInterval(() => {//interval 1 chalao
+                        console.log("Radio 1 Running(Inner)")
+                        if (ooo == 1) {//agar o ka point 1 ho gaya to gameover kardo
+                            alert("O won")
+                            clearInterval(interval1);//interval rok do
+                            mainbox.style.display = "none";
+                            restart.style.display = "flex";
+                        }
+                        else if (xxx == 1) {
+                            alert("X won")
+                            clearInterval(interval1);
+                            mainbox.style.display = "none";
+                            restart.style.display = "flex";
+                        }
+                    }, 1000);
+                }
+                else if (radio3.checked) {
+                    let interval3 = setInterval(() => {
+                        console.log("Radio 3 Running(Inner)")
+                        if (radio3.checked) {
+                            if (ooo == 2) {
+                                alert("O won")
+                                clearInterval(interval3);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                            else if (xxx == 2) {
+                                alert("X won")
+                                clearInterval(interval3);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else {
+                            clearInterval(interval3);
+                        }
+                    }, 1000);
+                }
+                else if (radio5.checked) {
+                    let interval5 = setInterval(() => {
+                        console.log("Radio 5 Running(Inner)")
+                        if (radio5.checked) {
+                            if (ooo == 3) {
+                                alert("O won");
+                                clearInterval(interval5);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                            else if (xxx == 3) {
+                                alert("X won")
+                                clearInterval(interval5);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else {
+                            clearInterval(interval5)
+                        }
+                    }, 1000);
+                }
+                else if (radio7.checked) {
+                    let interval7 = setInterval(() => {
+                        console.log("Radio 7 Running(Inner)")
+                        if (radio7.checked) {
+                            if (ooo == 4) {
+                                alert("O won")
+                                clearInterval(interval7);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                            else if (xxx == 4) {
+                                alert("X won")
+                                clearInterval(interval7);
+                                mainbox.style.display = "none";
+                                restart.style.display = "flex";
+                            }
+                        }
+                        else {
+                            clearInterval(interval7)
+                        }
+                    }, 1000);
+                }
+            }
+            else {
+                alert("First select any option!");//agar koi bhi option select nhi hai to alert karo
+            }
+        });
+
+        Array.from(btxt).forEach(function (element, index) {//sare button pe
+            element.addEventListener("keydown", function (e) {
+                if (e.keyCode == 37) {//37=left or <--  piche wala box
+                    if (index != 0) { // agar pahla box nhi h to
+                        console.log(e.keyCode)
+                        btxt[index - 1].focus()
+                    }
+                }
+                else if (e.keyCode == 38) {//38=up or ^^  upar wala box
+                    if (index >= 3) {//agar pahla 3 box nhi h to
+                        console.log(e.keyCode)
+                        btxt[index - 3].focus()
+                    }
+                }
+                else if (e.keyCode == 39) {//39= right or -->  agla box
+                    if (index < 8) { //agar last box nhi h to
+                        console.log(e.keyCode)
+                        btxt[index + 1].focus()
+                    }
+                }
+                else if (e.keyCode == 40) {//40 = bottom or down   niche wala
+                    if (index < 6) {//agar last 3 box nhi h to
+                        console.log(e.keyCode)
+                        btxt[index + 3].focus()
+                    }
+                }
+            })
+        })
+
+        boxes.forEach(element => {//hr box ke liye
+            element.addEventListener("click", function mainsystem() {//abpe eventlistener lga do
+                let txt = element.getElementsByTagName("button")[0];// box ka button
+                if (vscomp.checked) {//agar versus computer selected h to
+                    if (window.turn == "X") {//agar turn X ki chance h to
+                        if (txt.innerHTML == "X") {//agar koi box pr click kiya h jisme pahle se X hai 
+                            txt.innerHTML = "X";//to change nhi karo
+                        }
+                        else if (txt.innerHTML == "O") {//agar koi box pr click kiya h jisme pahle se O hai 
+                            txt.innerHTML = "O";//to change nhi karo
+                        }
+                        else if (txt.innerHTML != "X" || txt.innerHTML != "O") {//agar box khali hai to 
+                            txt.innerHTML = window.turn;//change karo
+                            xAudio.play()
+                            changeTurn()//phir turn ko change kar do 
+                        }
+                    }
+                }
+                else {//agar versus computer selected nhi h to
+                    if (txt.innerHTML == "X") {
+                        txt.innerHTML = "X"
+                    }
+                    else if (txt.innerHTML == "O") {
+                        txt.innerHTML = "O"
+                    }
+                    else if (txt.innerHTML != "X" || txt.innerHTML != "O") {
+                        if (window.turn == "O") {
+                            oAudio.play()
+                        }
+                        else {
+                            xAudio.play()
+                        }
+                        txt.innerHTML = window.turn;
+                        changeTurn()
+                    }
+                }
+                checkWin();//koi jita ki bhi usko check karo
+            })
+        });
+        function changeTurn() {
+            if (vscomp.checked) {
+                let oneTime = 1;//ek hi baar chalana hai
+                if (oneTime == 1) {
+                    window.noOfAvailableBoxesIndex = [];
+                    boxes.forEach(function (element, index) {
+                        if (element.getElementsByTagName("button")[0].innerHTML == "") {//jo jo box me kuch nhi h uska index add karo array me
+                            window.noOfAvailableBoxesIndex.push(index)//adding index
+                            console.log("ONETIME FOR LOOP GOING ON")
+                        }
+                    });
+                    notouse = window.noOfAvailableBoxesIndex[Math.floor(Math.random() * window.noOfAvailableBoxesIndex.length)];//Array me se ek random index ko select karo
+                    console.log("OneTime:", notouse)
+                    oneTime--;//0 kardo ki phir se na chale
+                }
+                if (window.turn == "O") {//agar turn O hai to X kar do 
+                    window.turn = "X"
+                    p.innerHTML = "Turn for:" + " " + window.turn;
+                }
+                else {//agar X hai to 
+                    p.innerHTML = "Turn for:" + " " + window.turn;
+                    if (noOfAvailableBoxesIndex.length > 1) {//agar ek se zyada hai to
+                        if (btxt[notouse].innerHTML != "X" && btxt[notouse].innerHTML != "O") {//agar random box ka text khali hai to (Joki ho ga hi)
+                            btxt[notouse].innerHTML = "O";//to O kar do 
+                            window.noOfAvailableBoxesIndex = [];//phir array ko khali kar do
+                            boxes.forEach(function (element, index) {
+                                if (element.getElementsByTagName("button")[0].innerHTML == "") {//phir se wahi kaam karo (new)
+                                    window.noOfAvailableBoxesIndex.push(index)
+                                    console.log(window.noOfAvailableBoxesIndex)
+                                }
+                            });
+                        }
+                    }
+                }
+                notouse = window.noOfAvailableBoxesIndex[Math.floor(Math.random() * window.noOfAvailableBoxesIndex.length)];//click ke baad notouse ko update karo
+                console.log(notouse)
+            }
+            else {//if versus computer nhi h to
+                if (window.turn == "O") {
+                    window.turn = "X"
+                    p.innerHTML = "Turn for:" + " " + window.turn;
+                }
+                else {
+                    window.turn = "O"
+                    p.innerHTML = "Turn for:" + " " + window.turn;
+                }
+            }
+        }
+        function checkWin() {
+            let wins = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];//ye sb index pr jeet hai
+            wins.forEach(e => {
+                if ((btxt[e[0]].innerHTML === btxt[e[1]].innerHTML) && (btxt[e[2]].innerHTML === btxt[e[1]].innerHTML) && (btxt[e[0]].innerHTML) !== "") {//teeno box ki innerhtml same h to jeeta do
+                    p.innerHTML = btxt[e[0]].innerHTML + " " + "Won !";
+                    document.querySelector("#winGif").style.display = "block";
+                    p.style.fontSize = "30px";
+                    if (btxt[e[1]].innerHTML === "X") {
+                        xxx++//x score badha do
+                        xscore.innerHTML = "X : " + xxx;
+                    }
+                    else if (btxt[e[1]].innerHTML === "O") {
+                        ooo++//o ka score badha do
+                        oscore.innerHTML = "O : " + ooo
+                    }
+                    p.style.fontSize = "30px";//transition laga hua h isiliye
+
+                    setTimeout(() => {// jit ke 1.5 seconds baad
+                        btxt.forEach(element => {//saare ki innerhtml khali kardo
+                            element.innerHTML = ""
+                            p.innerHTML = "Turn for " + window.turn;
+                            document.querySelector("#winGif").style.display = "none";
+                        });
+                    }, 1500);
+                }
+            })
+            if (btxt[0].innerHTML != "" && btxt[1].innerHTML != "" && btxt[2].innerHTML != "" && btxt[3].innerHTML != "" && btxt[4].innerHTML != "" && btxt[5].innerHTML != "" && btxt[6].innerHTML != "" && btxt[7].innerHTML != "") {//agar sbki alag alag value h aur koi jita nhi h to match tie kardo
+                p.innerHTML = "Match Tied";
+                p.style.fontSize = "30px";
+                setTimeout(() => {
+                    btxt.forEach(element => {
+                        element.innerHTML = ""
+                        p.innerHTML = "Turn for " + window.turn;
+                        document.querySelector("#winGif").style.display = "none";
+                    }, 1500);
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

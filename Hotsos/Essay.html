@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif, 'Roboto';
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: rgb(86, 208, 159);
+            color: white;
+            border-bottom: 5px solid rgb(214, 214, 214);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            padding-right: 17px;
+            margin-top: 10px;
+            font-weight: 650;
+            font-size: 15px;
+        }
+
+        #hot {
+            font-size: 30px;
+            font-weight: 800;
+            position: relative;
+            bottom: 7px;
+            margin-left: 10px;
+        }
+
+        #search {
+            display: flex;
+            width: 303px;
+            height: 6vh;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            border: 2px solid white;
+            position: relative;
+            padding-right: 10px;
+            padding-left: 20px;
+        }
+
+        .list {
+            position: relative;
+            top: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            color: rgb(165, 163, 163);
+        }
+
+        #ess {
+            text-decoration: underline;
+        }
+
+        #logo {
+            height: 30px;
+            width: 30px;
+            margin-top: 12px;
+            margin-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(45, 43, 43);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        #home {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        #sear {
+            height: 6vh;
+            width: 30px;
+            display: flex;
+            margin-top: 0px;
+            background-color: white;
+            color: rgb(86, 208, 159);
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        h2 {
+            margin-bottom: 50px;
+        }
+
+        #s {
+            padding-right: 0px;
+        }
+
+        .dark-mode {
+            background-color: #373232;
+            color: white;
+        }
+
+        #set {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        #sign {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        #more {
+            height: 20px;
+            width: 15px;
+            background-color: rgb(86, 208, 159);
+            text-decoration: none;
+            color: white;
+            border: 0px;
+            position: relative;
+            top: 6.5px;
+            left: -2px;
+            border-radius: 10px;
+        }
+
+        .opt {
+            background-color: rgb(179, 239, 204);
+            color: black;
+        }
+
+        h1 {
+            color: rgb(226, 77, 77);
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: rgb(131, 131, 224);
+            margin-left: 10px;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+        .dark {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        #darkmode {
+            color: black;
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+
+        p {
+            margin-left: 8px;
+            margin-bottom: 10px;
+            line-height: 22px;
+            font-size: 17px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <header>
+        <nav>
+            <ul>
+                <ion-icon name="logo-octocat" id="logo"></ion-icon>
+                <li id="hot">Hotsos</li>
+                <ion-icon name="home" id="home"></ion-icon>
+                <a href="Hotsos.html">
+                    <li class="list">Home</li>
+                </a>
+                <a href="Essay.html" id="ess">
+                    <li class="list">Essay</li>
+                </a>
+                <a href="Short Notes.html">
+                    <li class="list">Short Notes</li>
+                </a>
+                <a href="Writing.html">
+                    <li class="list">Writing</li>
+                </a>
+                <a href="Word Meaning.html">
+                    <li class="list">Word Meaning</li>
+                </a>
+                <li id="s"><input type="search" name="" id="search" placeholder="Search....."></li>
+                <li>
+                    <ion-icon name="search-outline" id="sear"></ion-icon>
+                </li>
+                <ion-icon name="settings-outline" id="set"></ion-icon>
+                <li class="list">Settings</li>
+                <ion-icon name="log-in-outline" id="sign"></ion-icon>
+                <li class="list">Sign-In</li>
+                <li id="sel"><label for="more" class="list">More</label>
+                    <select name="more" id="more">
+                        <option value="Sign-Out" class="opt">
+                            <p>Sign-Out</p>
+                        </option>
+                        <option value="Help" class="opt">Help</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dark">
+            <button id="darkmode" onclick="darkmode()">Dark mode</button>
+        </div>
+        <h1 id="vocabolory3">Essay</h1>
+        <div class="mostsearched">
+
+        </div>
+        <div class="container1">
+            <h2 class="topic">Pollution</h2>
+            <p class="presentition"> Pollution is a term which even kids are aware of these days. It has become so
+                common that almost
+                everyone acknowledges the fact that pollution is rising continuously. The term ‘pollution’ means the
+                manifestation of any unsolicited foreign substance in something.
+                <br>
+                <br>
+                Pollution affects the quality of life more than one can imagine. It works in mysterious ways, sometimes
+                which cannot be seen by the naked eye. However, it is very much present in the environment. For
+                instance, you might not be able to see the natural gases present in the air, but they are still there.
+                <br>
+                <br>
+                After learning the harmful effects of pollution, one must get on the task of preventing or reducing
+                pollution as soon as possible. To reduce air pollution, people should take public transport or carpoolto reduce vehicular smoke. While it may be hard, avoiding firecrackers at festivals and celebrations canalso cut down on air and noise pollution. Above all, we must adopt the habit of recycling. All the usedplastic ends up in the oceans and land, which pollutes them.
+            </p>
+        </div>
+        <div class="container1">
+            <h2 class="topic">Sound Pollution</h2>
+            <p class="presentition">Noise pollution is a form of pollution which has become very deadly nowadays.
+                This pollution is increasing only and creates an unsafe environment. Noise pollution is when the
+                level of noise increases more than the normal level. When the amount of noise exceeds, it becomes
+                dangerous for living beings.
+                <br>
+                <br>
+                As the world is turning to technology for their comfort, it is, at the same time, harming us. The
+                industries no matter how big or small contribution to noise pollution. The equipment they use like
+                compressors, exhaust fans, generators and more produce a lot of noise.
+                <br>
+                <br>
+                Though it may not be talked about much, noise pollution has a serious impact on the lives of living
+                beings. Firstly, noise pollution causes a number of hearing problems. High levels of noise damage
+                the Eardrums and sometimes even cause loss of hearing.
+            </p>
+        </div>
+        <div class="container1">
+            <h2 class="topic">Water Pollution</h2>
+            <p class="presentition">Water pollution occurs when water bodies are contaminated with various chemical
+                substances. Some of the most common sources of water pollution are factories, power plants, and
+                agricultural processes. Water conservation is an integral part of protecting the environment. Now
+                that we have understood the meaning of water pollution, let us know the reasons for water pollution
+                by reading the causes of water pollution essay.
+                <br>
+                <br>
+                There are many ways in which pollution can be caused. Some of the most common causes include
+                industrial waste, pesticides, insecticides, fertilisers and deforestation.
+                <br>
+                <br>
+                Water pollution is an environmental problem that has many effects. Water pollution causes the death
+                of plants, animals, humans and all other living beings. Fish and mammals may die off due to toxins
+                harmful to them, making it harder for wildlife to survive.
+                <br>
+                <br>
+                Water pollution and environmental pollution is a widespread problem around the world. There are many
+                ways to prevent water pollution, but the most important ways are to avoid disposing of
+                non-biodegradable waste materials and industrial waste in water bodies, stop the usage of
+                pesticides, insecticides etc.
+            </p>
+        </div>
+        <div class="container1">
+            <h2 class="topic">Inflation</h2>
+            <p class="presentition">India’s food production crossed 235 million tonnes during years 2010-11 as per
+                the latest estimates and this is the highest since Independence. The previous highest production, at
+                nearly 233 million tonnes, was achieved in years 2008-09.
+                <br>
+                <br>
+                However, inflation reflects overheating: the supply capacity of the economy is simply unable to
+                match the demands on that capacity. Moreover, purchasing power of consumers is increasing and hence
+                demand is accelerating.
+                <br>
+                <br>
+                Moreover, for pulses such as Arhar and Moong the MSPs in years 2009-10 was ₹ 2300 and ₹ 2760
+                respectively, while in years 2010-11, it increased to ₹ 3000 and 3170 respectively. Another major
+                cause of inflation is the increase in the prices of fuel internationally, which is contributing to
+                the overall price inflation. There has been a steady increase in the international prices, with the
+                Indian crude basket priced at $11 3.09 per barrel, as on May 2011.
+                <br>
+                <br>
+
+                High level of inflation distorts economic performance. It has added pressure on the Central Bank to
+                raise rates despite signs of slow growth in the Indian economy. Thus, high inflation and rising
+                interest rates are crimping domestic demand and slowing down the economy.
+
+
+            </p>
+        </div>
+
+        <div class="container1">
+            <h2 class="topic">Women Empowerment</h2>
+            <p class="presentition">Women empowerment refers to making women powerful to make them capable of
+                deciding for themselves. Women have suffered a lot through the years at the hands of men. In earlier
+                centuries, they were treated as almost non-existent. As if all the rights belonged to men even
+                something as basic as voting. As the times evolved, women realized their power. There on began the
+                revolution for women empowerment.
+                <br>
+                <br>
+                Almost every country, no matter how progressive has a history of ill-treating women. In other words,
+                women from all over the world have been rebellious to reach the status they have today. While the
+                western countries are still making progress, third world countries like India still lack behind in
+                Women Empowerment.
+
+                In India, women empowerment is needed more than ever. India is amongst the countries which are not
+                safe for women. There are various reasons for this. Firstly, women in India are in danger of honor
+                killings. Their family thinks its right to take their lives if they bring shame to the reputation of
+                their legacy.
+                <br>
+                <br>
+                There are various ways in how one can empower women. The individuals and government must both come
+                together to make it happen. Education for girls must be made compulsory so that women can become
+                illiterate to make a life for themselves.
+            </p>
+        </div>
+
+
+        <p id="end">---THE END---</p>
+        </div>
+    </main>
+    <footer>
+        <div class="container2">
+            <input id="feedbackinput" type="text" placeholder="     Give your feedback">
+    </footer>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    function darkmode() {
+        let para = document.getElementsByClassName('para');
+        let dark = document.getElementsByClassName('dark');
+        let body = document.getElementById('body');
+        let mode = document.getElementsByClassName('dark-mode')
+        body.classList.toggle("dark-mode");
+    }
+</script>
+</body>
+
+</html>

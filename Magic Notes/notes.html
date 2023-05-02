@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Notes - All Notes</title>
+    <style>
+        #h,
+        #hh,
+        #yournotes,
+        #filter {
+            color: white;
+        }
+
+        .headingfive {
+            margin: 20px 0px 20px 0px;
+        }
+
+        #cardmaindiv {
+            border: none;
+        }
+
+        .time {
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .time2 {
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .allnotes {
+            margin: 10px;
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        .editimg {
+            width: 23px;
+            float: right;
+        }
+
+        .editimg:hover {
+            width: 27px;
+        }
+
+        .editspan {
+            float: right;
+            transition: position ease-in 1s;
+            font-size: 12px;
+            position: relative;
+            top: 25px;
+            left: 22px;
+            display: none;
+        }
+
+        .disnone {
+            display: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="h" href="#">Magic Notes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="hh" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="yournotes" aria-current="page" href="notes.html">Notes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="filter" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">Filter</a>
+                        <ul class="dropdown-menu">
+                            <li id="bytitle"><a class="dropdown-item" href="#">By title</a></li>
+                            <li id="byname"><a class="dropdown-item" href="#">By name</a></li>
+                            <li id="bycontent"><a class="dropdown-item" href="#">By content</a></li>
+                            <li id="bydate"><a class="dropdown-item" href="#">By date</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" id="searchtxt" placeholder="Search by title"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <h2 class="headingfive text-center">Your Notes</h2>
+    <div class="hello card my-4 container-fluid d-flex flex-row mb-3 flex-wrap" style="width: 80%;" id="cardmaindiv">
+        <!-- </div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script>
+        shownotes()
+        let n = localStorage.getItem("Notes");
+        if (n != null) {
+            let set = setInterval(() => {
+                let edited = localStorage.getItem("Edited");
+                let e = JSON.parse(edited);
+                let indexed = parseInt(e[0].editedindex);
+                let cardd = document.getElementsByClassName('Notecard')[indexed];
+                let titlee = cardd.getElementsByTagName("h5")[0];
+                let namee = cardd.getElementsByTagName("p")[3];
+                let desce = cardd.getElementsByTagName("p")[0];
+                let editedtimepara = cardd.getElementsByTagName("p")[2];
+                let d = new Date();
+                let datestrings = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " +
+                    d.getHours() + ":" + d.getMinutes();
+                console.log("Working...")
+                // console.log("WORKING......");
+                if (edited != null) {
+                    titlee.innerText = e[0].editedtitle;
+                    namee.innerText = e[0].editedname;
+                    console.log(indexed)
+                    desce.innerText = e[0].editeddesc;
+                    let notes = localStorage.getItem("notes");
+                    editedtimepara.style.display = "block";
+                    if (notes != null) {
+                        let notes = localStorage.getItem("notes");
+                        if (notes == null) {
+                            notesobj1 = []
+                        }
+                        else {
+                            notesobj1 = JSON.parse(notes);
+                        }
+                        let myobj2 = {
+                            title: e[0].editedtitle,
+                            text: e[0].editeddesc,
+                            editedtime: "Last Edited:" + " " + datestrings,
+                            name: e[0].editedname
+                        }
+                        notesobj1.splice(indexed, 1);
+                        notesobj1.push(myobj2);
+                        localStorage.setItem("notes", JSON.stringify(notesobj1));
+                        shownotes();
+                        localStorage.removeItem("Edited");
+                        setTimeout(() => {
+                            clearInterval(set)
+                        }, 1000);
+                    }
+                    else {
+                        clearInterval(set)
+                        shownotes()
+                    }
+                    clearInterval(set)
+                }
+                else {
+                    localStorage.removeItem("Edited");
+                    clearInterval(set)
+                }
+            }, 1000);
+        }
+
+        function shownotes() {
+            let notes = localStorage.getItem("notes")
+            if (notes == null) {
+                notesobj = []
+                // localStorage.setItem("notesobj",notesobj)
+            }
+            else {
+                notesobj = JSON.parse(notes);
+            }
+            let html = "";
+            notesobj.forEach(function (element, index) {
+                html += `<div class="Notecard card-body border allnotes" style="width:26%;border-radius:5px;">
+                <h5 class="card-title">${element.title}</h5>
+                <img src="/Images/editicon.png" class="editimg" id="${index}" onmouseover="showspan(this.id)" onmouseout="hidespan(this.id)" onclick="edit(this.id)">
+                <span class="editspan" id="${index}">Edit</span>
+                <p class="card-text">${element.text}</p>
+                <p class="time card-text">${element.time}</p>
+                <p class="time card-text disnone">Last Edited: ${element.editedtime}</p>
+                <p class="time time2 card-text">Created by: ${element.name}</p>
+                <button id="${index}" onclick="deleteNote(this.id)" class="deletenote btn btn-primary" style="font-size:13px; padding: 5px 10px 5px 10px;margin-left: -2px">Delete</button>
+                </div>`
+            });
+            let cardmaindiv = document.querySelector("#cardmaindiv");
+            if (notesobj.length != 0) {
+                cardmaindiv.innerHTML = html;
+            }
+            else {
+                cardmaindiv.innerHTML = "Nothing to show!"
+                cardmaindiv.style.fontSize = "20px"
+            }
+        }
+        let byname = document.querySelector("#byname");
+        let bydate = document.querySelector("#bydate");
+        let search = document.querySelector("#searchtxt");
+        let time = document.querySelector(".time");
+
+        bydate.addEventListener("click", function () {
+            search.placeholder = "Search by date"
+            search.addEventListener("input", function () {
+                inputval = search.value;
+                console.log(inputval)
+                let notecards = document.querySelectorAll(".Notecard");
+                Array.from(notecards).forEach(function (element, index) {
+                    let cardtxt = element.getElementsByTagName("p")[1].innerText;
+                    let input1 = inputval.toLowerCase()
+                    let card1 = cardtxt.toLowerCase()
+                    if (card1.includes(input1)) {
+                        element.style.display = "block";
+                    }
+                    else {
+                        element.style.display = "none";
+                    }
+                })
+            })
+        })
+
+        byname.addEventListener("click", function () {
+            search.placeholder = "Search by name"
+            search.addEventListener("input", function () {
+                inputval = search.value;
+                let notecards = document.querySelectorAll(".Notecard");
+                Array.from(notecards).forEach(function (element, index) {
+                    let cardtxt = element.getElementsByTagName("p")[3].innerText;
+                    let input1 = inputval.toLowerCase()
+                    let card1 = cardtxt.toLowerCase()
+                    if (card1.includes(input1)) {
+                        element.style.display = "block";
+                    }
+                    else {
+                        element.style.display = "none";
+                    }
+                })
+            })
+        })
+        bycontent.addEventListener("click", function () {
+            search.placeholder = "Search by content"
+            search.addEventListener("input", function () {
+                inputval = search.value;
+                let notecards = document.querySelectorAll(".Notecard");
+                Array.from(notecards).forEach(function (element, index) {
+                    let cardtxt = element.getElementsByTagName("p")[0].innerText;
+                    let input1 = inputval.toLowerCase()
+                    let card1 = cardtxt.toLowerCase()
+                    if (card1.includes(input1)) {
+                        element.style.display = "block";
+                    }
+                    else {
+                        element.style.display = "none";
+                    }
+                })
+            })
+        })
+        bytitle.addEventListener("click", function () {
+            search.placeholder = "Search by title"
+            search.addEventListener("input", function () {
+                inputval = search.value;
+                let notecards = document.querySelectorAll(".Notecard");
+                Array.from(notecards).forEach(function (element, index) {
+                    let cardtxt = element.getElementsByTagName("h5")[0].innerText;
+                    let input1 = inputval.toLowerCase()
+                    let card1 = cardtxt.toLowerCase()
+                    if (card1.includes(input1)) {
+                        element.style.display = "block";
+                    }
+                    else {
+                        element.style.display = "none";
+                    }
+
+                })
+            })
+        })
+        search.addEventListener("input", function () {
+            inputval = search.value;
+            let notecards = document.querySelectorAll(".Notecard");
+            Array.from(notecards).forEach(function (element, index) {
+                let cardtxt = element.getElementsByTagName("h5")[0].innerText;
+                let input1 = inputval.toLowerCase()
+                let card1 = cardtxt.toLowerCase()
+                if (card1.includes(input1)) {
+                    element.style.display = "block";
+                }
+                else {
+                    element.style.display = "none";
+                }
+            })
+        })
+
+        function deleteNote(index) {
+            let sure = confirm("Are you sure to delete this note?");
+            if (sure) {
+                let notes = localStorage.getItem("notes");
+                if (notes == null) {
+                    notesobj = []
+                }
+                else {
+                    notesobj = JSON.parse(notes);
+                }
+                notesobj.splice(index, 1)
+                localStorage.setItem("notes", JSON.stringify(notesobj));
+                let edited = localStorage.getItem("Edited");
+                if(edited!=null){
+                    let e = JSON.parse(edited);
+                    let indexed = parseInt(e[0].editedindex);
+                    if (indexed == index) {
+                        localStorage.removeItem("Edited");
+                    }
+                }
+                shownotes();
+            }
+            else {
+                shownotes()
+            }
+        }
+        function showspan(index) {
+            let editspan = document.getElementsByClassName('editspan')[index];
+            editspan.style.display = "block";
+        }
+        function hidespan(index) {
+            let editspan = document.getElementsByClassName('editspan')[index];
+            editspan.style.display = "none";
+        }
+        function edit(index) {
+            let card = document.getElementsByClassName('Notecard')[index];
+            let title = card.getElementsByTagName("h5")[0].innerText;
+            let name = card.getElementsByTagName("p")[3].innerText;
+            let desc = card.getElementsByTagName("p")[0].innerText;
+            let url = "index.html";
+            let edit = localStorage.getItem("Edit");
+            if (edit == null) {
+                editobj = []
+            }
+            else {
+                editobj = JSON.parse(edit);
+            }
+            let myobj2 = {
+                edittitle: title,
+                editname: name,
+                editdesc: desc,
+                editindex: index
+            }
+            let indexs = parseInt(myobj2.editindex);
+
+            editobj.push(myobj2);
+            localStorage.setItem("Edit", JSON.stringify(editobj));
+            window.open(url, "_self");
+        }
+        // main();
+    </script>
+</body>
+
+</html>

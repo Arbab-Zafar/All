@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Notes</title>
+    <link rel="icon" type="image/x-icon" href="MagicNotesLogo.png">
+    <style>
+        #floatingTextarea2 {
+            width: 70%;
+            margin-top: 50px;
+            height: 150px;
+            padding: 35px 15px 15px 15px;
+            font-size: 15px;
+            position: absolute;
+            height: 125px;
+            width: 70%;
+            /* margin: auto; */
+            top: 127px;
+            margin-left: 50px;
+        }
+
+        #floatingTextarea3 {
+            height: 50px;
+            position: absolute;
+            left: 143px;
+            top: 63px;
+            font-size: 15px;
+            margin-left: 3.7%;
+            padding-top: 28px;
+        }
+
+        #floatingTextarea4 {
+            height: 50px;
+            position: absolute;
+            right: 143px;
+            top: 63px;
+            font-size: 15px;
+            margin-right: 3.7%;
+            padding-top: 28px;
+        }
+
+        .maintextareadiv {
+            border: 1px solid rgb(169, 169, 169);
+            border-radius: 4px;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+        }
+
+        #label {
+            width: 50%;
+            height: 15%;
+            position: absolute;
+            top: 190px;
+            left: 207px;
+        }
+
+        #label2 {
+            position: absolute;
+            top: 70px;
+            left: 207px;
+            width: 50%;
+            height: 15%;
+        }
+
+        #label3 {
+            position: absolute;
+            top: 70px;
+            right: 501px;
+            width: 7%;
+            height: 15%;
+        }
+
+
+        #textareadiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        #addbtn {
+            position: absolute;
+            left: right;
+            right: 185px;
+            bottom: 12px;
+            font-size: 13px;
+        }
+
+        .deletenote {
+            font-size: 13px;
+            padding: 5px 10px 5px 10px;
+        }
+
+        .text {
+            color: white;
+        }
+
+        #h,
+        #hh,
+        #yournotes {
+            color: white;
+        }
+
+        #text {
+            display: none;
+        }
+
+        .allnotes {
+            margin: 10px;
+        }
+
+        #cardmaindiv {
+            border: none;
+            border: none;
+        }
+
+        .heading {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .textareadiv {
+            border: 1px solid black;
+        }
+
+        .h {
+            margin-left: 62px;
+            margin-top: 16px;
+        }
+
+        #success {
+            display: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="h" href="#">Magic Notes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="hh" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" id="yournotes" aria-current="page" href="notes.html">Notes</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" id="searchtxt" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <h2 class="heading text-center">Welcome to Magic Notes</h2>
+    <div class="alert alert-success alert-dismissible fade show" id="success" role="alert">
+        Note added <strong>succesfully!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- <div class="main"> -->
+    <div class="form-floating d-flex center container-fluid" id="textareadiv">
+        <!-- //main textarea -->
+        <div class="maintextareadiv" style="height: 360px;width: 80%;">
+            <h5 class="h ms-8">Write a note</h5>
+            <textarea class="form-control" id="floatingTextarea3" style="height: 80px;width: 33%;"></textarea>
+            <label for="floatingTextarea3" id="label2">Title</label>
+            <textarea class="form-control" id="floatingTextarea4" style="height: 80px;width: 33%;"></textarea>
+            <label for="floatingTextarea4" id="label3">Name</label>
+            <!-- //main note textarea -->
+            <textarea class="form-control" id="floatingTextarea2" style="height: 125px;width: 70%;"></textarea>
+            <label for="floatingTextarea2" id="label">Content</label>
+            <button type="button" class="btn btn-primary" id="addbtn">Add Note</button>
+        </div>
+        <!-- <textarea class="form-control" id="floatingTextarea1" style="height: 285px;width: 80%;"></textarea> -->
+        <!-- //title textarea -->
+    </div>
+
+
+    <!-- </div> -->
+    <!-- <div> -->
+    <!-- hello -->
+    <div class="hello card my-4 container-fluid d-flex flex-row mb-3 flex-wrap" style="width: 80%;" id="cardmaindiv">
+        <!-- </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script>
+        let success = document.querySelector("#success");
+        let cardmaindiv = document.querySelector("#cardmaindiv");
+        let addtxt = document.querySelector("#floatingTextarea2");//textarea
+        let addtitle = document.querySelector("#floatingTextarea3");//textarea
+        let addname = document.querySelector("#floatingTextarea4");//textarea
+        let h5 = document.querySelector(".h");//textarea
+        let edit = localStorage.getItem("Edit");
+        let addbtn = document.querySelector("#addbtn");
+        if (edit != null) {
+            editobj = JSON.parse(edit);
+            addtxt.value = editobj[0].editdesc;
+            addtitle.value = editobj[0].edittitle;
+            addname.value = editobj[0].editname;
+            index = editobj[0].editindex;
+            addbtn.innerHTML = "Save";
+            h5.innerHTML = "Edit Note";
+            addbtn.addEventListener("click", () => {
+                localStorage.removeItem("Edit");
+                let edited = localStorage.getItem("Edited");
+                if (edited == null) {
+                    editedobj = [];
+                }
+                else {
+                    editedobj = JSON.parse(edited);
+                }
+                let myobj3 = {
+                    editedtitle: addtitle.value,
+                    editedname: addname.value,
+                    editeddesc: addtxt.value,
+                    editedindex: index,
+                }
+                editedobj.push(myobj3);
+                localStorage.setItem("Edited", JSON.stringify(editedobj));
+                addtxt.value = "";
+                addtitle.value = "";
+                addname.value = "";
+                let url = "notes.html";
+                window.open(url, '_self')
+            })
+        }
+        else {
+            addtxt.value = "";
+            addtitle.value = "";
+            addname.value = "";
+            addbtn.innerHTML = "Add a Note";
+            h5.innerHTML = "Write a Note";
+            addbtn.addEventListener("click", function (e) {
+                setTimeout(() => {
+                    success.style.display = "block"
+                }, 300);
+                let d = new Date();
+                let datestring = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " +
+                    d.getHours() + ":" + d.getMinutes();
+                console.log(datestring)
+                let notes = localStorage.getItem("notes")
+                if (notes == null) {
+                    notesobj = [];
+                }
+                else {
+                    notesobj = JSON.parse(notes);
+                }
+                let myobj = {
+                    title: addtitle.value,
+                    text: addtxt.value,
+                    time: datestring,
+                    name: addname.value
+                }
+                notesobj.push(myobj);
+                localStorage.setItem("notes", JSON.stringify(notesobj));
+                addtxt.value = "";
+                addtitle.value = "";
+                addname.value = "";
+                setTimeout(() => {
+                    success.style.display = "none"
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>

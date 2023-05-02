@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: rgb(236, 213, 38);
+            font-family: 'Poppins', sans-serif, 'Roboto';
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+            margin: auto;
+        }
+
+        .rock,
+        .paper,
+        .scissor {
+            width: 20%;
+            height: 30%;
+            margin: 5%;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #paperImage,
+        #scissorImage {
+            margin: 15px;
+            width: 70%;
+            height: 70%;
+        }
+
+        #rockImage {
+            margin: 15px;
+            width: 81%;
+            height: 100%;
+        }
+
+        marquee {
+            color: white;
+            /* width: 75%; */
+        }
+
+        .yourOptionDiv {
+            width: 20%;
+            height: 30%;
+            margin: 5%;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 8px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 17px;
+            top: -25px;
+        }
+
+        .cpuOptionDiv {
+            width: 20%;
+            height: 30%;
+            margin: 5%;
+            background-color: white;
+            border: 1px solid white;
+            border-radius: 8px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 755px;
+            top: -290px
+        }
+
+        #yourOptionImage {
+            margin: 15px;
+            width: 70%;
+            height: 70%;
+        }
+
+        #cpuOptionImage {
+            margin: 15px;
+            width: 70%;
+            height: 70%;
+        }
+
+        #you {
+            position: relative;
+            left: -244px;
+            top: 138px;
+            color: white;
+        }
+
+        #computer {
+            position: relative;
+            left: -246px;
+            top: 135px;
+            color: white;
+        }
+
+        .result {
+            position: relative;
+            left: 521px;
+            top: -476px;
+            color: red;
+            font-size: 25px;
+            display: none;
+        }
+
+        .instruction {
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+
+        .reload {
+            display: none;
+            position: relative;
+            bottom: 482px;
+            left: 513px;
+            height: 8vh;
+            width: 8vw;
+            border: 1px solid white;
+            background-color: #402626;
+            border-radius: 6px;
+            color: white;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>RockPaperScissor</h1>
+    <div class="main">
+        <div class="rock">
+            <img src="rock.jpeg" alt="" id="rockImage" class="images">
+        </div>
+        <div class="paper">
+            <img src="paper.jpeg" alt="" id="paperImage" class="images">
+        </div>
+        <div class="scissor">
+            <img src="scissor.jpeg" alt="" id="scissorImage" class="images">
+        </div>
+    </div>
+    <div class="yourOptionDiv">
+        <img src="" alt="" id="yourOptionImage">
+        <span id="you"></span>
+    </div>
+    <div class="cpuOptionDiv">
+        <img src="" alt="" id="cpuOptionImage">
+        <span id="computer"></span>
+    </div>
+    <span class="result">You Won</span>
+    <div class="instruction">
+        <marquee behavior="" direction="left">Select any one you like!!!</marquee>
+    </div>
+    <button class="reload">Reset</button>
+    <script>
+        let mainDiv = document.querySelector(".main");
+        let rockDiv = document.querySelector(".rock");
+        let paperDiv = document.querySelector(".paper");
+        let scissorDiv = document.querySelector(".scissor");
+        let yourOptionDiv = document.querySelector(".yourOptionDiv");
+        let yourOptionImage = document.querySelector("#yourOptionImage");
+        let cpuOptionDiv = document.querySelector(".cpuOptionDiv");
+        let cpuOptionImage = document.querySelector("#cpuOptionImage");
+        let you = document.querySelector("#you");
+        let computer = document.querySelector("#computer")
+        let result = document.querySelector(".result");
+        let reset = document.querySelector(".reload");
+        let options = ["Rock", "Paper", "Scissor"];
+        let cpuOption = options[Math.floor(Math.random() * 3)];
+        let yourOption = "";
+        console.log(cpuOption)
+        rockDiv.addEventListener("click", function () {
+            yourOption = "Rock";
+            mainDiv.innerHTML = "";
+            cpuOptionDiv.style.display = "flex";
+            yourOptionDiv.style.display = "flex";
+            result.style.display = "block";
+            you.innerHTML = `You: ${yourOption}`
+            computer.innerHTML = `Computer: ${cpuOption}`
+            cpuOptionImage.setAttribute("src", `${cpuOption}.jpeg`);
+            yourOptionImage.setAttribute("src", `${yourOption}.jpeg`);
+            reset.style.display = "block";
+
+            if (yourOption == cpuOption) {
+                result.innerHTML = "It's a TIE!!"
+            }
+            else if (cpuOption == "Scissor") {
+                result.innerHTML = "You WON"
+            }
+            else if (cpuOption == "Paper") {
+                result.innerHTML = "You lose"
+            }
+        })
+
+        paperDiv.addEventListener("click", function () {
+            yourOption = "Paper";
+            mainDiv.innerHTML = "";
+            cpuOptionDiv.style.display = "flex";
+            yourOptionDiv.style.display = "flex";
+            result.style.display = "block";
+            you.innerHTML = `You: ${yourOption}`
+            computer.innerHTML = `Computer: ${cpuOption}`
+            cpuOptionImage.setAttribute("src", `${cpuOption}.jpeg`);
+            yourOptionImage.setAttribute("src", `${yourOption}.jpeg`);
+            reset.style.display = "block";
+
+            if (yourOption == cpuOption) {
+                result.innerHTML = "It's a TIE!!"
+            }
+            else if (cpuOption == "Scissor") {
+                result.innerHTML = "You Lose"
+            }
+            else if (cpuOption == "Rock") {
+                result.innerHTML = "You Won"
+            }
+        })
+
+        scissorDiv.addEventListener("click", function () {
+            yourOption = "Rock";
+            mainDiv.innerHTML = "";
+            cpuOptionDiv.style.display = "flex";
+            yourOptionDiv.style.display = "flex";
+            result.style.display = "block";
+            you.innerHTML = `You: ${yourOption}`
+            computer.innerHTML = `Computer: ${cpuOption}`
+            cpuOptionImage.setAttribute("src", `${cpuOption}.jpeg`);
+            yourOptionImage.setAttribute("src", `${yourOption}.jpeg`);
+            reset.style.display = "block";
+
+            if (yourOption == cpuOption) {
+                result.innerHTML = "It's a TIE!!"
+            }
+            else if (cpuOption == "Rock") {
+                result.innerHTML = "You Lose"
+            }
+            else if (cpuOption == "Paper") {
+                result.innerHTML = "You Won"
+            }
+        })
+        reset.addEventListener("click", function () {
+            location.reload();
+        })
+    </script>
+</body>
+
+</html>

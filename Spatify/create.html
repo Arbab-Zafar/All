@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatify - World's Biggest Music Album</title>
+    <link rel="icon" type="image/x-icon" href="Spatify(Icon).png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=Lobster&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            background-color: black;
+        }
+
+        .navbar img {
+            margin: 10px;
+        }
+
+        #search {
+            height: 32px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid black;
+            padding: 0px 15px 0px 15px;
+            margin-right: 20px;
+        }
+
+        .aDiv {
+            width: 106px;
+            height: 34px;
+            border: 1px solid black;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="Images/SpatifyLogo (2).png" alt="" width="200" id="logoImage">
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="freeSongs.html">Free Songs</a>
+        </div>
+        <div class="aDiv" style="background-color: #3c3636;">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="create.html">Create</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="price.html">Price</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="contact.html">Contact</a>
+        </div>
+        <input type="search" id="search" placeholder="Search by name..">
+    </div>
+    <script>
+        document.querySelector("#logoImage").addEventListener("click", function () {
+            let url = "index.html"
+            window.open(url,"_self")
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatify - World's Biggest Music Album</title>
+    <link rel="icon" type="image/x-icon" href="Spatify(Icon).png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=Lobster&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background-color: rgb(62, 62, 62);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            background-color: black;
+            height: 18vh;
+        }
+
+        .navbar img {
+            margin: 10px;
+        }
+
+        .navbar span {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .background {
+            background-image: url("Images/backgroundImage\(2\).jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 70vw;
+            height: 30vw;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+
+        }
+
+        .abc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 77vh;
+        }
+
+        .background h2 {
+            position: relative;
+            left: 331px;
+            top: 74px;
+            display: inline-block;
+            transition: color 0.8s;
+        }
+
+        .background p {
+            position: relative;
+            left: 24px;
+            top: 176px;
+            display: inline-block;
+        }
+
+        .background span {
+            position: relative;
+            left: -257px;
+            top: 270px;
+            text-decoration: underline;
+        }
+
+        #search {
+            height: 32px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid black;
+            padding: 0px 15px 0px 15px;
+            margin-right: 20px;
+            color: white;
+        }
+
+        .aDiv {
+            width: 106px;
+            height: 34px;
+            border: 1px solid black;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .aDiv:hover {
+            background-color: #3c3636;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="Images/SpatifyLogo (2).png" alt="" width="200">
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="freeSongs.html">Free
+                Songs</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="create.html">Create</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="price.html">Price</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="contact.html">Contact</a>
+        </div>
+        <input type="search" id="search" placeholder="Search by name..">
+    </div>
+    <div class="abc">
+        <div class="background">
+            <h2 id="head">Welcome to Spatify</h2>
+            <p>World's largest free album of over 1 million songs!</p>
+            <span>Try out some songs-</span>
+
+        </div>
+    </div>
+    <script>
+        let head = document.querySelector("#head");
+        let i = 0;
+        setInterval(() => {
+            console.log("Welcome to Spatify!!!");
+            let Colors = ["white", "black", "green", "blue", "yellow", "purple", "pink", "violet", "orange", "cyan", "magenta", "whitesmoke"]
+            head.style.color = Colors[i];
+            if (i == Colors.length) {
+                i = 0;
+            }
+            else {
+                i++
+            }
+        }, 1800);
+    </script>
+</body>
+
+</html>

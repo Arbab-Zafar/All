@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    // Search functionality
+    function search_articles() {
+        let input = document.getElementById('search').value
+        input = input.toLowerCase();
+        let x = document.getElementsByClassName('articles');
+
+        for (i = 0; i < x.length; i++) {
+            if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                x[i].style.display = "none";
+            }
+            else {
+                x[i].style.display = "list-item";
+            }
+        }
+    }
+    // Adding darkmode
+    function darkmode() {
+        let para = document.getElementsByClassName('para');
+        let dark = document.getElementsByClassName('dark');
+        let body = document.getElementById('body');
+        let mode = document.getElementsByClassName('dark-mode')
+        body.classList.toggle("dark-mode");
+    }
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Best Website for Short Notes, Essays, Writing, Word Meanings etc"Hotsos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif, 'Roboto';
+        }
+
+        h1 {
+            color: rgb(226, 77, 77);
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: rgb(131, 131, 224);
+            margin-left: 10px;
+            margin-bottom: 20px;
+            text-decoration: underline;
+        }
+
+        p {
+            margin-left: 8px;
+            margin-bottom: 10px;
+            line-height: 22px;
+            font-size: 17px;
+            max-width: calc(100vw - 30vw);
+            display: inline-block;
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        nav {
+            background-color: rgb(86, 208, 159);
+            color: white;
+            border-bottom: 5px solid rgb(214, 214, 214);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            padding-right: 17px;
+            margin-top: 10px;
+            font-weight: 650;
+            font-size: 15px;
+        }
+
+        #hot {
+            font-size: 30px;
+            font-weight: 800;
+            position: relative;
+            bottom: 7px;
+            margin-left: 10px;
+        }
+
+        #search {
+            display: flex;
+            width: 303px;
+            height: 6vh;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            border: 2px solid white;
+            position: relative;
+            padding-right: 10px;
+            padding-left: 20px;
+        }
+
+        .list {
+            position: relative;
+            top: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #logo {
+            height: 30px;
+            width: 30px;
+            margin-top: 12px;
+            margin-left: 10px;
+        }
+        #home {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        h2 {
+            color: rgb(131, 131, 224);
+            text-decoration: none;
+        }
+
+        #sear {
+            height: 6vh;
+            width: 30px;
+            display: flex;
+            margin-top: 0px;
+            background-color: white;
+            color: rgb(86, 208, 159);
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        #s {
+            padding-right: 0px;
+        }
+
+        #set {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            color: rgb(165, 163, 163);
+        }
+
+        #ho {
+            text-decoration: underline;
+        }
+
+        #sign {
+            height: 20px;
+            width: 20px;
+            margin-top: 14px;
+            margin-right: 5px;
+        }
+
+        #more {
+            height: 20px;
+            width: 15px;
+            background-color: rgb(86, 208, 159);
+            text-decoration: none;
+            color: white;
+            border: 0px;
+            position: relative;
+            top: 4px;
+            left: -2px;
+            border-radius: 10px;
+        }
+
+        .opt {
+            background-color: rgb(179, 239, 204);
+            color: black;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(45, 43, 43);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .image {
+            border: 2px solid black;
+            border-radius: 10px;
+            height: 70vh;
+            width: 25vw;
+            float: right;
+            position: relative;
+            display: flex;
+        }
+
+        span {
+            color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 10vw;
+        }
+
+        .dark {
+            margin: 10px;
+            display: inline-block;
+        }
+
+        #darkmode {
+            color: black;
+            border: 1px solid grey;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #head1 {
+            position: relative;
+            top: -32px;
+        }
+
+        #head2 {
+            position: relative;
+            bottom: 23px;
+        }
+
+        #para1.para {
+            position: relative;
+            bottom: 20px;
+        }
+
+        .dark-mode {
+            background-color: #373232;
+            color: white;
+        }
+
+        img {
+            width: 25vw;
+            height: 70vh;
+        }
+
+        h1 {
+            color: #e34949;
+        }
+
+        @media only screen and (max-width: 400px) {
+            nav {
+                width: 100vw;
+                padding: 0px;
+            }
+
+            nav ul .list {
+                display: none;
+            }
+
+            nav ul li {
+                font-size: 12px;
+                padding: 2.8px;
+            }
+
+            nav ul #hot {
+                font-size: small;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 0px;
+
+            }
+
+            p {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            h1 {
+                padding: 0px;
+                margin: auto;
+                font-size: 26px;
+            }
+
+            #search {
+                width: 100px;
+                height: 28px;
+            }
+
+            #sear {
+                width: 20px;
+                height: 28px;
+                display: inline-block;
+            }
+
+            #home {
+                width: 17px;
+            }
+
+            #logo {
+                width: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .select {
+                width: 70px;
+            }
+
+            .input {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        #im {
+            width: 20px;
+            height: 10px;
+        }
+
+        .sel {
+            display: none;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <header>
+        <nav>
+            <ul>
+                <!-- <ion-icon name="logo-octocat" id="logo" class="ion"></ion-icon> -->
+                <!-- <li id="hot">Hotsos</li> -->
+                <img src="Hotsos Logo.png" alt="" style="width: 120px;height: 50px;">
+                <ion-icon name="home" id="home" class="ion"></ion-icon>
+                <div class="input">
+                    <div id="di">
+                        <P>Home</P>
+                        <img src="/Uniciv/Unicivlogo.png" alt="" id="im">
+                        <div class="sel">
+                            <a href="Essay.html">Essay</a>
+                            <a href="Short Notes.html">Short Notes</a>
+                            <a href="Writing.html">Writing</a>
+                            <a href="Word Meaning.html">Word Meaning</a>
+                        </div>
+
+                    </div>
+                </div>
+                <a href="index.html" id="ho">
+                    <li class="list">Home</li>
+                </a>
+                <a href="Essay.html">
+                    <li class="list">Essay</li>
+                </a>
+                <a href="short notes.html">
+                    <li class="list">Short Notes</li>
+                </a>
+                <a href="Writing.html">
+                    <li class="list">Writing</li>
+                </a>
+                <a href="Word Meaning.html">
+                    <li class="list">Word Meaning</li>
+                </a>
+                <li id="s"><input type="search" name="" id="search" placeholder="Search....."
+                        onkeyup="search_articles()"></li>
+                <li>
+                    <ion-icon name="search-outline" id="sear"></ion-icon>
+                </li>
+                <ion-icon name="settings-outline" id="set" class="ion"></ion-icon>
+                <li class="list">Settings</li>
+                <ion-icon name="log-in-outline" id="sign" class="ion"></ion-icon>
+                <li class="list">Sign-In</li>
+                <li id="sel"><label for="more" class="list">More</label>
+                    <select name="more" id="more">
+                        <option value="Sign-Out" class="opt">
+                            <p>Sign-Out</p>
+                        </option>
+                        <option value="Help" class="opt">Help</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="dark">
+            <button id="darkmode" onclick="darkmode()">Dark mode</button>
+        </div>
+        <h1>Latest Articles</h1>
+        <div>
+            <ul id="articles">
+                <li class="articles">
+                    <h2>Monkey Pox</h2>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, sequi similique autem,
+                        voluptatem quod repudiandae explicabo aperiam id officia quas nisi. Eius, aliquid quidem
+                        voluptas laborum, ab dolor maxime suscipit accusantium laudantium voluptatum aliquam harum
+                        incidunt. Facilis adipisci, quos delectus quasi aliquid quas repudiandae, nobis optio soluta
+                        repellat natus animi deleniti quis veniam vero, ex dolorum fuga corrupti praesentium sapiente
+                        odit architecto autem. Fugit iure modi, qui consequuntur optio earum ad corrupti delectus, sed
+                        repellendus reiciendis ullam! Quidem odio enim sed doloremque similique totam numquam, fugit
+                        soluta ipsum minima molestiae adipisci vero eveniet labore earum perferendis nostrum! Unde
+                        excepturi architecto harum vel rem, asperiores quasi, repellendus quas molestiae fugit quam
+                        omnis aperiam officiis? Facere repudiandae aut eveniet at enim
+                    </p>
+                    <div class="image">
+                        <img src="https://scx2.b-cdn.net/gfx/news/2022/us-monkeypox-cases-now.jpg" alt="">
+
+                    </div>
+                </li>
+                <li class="articles">
+                    <h2>Ukrain And Ukrain War</h2>
+
+                    <p class="para">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos atque voluptas vitae
+                        culpa
+                        laudantium,
+                        perferendis incidunt esse eveniet doloremque aliquid eius tempora nobis aut magnam accusantium
+                        repellendus
+                        ea, aspernatur inventore! Modi quisquam itaque esse nemo incidunt harum minus illum, repudiandae
+                        vel
+                        nobis
+                        nihil veritatis soluta blanditiis, commodi autem aliquam laudantium, iste eius suscipit
+                        consectetur
+                        facilis
+                        assumenda. A sit minima, doloremque veritatis dolores possimus distinctio! Perspiciatis dicta
+                        quasi
+                        optio
+                        blanditiis neque in modi ea consequuntur quo! Quibusdam quod deserunt aliquam consequuntur
+                        fugiat earum
+                        nihil blanditiis voluptatem omnis eveniet dolor amet molestiae qui unde alias laborum assumenda,
+                        obcaecati
+                        neque labore. Dolor, reprehenderit. Officiis quasi, excepturi inventore ad possimus, quia
+                        incidunt,
+                        recusandae velit ratione asperiores quae eveniet. Nam quasi architecto ab pariatur laudantium
+                        hic iure,
+                        quo
+                        doloribus nobis facilis maiores enim explicabo similique quibusdam facere tempore ipsum quaerat
+                        dolor
+                        earum
+                        aliquid numquam impedit consequatur. Itaque explicabo alias dignissimos, quasi modi
+                        reprehenderit
+                        voluptatum
+                        dicta ratione rerum aspernatur expedita quia, vero quos consequatur perspiciatis officia vitae,
+                        corporis
+                        odit voluptas ex molestiae? Cum iure consequatur dignissimos odit provident consequuntur minima
+                        laboriosam
+                        temporibus accusantium placeat ut accusamus animi maiores laborum, repudiandae molestias
+                        repellat
+                        necessitatibus veniam voluptate? Optio, sint ex? Quia ratione in ut possimus atque, explicabo
+                        quaerat
+                        doloremque neque necessitatibus nemo nihil ullam perferendis odit quidem quibusdam eaque
+                        asperiores
+                        voluptates officiis accusamus! Eos impedit iste repudiandae ad iure quae numquam repellat, ea
+                        eligendi
+                        totam
+                        nulla cupiditate. Nobis omnis, commodi labore rem sint adipisci facilis doloremque animi
+                        repellendus
+                        voluptate iste dolor nemo, ipsam, dolorem similique alias nihil explicabo quidem. Minus, itaque?
+                        Perferendis
+                        reiciendis, iure quos nostrum ipsam distinctio praesentium impedit eius quis neque dolorem
+                        aliquid est,
+                        saepe, nam deserunt hic quibusdam dolorum a minima enim dicta! Repudiandae, quidem minima sunt
+                        praesentium
+                        soluta eum adipisci sint libero. Quaerat nulla porro praesentium ratione architecto eligendi
+                        neque ex
+                        aliquam iure optio? Ea, eius doloribus, maiores perferendis aut nam culpa saepe aliquid
+                        voluptatum a vel
+                        officiis minima iure quisquam, amet totam officia asperiores deleniti soluta adipisci.</p>
+                    <div class="image">
+                    </div>
+
+                </li>
+                <li class="articles">
+                    <h2>Sri Lanka Economic Crises</h2>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis, sequi similique autem,
+                        voluptatem quod repudiandae explicabo aperiam id officia quas nisi. Eius, aliquid quidem
+                        voluptas laborum, ab dolor maxime suscipit accusantium laudantium voluptatum aliquam harum
+                        incidunt. Facilis adipisci, quos delectus quasi aliquid quas repudiandae, nobis optio soluta
+                        repellat natus animi deleniti quis veniam vero, ex dolorum fuga corrupti praesentium sapiente
+                        odit architecto autem. Fugit iure modi, qui consequuntur optio earum ad corrupti delectus, sed
+                        repellendus reiciendis ullam! Quidem odio enim sed doloremque similique totam numquam, fugit
+                        soluta ipsum minima molestiae adipisci vero eveniet labore earum perferendis nostrum! Unde
+                        excepturi architecto harum vel rem, asperiores quasi, repellendus quas molestiae fugit quam
+                        omnis aperiam officiis? Facere repudiandae aut eveniet at enim odit, fugiat rem unde nobis
+                        pariatur aliquam a esse ipsa nesciunt temporibus voluptatem voluptatibus nam accusamus numquam!
+                        Incidunt sed amet consequuntur illo similique, impedit blanditiis tenetur harum. Asperiores
+                        earum assumenda explicabo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga quas doloremque repellendus, sint
+                        deserunt suscipit incidunt fugiat obcaecati aperiam nesciunt molestias voluptatem voluptate qui
+                        mollitia accusantium ipsum similique. Eligendi ratione quae quibusdam voluptas ut, quis fuga
+                        repellendus, dolor accusantium nulla dicta in aspernatur minima. Nobis maiores perspiciatis
+                        ipsum vero vitae labore ratione quo magni earum aspernatur, eius voluptatem dignissimos
+                        assumenda et rem officia consequuntur vel incidunt! Et accusantium ex, molestiae blanditiis
+                        pariatur ut corrupti iusto animi. Obcaecati molestias exercitationem debitis veritatis
+                        perspiciatis quas sequi quibusdam. Error, necessitatibus reprehenderit totam at, odit nemo ad
+                        atque illum accusantium eos rem alias neque.
+
+                    </p>
+                    <div class="image">
+                    </div>
+
+
+        </div>
+        </li>
+        </ul>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <p>Copyright &copy; HOTSOS.com</p>
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

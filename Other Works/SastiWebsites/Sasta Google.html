@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasta Google</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif, 'Roboto';
+        }
+
+        img {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20vw;
+            position: absolute;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHQArgMBIgACEQEDEQH/xAAaAAACAwEBAAAAAAAAAAAAAAACAwABBAUG/8QAJBAAAgICAgIDAQEBAQAAAAAAAAECEQMhEjEEQRMiUWFxQjL/xAAaAQADAQEBAQAAAAAAAAAAAAAAAQMCBAUH/8QAHxEBAQADAQEAAgMAAAAAAAAAAAECAxEhEjFBEyIy/9oADAMBAAIRAxEAPwAIy2Ni32jOuzTj6OZ9JyNx5HdMLI/sLjHdhv7S/wABCydMwupHS8ebejnQW0dHwo3JWNz7ucdHEtGmMBUIGiA3lZ0LgKyY7NijbKnFJX+D4nM+VwvLxtSbrRn+PkdHy1zlYmGL+GXfhs/r6zKAccFvoesW9I1eNhtO0Ay28nSvG8f7LRs+Lgm2PwY6fRPKjNpq6T/BuLLbcsmWMouW0Mk4vUa/w52WU8UmrYlZ5+5MS/8ADb7HQePkm1uioePFLk9/wXjz3jSSCU+Qy5lF5IXpC1BoYmy7EJa8Rj7NMLFxxtPo04loT3s8lRlXoJKyuH2/g+GPVgllYPFGzoeLFoy4Y1JHTwxpIbi3Z+NWKX6aYxM2JbNsI6G8zZeLiipQtMbFF0aR+vXLyYnypoJ4vr0bsuJSp1sB42nXozxWbexkhhWr9mvx3GCaAkuLpgXTAW/Ubr0Bkpx2RP6or1s0jI5nkQVtumYskFekducIv0jPPFD8M8dmvbxixJOLSReNcWP+NR6BaQm/rqdkaLINl5ueNJdAxjVse6ei4w2Zer9eFxiPxQsuOI0YoUNPPNeONejdhV0Z1Edjm4g5Nl634oGpUkZMOSzQnaNODOXvpkdsMRbixkZWNKwZTrslgSYCQrKuUiPFSQS7JKxN9qr2Swbolp9AfEkxUmMehb7BuAkLaGgyQlJSgWw3oXIFI8+m7HQFwQ2MdmXp5U/G7HwEYx8UNzZGphLYMUMigRp2J0zVjmzHFGiDG584bKT/AEuM97YJXFjS5GmEk9BNCMTpj4u7QJ5TlAo7YXFUXqySGXWfILTph5FtihVafg9StAyBUqI3YDnAPQLlYbES7E3IqQDQUmA5ArHGxxGgR6Gx2J35UUEOhdFQih0YoEMqkHdD4xFca2h2N+mCORkV/BkUSCDG57RwjYzhorGMtIaNoOHGmRyaekNQEooZSh5BqaFMFtiPnTJ0/aM8lsJyAlISmM4Fsr5EKyZK6A5WCswPcxcmgHIpyBqYpNimy5SAsSuMcmM/0bDOkZ221roG6E9C4SunjzXRrxyTRxseRo2Yc9Lsbn2anQsr2Ihl5dsZyvoHPcbG3HNKO2hMvJd6M7k1tFQyJy2DM1/t0PE8lyfGRrjK5bMXixV8kauX4ajm2Sd8aEySaoSplObBL5Ry2U5a6Actk5Kgb4qQrJpFyyRWrE5JprsSuMIyTVugIZNiM86lpi4y2J2TX43Odg8hKei+aQF8mgNguZVgcnHOjC1QXwphdBRYnVbSfj4sdjQzimiKFDZufYKEkuwllEztIFStAx89aPkBhJ8hNjcUZTkkgFnI6nhSbdG0z+Lj+OG+2PscebsvcvBAspsqT0DHFN6ETySVjfQnKrVLsFceM8p27sp/ZDVhXstx4oS31GLJiFcaZ0Pj5AT8etoFJs/VZkHwtDVBfgUl+ALl6xuDsNOkM47BcQa71kSsH/ohBLw6Acf/AEQg06HIlQqCTbKIDWP4Uls6HgxXJEIDO7/LpL0EQg3nVCn0WQCLb0Kb2QgKYrRJbaIQDSkVIhAAGBIhBKQD7KZCA2//2Q==');
+            background-size: cover;
+        }
+
+        .searchbar {
+            position: relative;
+            top: 100px;
+            left: 50px;
+        }
+
+        .query {
+            padding: 5px;
+            height: 45px;
+            width: 600px;
+            border-radius: 100px;
+            border: 1px solid rgb(61, 58, 58);
+            padding-left: 40px;
+            padding-right: 60px;
+            font-size: large;
+        }
+
+        #im {
+            width: 24px;
+            position: relative;
+            top: 35px;
+            left: 10px;
+        }
+
+        #imag {
+            position: relative;
+            width: 31px;
+            position: relative;
+            top: -37px;
+            right: -552px;
+        }
+
+        .Searchbtn {
+            position: relative;
+            display: flex;
+            top: 171px;
+            right: 288px;
+            padding: 10px;
+            border-radius: 6px;
+            color: black;
+            border: 1px solid rgb(61, 58, 58);
+        }
+        .Searchbtn:hover{
+            padding: 12px;
+            cursor: pointer;
+            border: 2px solid rgb(52, 50, 50);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="image">
+            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="">
+        </div>
+        <div class="searchbar">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/2048px-Search_Icon.svg.png"
+                alt="" id="im">
+            <input type="search" value="" class="query">
+            <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-25-512.png" alt=""
+                id="imag">
+        </div>
+        <button class="Searchbtn">Search Google
+        </button>
+    </div>
+    <script>
+        let query = document.querySelector('.query')
+        let Searchbtn = document.querySelector('.Searchbtn')
+        Searchbtn.onclick = function () {
+            let url = 'https://www.google.com/search?q=' + query.value;
+            window.open(url)
+        }
+    </script>
+</body>
+
+</html>

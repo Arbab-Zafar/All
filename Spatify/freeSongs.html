@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatify - World's Biggest Music Album</title>
+    <link rel="icon" type="image/x-icon" href="Spatify(Icon).png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=Lobster&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            /* background-color: rgb(62, 62, 62); */
+            background-image: url("Images/bgImage.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            background-color: black;
+        }
+
+        .navbar img {
+            margin: 10px;
+            width: 15vw;
+        }
+
+        .background {
+            background-image: url("Images/backgroundImage.jpg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            overflow: hidden;
+            overflow-y: scroll;
+            width: 75vw;
+            height: 42.8vw;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
+        #progressBar {
+            width: 70vw;
+        }
+
+        .bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            flex-direction: column;
+            width: 98.72vw;
+            height: 15vh;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .icon {
+            margin: 0px 10px 0px 10px;
+        }
+
+
+        .songItem {
+            margin: 1vh 1vw 1vh 1.5vw;
+            background-color: #e2dafe;
+            color: black;
+            display: flex;
+            width: 30vw;
+            height: 3vh;
+            border: 1px solid white;
+            border-radius: 15px;
+            padding: 10px 30px 10px 30px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+
+        .coverImage {
+            border: 1px solid white;
+            border-radius: 10px;
+        }
+
+        .songList {
+            overflow: hidden;
+        }
+
+
+        #search {
+            height: 6vh;
+            width: 22vw;
+            border-radius: 5px;
+            border: 1px solid black;
+            padding: 0px 15px 0px 15px;
+            margin-right: 20px;
+        }
+
+
+        .space {
+            width: 98vw;
+            height: 20vh;
+        }
+
+        .aDiv {
+            width: 10vw;
+            height: 6vh;
+            border: 1px solid black;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .operations {
+            display: flex;
+            align-items: center;
+            width: 98vw;
+        }
+
+        #gif {
+            display: none;
+        }
+
+        .bg {
+            background: linear-gradient(lime, pink, cyan, orange);
+            width: 350px;
+            height: 350px;
+            border: 1px solid grey;
+            border-radius: 10px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+            transition: display 1s;
+        }
+
+        .bg h3,
+        span {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="Images/SpatifyLogo (2).png" alt="" id="logoImage">
+        <div class="aDiv" style="background-color: #3c3636;">
+            <a style="font-size: 1.17rem;text-decoration: none;color: white;" href="freeSongs.html">Free Songs</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 1.17rem;text-decoration: none;color: white;" href="create.html">Create</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 1.17rem;text-decoration: none;color: white;" href="price.html">Price</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 1.17rem;text-decoration: none;color: white;" href="contact.html">Contact</a>
+        </div>
+        <input type="search" id="search" placeholder="Search by name..">
+    </div>
+    <div class="freeTime">
+        <span style="font-size: 1rem;color: black;">Free Time</span>
+        <span id="freeTimeLeft" style="font-size: 1rem;"></span>
+    </div>
+    <div class="background">
+        <h2 style="margin:15px 10px 20px 30px;">Free Songs</h2>
+        <div class="songList">
+        </div>
+    </div>
+    <div class="bg">
+        <h3 style="text-decoration: underline;">Your Free Time is Over</h3>
+        <i class="fa-regular fa-circle-xmark close" style="position: absolute;right: 472px;top: 142px;"></i>
+        <span>Get premium for more songs!!</span><br><br>
+        <span>OR</span><br><br>
+        <span>Come back after 24 hours!!</span><br><br>
+    </div>
+    <div class="space"></div>
+    <div class="bottom">
+        <input type="range" name="range" min="0" max="100" id="progressBar" value="0"><br>
+        <div class="operations">
+            <div style="float: left;margin-right: 43px;margin-left: 25px;display: flex;align-items: center;" id="divv">
+                <span id="autoPlaySpan" style="margin-right: 10px;">Auto Play:</span>
+                <i class="fa-solid fa-toggle-off fa-2xl" id="autoPlay"></i>
+            </div>
+            <div style="margin-right: 224px;display: flex;align-items: center;">
+                <img src=" Images/musicPlaying.gif" alt="" width="50" id="gif">
+                <span id="musicPlayingName">Sanam Re</span>
+            </div>
+            <div style="margin-right: 337px;display: flex;align-items: center;">
+                <i class=" fa-solid fa-backward fa-2xl icon" id="backward"></i>
+                <i class="fa-solid fa-play fa-2xl icon" id="masterPlay"></i>
+                <i class="fa-solid fa-forward fa-2xl icon" id="forward"></i>
+            </div>
+            <div style="float: right;display: flex;align-items: center;">
+                <span id="songCurrentTime"></span>
+                <span id="songLength"></span>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/84df3e5878.js" crossorigin="anonymous"></script>
+    <script>
+        document.querySelector("#logoImage").addEventListener("click", function () {
+            let url = "index.html"
+            window.open(url, "_self")
+        })
+        window.audioElement = new Audio("Songs/Sanam Re.mp3");
+        let masterPlay = document.querySelector("#masterPlay");
+        let progressBar = document.querySelector("#progressBar");
+        let gif = document.querySelector("#gif");
+        let musicPlayingName = document.querySelector("#musicPlayingName");
+        let songLength = document.querySelector("#songLength");
+        let songCurrentTime = document.querySelector("#songCurrentTime");
+        let autoPlay = document.querySelector("#autoPlay");
+        let search = document.querySelector("#search");
+        let divv = document.querySelector("#divv")
+        let freeTimeLeft = document.querySelector("#freeTimeLeft");
+        let playIcon = document.querySelectorAll(".playIcon");
+        
+        function timer() {
+            let freeTime = 3599;//seconds 1 hr, 60X60s
+            let dfg = setInterval(() => {
+                let minutes = Math.floor(freeTime / 60);
+                let seconds = freeTime % 60;
+                freeTimeLeft.innerHTML = minutes + ":" + seconds;
+                if (freeTime == 0) {
+                    console.log("Your free is now Over!!");
+                    clearInterval(dfg)
+                    document.querySelector(".freeTime").style.display = "none";
+                    document.querySelector(".bottom").style.display = "none";
+                    document.querySelector(".background").style.display = "none";
+                    document.querySelector(".bg").style.display = "flex";
+
+                }
+                freeTime--;
+            }, 1000);
+        }
+        timer();
+        let close = document.querySelector(".close");
+        close.addEventListener("click", () => {
+            document.querySelector(".bg").style.display = "none";
+        })
+
+        window.songIndex = 0;//making it global and to know which song is being played and it helped a lot
+        let songs = [
+            { songName: "Aaj se teri", filePath: "Songs/Aaj Se Teri.mp3", coverPath: "Images/music.png", duration: "5:09" },
+            { songName: "Aaj unse milna hai", filePath: "Songs/Aaj_Unse_Milna_Hai.mp3", coverPath: "Images/music.png", duration: "5:10" },
+            { songName: "Afghan Jalbi", filePath: "Songs/Afghan_Jalebi.mp3", coverPath: "Images/music.png", duration: "5:11" },
+            { songName: "Bulleya", filePath: "Songs/Bulleya.mp3", coverPath: "Images/music.png", duration: "5:12" },
+            { songName: "Chale aana", filePath: "Songs/Chale_aana.mp3", coverPath: "Images/music.png", duration: "5:13" },
+            { songName: "Coca Cola Tu", filePath: "Songs/Coca Cola Tu.mp3", coverPath: "Images/music.png", duration: "5:14" },
+            { songName: "Dance pe Chance", filePath: "Songs/Dance_Pe_Chance.mp3", coverPath: "Images/music.png", duration: "5:15" },
+            { songName: "Dheeme Dheeme", filePath: "Songs/Dheeme_Dheeme.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Dil Maang Raha Hai", filePath: "Songs/Dil Maang Raha.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Dil galti kar baitha hai", filePath: "Songs/Dil_ghalti_kr_baitha hai.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Dil To Pagal Hai", filePath: "Songs/Dil_To_Pagal_Hai.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Ik Mulaqat me", filePath: "Songs/Ik_Mulaqaat_Mein_Baat_Hi_Baat_Mein.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Kala Chashma", filePath: "Songs/Kala_Chashma.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Kaun tujhe pyaar karega", filePath: "Songs/KAUN_TUJHE PYAAR KAREGA.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Khairiyat Pucho", filePath: "Songs/Khairiyat Pucho.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Lift Karadey", filePath: "Songs/Lift_Karadey.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Mere Mahboob Qayamat Hogi", filePath: "Songs/Mere_Mehboob_Qayamat_Hogi.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Mere Rashke Kamar", filePath: "Songs/Mere_Rashke_Qamar.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Mohabbat barsa dena", filePath: "Songs/MOHABBAT_BARSA.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Naino ki jo baat naina jaane hai", filePath: "Songs/Naino_Ki_Jo_Baat_Naina_Jaane_hai.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Pachtaoge", filePath: "Songs/Pachtaoge.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Sanam Re", filePath: "Songs/Sanam Re.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Seene Se tere sar ko laga ke", filePath: "Songs/Seene_Se_Tere_Sar_Ko_Laga_Ke.mp3", coverPath: "Images/music.png", duration: "5:16" },
+            { songName: "Thodi Jagah", filePath: "Songs/Thodi_Jagah.mp3", coverPath: "Images/music.png", duration: "5:16" },
+        ]
+
+        let html = `<div class="songItem">
+                <img class="coverImage" width="30px">
+                <span class="songName"></span>
+                <span class="timestamp"></span>
+                <i class="fa-solid fa-play playIcon fa-lg"></i>
+            </div>`
+        for (let i = 0; i < songs.length; i++) {
+            document.querySelector(".songList").innerHTML += html;
+        }
+        let songItem = document.querySelectorAll(".songItem");
+        
+        Array.from(songItem).forEach(function (element, index) {//for each song item
+            element.getElementsByTagName("span")[0].innerHTML = songs[index].songName//song item ke span ko le lo i.e name of the song aur usko = kar do songs ke array[index] ke name ke with the help of index
+            element.getElementsByTagName("img")[0].src = songs[index].coverPath//cover image
+        });
+        
+        
+        Array.from(document.querySelectorAll(".playIcon")).forEach(function (element, index) {//har song item ke play icon
+            element.addEventListener("click", function () {
+                if (window.audioElement.paused || window.audioElement.currentTime <= 0) {//agar gaana ruka hua h ya phir start hi nahi hua
+                    makePlayAll()//baaki saare play icon ko vaise hi rakho(sbko play bana deta hai ki agar two baar alag icon pe click ho to dono pause icon me naa badal jaaye because it is for each loop)
+                    window.songIndex = index;
+                    element.classList.remove("fa-play");
+                    element.classList.add("fa-pause");//pause me badal do i.e ||
+                    window.audioElement = new Audio(`${songs[window.songIndex].filePath}`);
+                    window.audioElement.currentTime = 0;
+                    window.audioElement.play()
+                    gif.style.display = "block";
+                    divv.style.marginRight = "93px"
+
+                    musicPlayingName.innerHTML = `${songs[window.songIndex].songName}`
+                    masterPlay.classList.remove("fa-play");
+                    masterPlay.classList.add("fa-pause");
+                }
+                else {
+                    makePlayAll()
+                    element.classList.remove("fa-pause");
+                    element.classList.add("fa-play");
+                    window.audioElement.pause()
+                    gif.style.display = "none";
+                    musicPlayingName.innerHTML = `${songs[index].songName}`
+                    masterPlay.classList.remove("fa-pause");
+                    masterPlay.classList.add("fa-play");
+                    divv.style.marginRight = "43px"
+                }
+            })
+        })
+
+        //Adding event listener to backward button
+
+        document.querySelector("#backward").addEventListener("click", function () {
+            if (window.songIndex > 0) {//agar index 0 se zyada
+                makePlayAll()
+                window.songIndex -= 1;
+                window.audioElement.pause()//agar pehle koi gaana baj raha hai to pause kar do
+                window.audioElement = new Audio(`${songs[window.songIndex].filePath}`);
+                songItem[window.songIndex].getElementsByTagName("i")[0].classList.remove("fa-play");
+                songItem[window.songIndex].getElementsByTagName("i")[0].classList.add("fa-pause");//song item div se play icon ko pause me badal do
+                window.audioElement.currentTime = 0;
+                window.audioElement.play()
+                masterPlay.classList.remove("fa-play");
+                masterPlay.classList.add("fa-pause");
+                gif.style.display = "block";
+                divv.style.marginRight = "43px"
+                musicPlayingName.innerHTML = `${songs[window.songIndex].songName}`
+            }
+        })
+        //Adding event listener to forward button
+
+        document.querySelector("#forward").addEventListener("click", function () {
+            if (window.songIndex < songItem.length - 1) {
+                makePlayAll()
+                window.songIndex += 1;
+                window.audioElement.pause()
+                window.audioElement = new Audio(`${songs[window.songIndex].filePath}`);
+                songItem[window.songIndex].getElementsByTagName("i")[0].classList.remove("fa-play");
+                songItem[window.songIndex].getElementsByTagName("i")[0].classList.add("fa-pause");//same as above
+                window.audioElement.currentTime = 0;
+                window.audioElement.play()
+                masterPlay.classList.remove("fa-play");
+                masterPlay.classList.add("fa-pause");
+                gif.style.display = "block";
+                divv.style.marginRight = "43px"
+                musicPlayingName.innerHTML = `${songs[window.songIndex].songName}`
+            }
+        })
+
+        //Creating function to avoid 2 play icon into converting to pause button at the same time 
+
+        function makePlayAll() {
+            Array.from(songItem).forEach(function (element, index) {
+                let play = element.getElementsByTagName("i")[0];
+                play.classList.remove('fa-pause');
+                play.classList.add('fa-play');
+            })
+        }
+
+        //Adding event listener to main play icon
+
+        masterPlay.addEventListener("click", function () {
+            if (window.audioElement.paused || window.audioElement.currentTime <= 0) {
+                masterPlay.classList.remove("fa-play");
+                masterPlay.classList.add("fa-pause");
+                window.audioElement.play()
+                gif.style.display = "block";
+                divv.style.marginRight = "43px"
+                // 
+                if (window.songIndex < songItem.length - 1 && window.songIndex > 0) {//agar song Index valid h to
+                    songItem[window.songIndex].getElementsByTagName("i")[0].classList.remove("fa-play");
+                    songItem[window.songIndex].getElementsByTagName("i")[0].classList.add("fa-pause");//song item div ke play icon ko pause kar do
+                }
+            }
+            else {
+                makePlayAll()
+                masterPlay.classList.remove("fa-pause");
+                masterPlay.classList.add("fa-play");
+                window.audioElement.pause()
+                gif.style.display = "none";
+                divv.style.marginRight = "93px"
+                // musicPlayingName.style.bottom = "44px"
+            }
+        })
+
+
+        setInterval(() => {
+            let dur = JSON.stringify(window.audioElement.duration / 100);//get the duration as 3.0947485787785788
+            dur = dur.slice(0, 4);//slicing to get 3.09
+            dur = dur.replace(".", "")//replacing . with 
+            dur = parseInt(dur)
+            let totalMin = Math.floor(dur / 60);//like 5
+            let secs = dur % 60;//like 9
+            if (secs < 10) {
+                secs = "0" + secs//it was like 9 now it 
+            }
+            songLength.innerHTML = "/ " + totalMin + ":" + secs
+            console.log(dur)
+            let currTime = JSON.stringify(window.audioElement.currentTime);
+            let dot = parseInt(currTime.indexOf("."));
+            a = currTime.slice(0, dot)
+            console.log(a)
+            if (a < 60) {
+                if (a < 10) {
+                    songCurrentTime.innerHTML = "0:0" + a
+                }
+                else {
+                    songCurrentTime.innerHTML = "0:" + a
+                }
+            }
+            else {
+                let totalMinutes = Math.floor(a / 60);
+                let seconds = a % 60;
+                if (seconds < 10) {
+                    seconds = "0" + seconds
+                }
+                songCurrentTime.innerHTML = totalMinutes + ":" + seconds
+            }
+
+            window.audioElement.addEventListener("timeupdate", function () {
+                let progress = parseInt((window.audioElement.currentTime / window.audioElement.duration) * 100)//Percent of the progress
+                progressBar.value = progress;//Update progress bar according to the song playing
+
+            })
+        }, 1000);
+
+        progressBar.addEventListener("change", function () {
+            window.audioElement.currentTime = progressBar.value * window.audioElement.duration / 100;
+            //If bar is changed then also change or update the song
+        })
+
+        function gameClosure() {
+            function game() {
+                if (window.audioElement.currentTime == window.audioElement.duration) {
+                    window.songIndex += 1;
+                    window.audioElement = new Audio(`${songs[window.songIndex].filePath}`)
+                    window.audioElement.play()
+                    musicPlayingName.innerHTML = `${songs[window.songIndex].songName}`
+                    makePlayAll()
+                    songItem[window.songIndex].getElementsByTagName("i")[0].classList.remove("fa-play");
+                    songItem[window.songIndex].getElementsByTagName("i")[0].classList.add("fa-pause");
+                }
+                console.log("IIHUWYDFTYFYFYGFYGYGFYEFGYGEYFGUT");
+            }
+
+            let currentGame;
+
+            return {
+                start() {
+                    currentGame = setInterval(game, 2000)
+                },
+                stop() {
+                    clearInterval(currentGame)
+                }
+            }
+        }
+
+        var game = gameClosure()
+        autoPlay.addEventListener("click", function () {
+            if (autoPlay.classList.contains("fa-toggle-on")) {
+                autoPlay.classList.remove("fa-toggle-on");
+                autoPlay.classList.add("fa-toggle-off");
+                game.stop() // And you can call these two functions over and over
+            }
+            else {
+                autoPlay.classList.remove("fa-toggle-off");
+                autoPlay.classList.add("fa-toggle-on");
+                game.start() // Then wait a bit...
+                if (window.audioElement.currentTime == window.audioElement.duration) {
+                    alert("AAGE BADHO")
+                }
+            }
+        })
+
+        //Adding search functionality
+        search.addEventListener("input", function () {
+            input = search.value;
+            Array.from(songItem).forEach(function (element, index) {
+                let songtxt = element.getElementsByTagName("span")[0].innerHTML
+                input1 = input.toLowerCase()
+                songtxt = songtxt.toLowerCase()
+                if (songtxt.includes(input1)) {
+                    element.style.display = "flex"
+                }
+                else {
+                    element.style.display = "none"
+                }
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
