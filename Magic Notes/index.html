@@ -9,71 +9,62 @@
     <link rel="icon" type="image/x-icon" href="MagicNotesLogo.png">
     <style>
         #floatingTextarea2 {
-            width: 70%;
-            margin-top: 50px;
-            height: 150px;
-            padding: 35px 15px 15px 15px;
-            font-size: 15px;
+            margin-top: 9.66vh;
+            padding: 7vh 1vw 3.5vh 1vw;
+            font-size: 0.75rem;
             position: absolute;
-            height: 125px;
-            width: 70%;
-            /* margin: auto; */
-            top: 127px;
-            margin-left: 50px;
+            top: 21vh;
+            margin-left: 2.90vw;
+            resize: none;
         }
 
         #floatingTextarea3 {
-            height: 50px;
             position: absolute;
-            left: 143px;
             top: 63px;
-            font-size: 15px;
-            margin-left: 3.7%;
+            font-size: 0.75rem;
+            margin-left: 2.90vw;
             padding-top: 28px;
+            resize: none;
         }
 
         #floatingTextarea4 {
-            height: 50px;
             position: absolute;
-            right: 143px;
+            right: 11.7vw;
             top: 63px;
-            font-size: 15px;
+            font-size: 0.75rem;
             margin-right: 3.7%;
             padding-top: 28px;
+            resize: none;
         }
 
         .maintextareadiv {
             border: 1px solid rgb(169, 169, 169);
             border-radius: 4px;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
         }
 
         #label {
-            width: 50%;
-            height: 15%;
+            display: inline-block;
             position: absolute;
-            top: 190px;
-            left: 207px;
+            top: 32.9vh;
+            left: 16.17vw;
+            font-size: 0.9rem;
         }
 
         #label2 {
+            display: inline-block;
             position: absolute;
-            top: 70px;
-            left: 207px;
-            width: 50%;
-            height: 15%;
+            top: 12.13vh;
+            left: 16.17vw;
+            font-size: 0.9rem;
         }
 
         #label3 {
+            display: inline-block;
             position: absolute;
-            top: 70px;
-            right: 501px;
-            width: 7%;
-            height: 15%;
+            top: 12.13vh;
+            left: 55vw;
+            font-size: 0.9rem;
         }
-
 
         #textareadiv {
             display: flex;
@@ -81,18 +72,11 @@
             align-items: center;
         }
 
-
         #addbtn {
             position: absolute;
-            left: right;
-            right: 185px;
+            margin-left: calc(40vw - 86.2px);
             bottom: 12px;
-            font-size: 13px;
-        }
-
-        .deletenote {
-            font-size: 13px;
-            padding: 5px 10px 5px 10px;
+            font-size: 0.75rem;
         }
 
         .text {
@@ -174,14 +158,14 @@
     <!-- <div class="main"> -->
     <div class="form-floating d-flex center container-fluid" id="textareadiv">
         <!-- //main textarea -->
-        <div class="maintextareadiv" style="height: 360px;width: 80%;">
+        <div class="maintextareadiv" style="height: 63vh;width: 80vw;">
             <h5 class="h ms-8">Write a note</h5>
-            <textarea class="form-control" id="floatingTextarea3" style="height: 80px;width: 33%;"></textarea>
+            <textarea class="form-control" id="floatingTextarea3" style="height: 14vh;width: 32vw;"></textarea>
             <label for="floatingTextarea3" id="label2">Title</label>
-            <textarea class="form-control" id="floatingTextarea4" style="height: 80px;width: 33%;"></textarea>
+            <textarea class="form-control" id="floatingTextarea4" style="height: 14vh;width: 32vw;"></textarea>
             <label for="floatingTextarea4" id="label3">Name</label>
             <!-- //main note textarea -->
-            <textarea class="form-control" id="floatingTextarea2" style="height: 125px;width: 70%;"></textarea>
+            <textarea class="form-control" id="floatingTextarea2" style="height: 21.5vh;width: 70.5vw;"></textarea>
             <label for="floatingTextarea2" id="label">Content</label>
             <button type="button" class="btn btn-primary" id="addbtn">Add Note</button>
         </div>
