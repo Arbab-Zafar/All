@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess and Win - GAME</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif, 'Roboto';
+            margin: 0px;
+            padding: 0px;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 1;
+            margin-top: 0px;
+            height: 1280px;
+        }
+
+        /* Styling Nav and header */
+        nav {
+            box-shadow: 5px 4px 3px #2c2a2a;
+            width: 100%;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin-bottom: 0px;
+        }
+
+        nav ul li {
+            margin: 3px 30px 3px 0px;
+            color: rgb(0, 0, 0);
+        }
+
+        #log {
+            position: relative;
+            left: 166px;
+        }
+
+        #sign {
+            position: relative;
+            left: 186px;
+        }
+
+        #gam {
+            position: relative;
+            left: 20px;
+            font-size: 19px;
+            text-decoration: underline;
+        }
+
+        .game {
+            position: relative;
+            left: 20px;
+            font-size: 19px;
+        }
+
+        #logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Styling main */
+        .button {
+            display: inline-block;
+            position: relative;
+            left: 613px;
+            top: 28px;
+        }
+
+        .btn {
+            padding: 8px 22px;
+            background: linear-gradient(rgb(226, 84, 226), rgb(92, 231, 92), rgb(237, 237, 72), rgb(241, 85, 85), rgb(78, 78, 235));
+            border: 2px solid grey;
+            border-radius: 4px;
+        }
+
+        .btn:hover {
+            padding: 9px 23px;
+            font-size: 15px;
+        }
+
+        .gamearea {
+            width: 69vw;
+            height: 100%;
+            display: flex;
+            position: relative;
+            top: 60px;
+        }
+
+        .right-side-area {
+            width: 29vw;
+            height: 100%;
+            display: flex;
+            position: relative;
+            top: -44px;
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            color: red;
+            text-decoration: underline;
+            position: relative;
+            top: 16px;
+            font-size: 2rem;
+        }
+
+        #p_1 {
+            margin-left: 30px;
+            color: blue;
+            direction: right;
+        }
+
+
+        .information {
+            float: right;
+            bottom: 200px;
+            position: relative;
+            padding: 1px;
+            width: 250px;
+            font-size: 20px;
+        }
+
+        .entersent {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .infodiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inputdiv {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lifeline {
+            position: relative;
+            top: -109px;
+            left: 795px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .showPoints {
+            position: relative;
+            bottom: 270px;
+            left: 844px;
+            outline: none;
+            border: 0.5px solid black;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .hint {
+            position: relative;
+            top: -80px;
+            left: 795px;
+            display: inline-block;
+        }
+
+        .extrainfo {
+            position: relative;
+            bottom: 160px;
+            right: -67px;
+            display: inline-block;
+        }
+
+        input {
+            width: 242px;
+            height: 27px;
+            outline: none;
+            border: 1px solid black;
+            border-radius: 4px;
+            padding-left: 17px;
+        }
+
+        .gg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+        }
+
+        #entersent {
+            color: orange;
+            font-size: 24px;
+        }
+
+        P {
+            color: rgb(246 0 76);
+        }
+
+        #info2 {
+            text-align: center;
+        }
+
+        .radios {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .infoAboutCoupon,
+        .pay {
+            font-size: 15px;
+        }
+
+        .redeemCoupon {
+            font-size: 11px;
+        }
+
+        #close {
+            position: relative;
+            position: relative;
+            left: 174px;
+            bottom: 51px;
+        }
+
+        #radio11,
+        #radio22,
+        #radio33,
+        #radio44,
+        #radio55 {
+            width: 15px;
+        }
+
+        #names {
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .couponsDiv,
+        .couponsPremiumDiv {
+            cursor: pointer;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 850px;
+        }
+
+        .radios {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        #radio11,
+        #radio22,
+        #radio33,
+        #radio44,
+        #radio55 {
+            width: 15px;
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            .first,
+            .second,
+            .third {
+                width: 100%;
+            }
+
+            .maincontainer2 {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 95%;
+            }
+
+            .newul {
+                list-style: none;
+                display: none;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ul {
+                justify-content: space-between;
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            #log {
+                position: relative;
+                left: 0px;
+            }
+
+            #sign {
+                position: relative;
+                left: 0px;
+            }
+
+            .game {
+                position: relative;
+                left: 0px;
+                font-size: 0.9rem;
+            }
+
+            body {
+                width: 98vw;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                bottom: 8px;
+            }
+
+            #copyright {
+                display: none;
+            }
+
+            .footer {
+                left: 0px;
+            }
+
+            nav {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: rgb(35, 33, 33);
+                margin: 0px;
+            }
+
+            .lifeline {
+                position: relative;
+                top: -49px;
+                left: 121px;
+            }
+
+            .showPoints {
+                position: relative;
+                bottom: 57px;
+                left: -21px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            #entersent {
+                font-size: 1rem;
+            }
+
+            input {
+                width: 200px;
+                height: 20px;
+            }
+
+            .extrainfo {
+                position: relative;
+                bottom: 40px;
+                right: -10px;
+            }
+
+            .information {
+                position: relative;
+                left: 7px;
+                bottom: 28px;
+                width: 109px;
+            }
+
+            #close {
+                left: 73px;
+            }
+
+            .coupons {
+                position: relative;
+                right: 28px;
+            }
+
+            .coupons #names {
+                font-size: 0.7rem;
+            }
+
+            .infoAboutCoupon {
+                font-size: 0.7rem;
+            }
+
+            .coupons div h3 {
+                font-size: 0.8rem;
+            }
+
+            p {
+                font-size: 0.7rem;
+            }
+
+            .radios {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="d">
+            <nav class="nav">
+                <ul class="ul">
+                    <a href="index.html">
+                        <!-- <li id="logo">Play and Win</li>
+                     -->
+                        <img src="PlayAndWin Logo.png" alt="" width="300">
+                    </a>
+                    <a href="Guess and Win.html">
+                        <li class="game" id="gam">Guess and Win</li>
+                    </a>
+                    <a href="Calculate and Win.html">
+                        <li class="game">Calculate and Win</li>
+                    </a>
+                    <a href="Unscramble and Win.html">
+                        <li class="game">Unscramble and Win</li>
+                    </a>
+                    <a href="Login.html">
+                        <li id="log">Log-In</li>
+                    </a>
+                    <a href="Signin.html">
+                        <li id="sign">Sign-In</li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Welcome to Guess and Win</h1>
+        <div class="main">
+            <div class="entersent">
+                <p id="entersent">Enter the password:</p>
+            </div>
+            <div class="inputdiv">
+                <input type="password" class="input">
+            </div>
+            <div class="infodiv">
+                <p id="info1"></p>
+            </div>
+            <p id="info2"></p>
+            <div class="information">
+            </div>
+            <div class="extrainfo"></div>
+        </div>
+        <div class="lifeline">
+            <span class="material-symbols-outlined" id="lifelineicon">
+                tips_and_updates
+            </span>
+        </div>
+        <div class="hint"></div>
+        <button class="showPoints">Show my points</button>
+
+    </main>
+    <footer>
+        <div class="couponsDiv">Coupons</div>
+        <div class="couponsPremiumDiv">Coupons-Premium</div>
+
+    </footer>
+    <script>
+        let d = document.querySelector(".d");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                d.innerHTML = ""
+                d.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <li style="font-size: 1.5rem;">Play and Win</li>
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <a href="index.html" style="margin:0px;">
+                    <li class="game">Home</li>
+                </a>
+                <a href="Calculate and Win.html">
+                    <li class="game">Calculate and Win</li>
+                </a>
+                <a href="Unscramble and Win.html">
+                    <li class="game">Unscramble and Win</li>
+                </a>
+                <a href="Login.html">
+                    <li id="log">Log-In</li>
+                </a>
+                <a href="Signin.html">
+                    <li id="sign">Sign-In</li>
+                </a>
+            </ul>
+        </nav>`
+                document.querySelector(".showPoints").style.bottom = "57px"
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                    }
+                })
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
+        let sss = Math.floor(Math.random() * 10);
+        let cpu1 = ["6", "6", "5", "5", "5", "4", "4", "4", "4", "4"][sss];
+        let fff = Math.floor(Math.random() * 10);
+        let cpu3 = ["4", "4", "4", "4", "4", "4", "4", "5", "5", "5"][fff];
+        console.log(fff, cpu3)
+        console.log(sss, cpu1)
+        let orpo = localStorage.getItem("Otherspoints");
+        let hint = document.querySelector(".hint");
+        let information = document.querySelector(".information");
+        let couponsDiv = document.querySelector(".couponsDiv");
+        let couponsPremiumDiv = document.querySelector(".couponsPremiumDiv");
+        let a = Math.random() * 100
+        a = Number.parseInt(a);
+        couponsDiv.addEventListener("click", function () {
+            let html = `<div class="coupons">
+                <div>
+        <h3>Coupons</h3>
+        <img src="/Images/close img.png" alt="close" width="20" id="close">
+        </div>
+        <div id="names">
+            <input type="radio" id="radio11" name="name">Zamann
+        <label for="radio11"></label>
+
+            <input type="radio" id="radio22" name="name">Zaid
+        <label for="radio22"></label>
+            <input type="radio" id="radio33" name="name">Zeyan
+        <label for="radio33"></label>
+            <input type="radio" id="radio44" name="name">Ameera
+        <label for="radio44"></label>
+            <input type="radio" id="radio55" name="name">Others
+        <label for="radio55"></label>
+        </div>
+        <div class="couponItems">
+            <span class="infoAboutCoupon">Get Free 1 rupees play</span>
+            <div>
+            <button class="redeemCoupon">Redeem Now</button>
+            <span class="pay">Pay : 10 points</span>
+            </div>
+        </div><hr>
+        <div class="couponItems">
+            <span class="infoAboutCoupon">Get Free 2 rupees play</span>
+            <div>
+            <button class="redeemCoupon">Redeem Now</button>
+            <span class="pay">Pay : 10 points and 1 rupee</span>
+            </div>
+        </div><hr>
+        <div class="couponItems">
+            <span class="infoAboutCoupon">Get Free 3 rupees play</span>
+            <div>
+            <button class="redeemCoupon">Redeem Now</button>
+            <span class="pay">Pay : 20 points and 1 rupee</span>
+            </div>
+            </div><hr>
+        <div class="couponItems">
+            <span class="infoAboutCoupon">Get Free 4 rupees play</span>
+            <div>
+            <button class="redeemCoupon">Redeem Now</button>
+            <span class="pay">Pay : 20 points and 2 rupee</span>
+            </div>
+        </div><hr>
+        <div class="couponItems">
+            <span class="infoAboutCoupon">Get Free 5 rupees play</span>
+            <div>
+                <button class="redeemCoupon">Redeem Now</button>
+            <span class="pay">Pay : 25 points and 3 rupee</span>
+            </div><hr>
+        </div>
+    </div>`
+            information.innerHTML = html;
+            let redeemCoupon = document.querySelectorAll(".redeemCoupon");
+            let radio11 = document.querySelector("#radio11");
+            let radio22 = document.querySelector("#radio22");
+            let radio33 = document.querySelector("#radio33");
+            let radio44 = document.querySelector("#radio44");
+            let radio55 = document.querySelector("#radio55");
+            let close = document.querySelector("#close")
+            let password = "#3108"
+            //this is to close the coupon section
+            close.addEventListener('click', function () {
+                information.innerHTML = "";//simple
+            })
+            //adding click on every button
+            Array.from(redeemCoupon).forEach(function (element, index) {
+                element.addEventListener('click', function () {
+                    alert("working")
+                    let haveToPay = redeemCoupon[index].nextElementSibling.innerHTML; //getting span (pay) innerHtml like Pay : 05 points
+                    console.log(haveToPay)
+                    let actualPay = haveToPay.slice(6, 8);//getting actual no. like 10 or 5 or 25 by slicing
+                    actualPay = parseInt(actualPay);
+                    console.log(actualPay)
+                    console.log("Going on")
+                    //Custom radio (name who is redeeming coupon)
+                    let p = document.createElement("input");
+                    p.setAttribute("type", "password");
+                    p.setAttribute("id", "passwordDiv");
+                    couponsDiv.appendChild(p);
+                    let pp = document.querySelector("#passwordDiv");
+                    pp.focus();
+                    let jj = setInterval(() => {
+                        if (pp.value == password) {
+                            let otherspoints = localStorage.getItem("Otherspoints");
+                            if (otherspoints == null) {
+                                localStorage.setItem("Otherspoints", 0 - actualPay)
+                            }
+                            localStorage.setItem("Otherspoints", otherspoints - actualPay)
+                            console.log("Aaram karo")
+                            pp.style.display = "none";
+                            alert("Coupon Applied")
+
+                            clearInterval(jj)
+                        }
+                    }, 2000);
+                })
+            })
+        });
+
+        couponsPremiumDiv.addEventListener("click", function () {
+            let html = `<div class="coupons">
+                <div>
+            <h3>Coupons-Premium</h3>
+            <img src="/Images/close img.png" alt="close" width="20" id="close">
+                </div>
+            <div class="couponItems">
+            <span class="infoAboutCoupon">Get 1 extra chance-If 6 chances, then not applied!</span>
+            <div>
+            <button class="redeemCoupon" id="firstButton">Redeem Now</button>
+            <span class="pay">Pay : 15 points and 1 rupee</span>
+            </div>
+            </div><hr>
+            <div class="couponItems">
+            <span class="infoAboutCoupon">Add rupees 2 to the winning amount</span>
+            <div>
+            <button class="redeemCoupon" id="secondButton">Redeem Now</button>
+            <span class="pay">Pay : 20 points and 1 rupee</span>
+            </div>
+            </div><hr>
+            <div class="couponItems">
+            <span class="infoAboutCoupon">Get hint at starting!</span>
+            <div>
+            <button class="redeemCoupon" id="thirdButton">Redeem Now</button>
+            <span class="pay">Pay : 10 points and 1 rupee</span>
+            </div>
+            </div><hr>
+            </div>
+            </div>`
+            information.innerHTML = html;//adding text to coupoon premium
+            let redeemCoupon = document.querySelectorAll(".redeemCoupon");
+            let close = document.querySelector("#close")
+            let password = "#3108"
+            //this is to close the coupon section
+            close.addEventListener('click', function () {
+                information.innerHTML = "";//simple
+            })
+            //adding click on every button
+            Array.from(redeemCoupon).forEach(function (element, index) {
+                element.addEventListener('click', function () {
+                    alert("working")
+                    let haveToPay = redeemCoupon[index].nextElementSibling.innerHTML; //getting span (pay) innerHtml like Pay : 05 points
+                    console.log(haveToPay)
+                    let actualPay = haveToPay.slice(6, 8);//getting actual no. like 10 or 5 or 25 by slicing
+                    actualPay = parseInt(actualPay);
+                    console.log(actualPay)
+                    //Custom radio (name who is redeeming coupon)
+
+
+                    let otherspoints = localStorage.getItem("Otherspoints");
+                    let p = document.createElement("input");
+                    p.setAttribute("type", "password");
+                    p.setAttribute("id", "passwordDiv");
+                    couponsDiv.appendChild(p);
+                    let pp = document.querySelector("#passwordDiv");
+                    pp.focus();
+                    let jj = setInterval(() => {
+                        if (pp.value == password) {
+                            if (otherspoints == null) {
+                                localStorage.setItem("Otherspoints", 0 - actualPay)
+                            }
+                            else {
+                                localStorage.setItem("Otherspoints", otherspoints - actualPay)//subtaracting pay
+                            }
+                            console.log("Aaram karo")
+                            pp.style.display = "none";
+                            alert("Coupon Applied")
+
+                            clearInterval(jj)
+                        }
+                    }, 2000);
+                })
+            });
+            let firstButton = document.querySelector("#firstButton");//first redeem button
+            let secondButton = document.querySelector("#secondButton");//second reddeeem button
+            let thirdButton = document.querySelector("#thirdButton");//third redeem button
+            //Complete it!!!!!!!!!______-----11111111111111!!!!!!!!!!!!!!!--1111111111!!!!!!!!!!!!_____
+            //Problem-
+            //For adding 1 extra chance i Can add 1 to cpu3 but in if-else statement it is written like if(cpu3=="4"||"5") so it will give error
+
+            //How to solve it--
+            // It can be solved by adding $(cpu3) everywhere
+
+            // firstButton.addEventListener("click",function(){//adding click to first coupon redeem button
+
+            // })
+            thirdButton.addEventListener("click", function () {
+                let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+                if (a % numbers[8] == 0) {
+                    wordd = `The number is divisible by ${numbers[8]}`
+                }
+                else if (a % numbers[7] == 0) {
+                    wordd = `The number is divisible by ${numbers[7]}`
+                }
+                else if (a % numbers[6] == 0) {
+                    wordd = `The number is divisible by ${numbers[6]}`
+                }
+                else if (a % numbers[5] == 0) {
+                    wordd = `The number is divisible by ${numbers[5]}`
+                }
+                else if (a % numbers[4] == 0) {
+                    wordd = `The number is divisible by ${numbers[4]}`
+                }
+                else if (a % numbers[3] == 0) {
+                    wordd = `The number is divisible by ${numbers[3]}`
+                }
+                else if (a % numbers[2] == 0) {
+                    wordd = `The number is divisible by ${numbers[2]}`
+                }
+                else if (a % numbers[1] == 0) {
+                    wordd = `The number is divisible by ${numbers[1]}`
+                }
+                else if (a % numbers[0] == 0) {
+                    wordd = `The number is divisible by ${numbers[0]}`
+                }
+                else {
+                    wordd = `The number is a prime number`
+                }
+                hint.innerHTML = wordd;
+            })
+        })
+
+        function otherspointsincre(input2) {
+            notobeadded = parseInt(input2)
+            Otherspoints = localStorage.getItem("Otherspoints");
+            if (Otherspoints == null) {
+                Otherspointsobj = 0;
+            }
+            else {
+                Otherspointsobj = parseInt(Otherspoints)
+            }
+            localStorage.setItem("Otherspoints", Otherspointsobj + notobeadded);
+        }
+        function otherspointsdecre(input2) {
+            notobeadded = parseInt(input2)
+            let Otherspoints = localStorage.getItem("Otherspoints");
+            if (Otherspoints == null) {
+                Otherspointsobj = 0;
+            }
+            else {
+                Otherspointsobj = parseInt(Otherspoints)
+            }
+            localStorage.setItem("Otherspoints", Otherspointsobj - notobeadded);
+        }
+        maingame(otherspointsincre, otherspointsdecre)
+        function maingame(personincre, persondecre) {
+            console.log(a)
+            let input;
+            input = Number.parseInt(input);
+            let c = 4;
+            let d = 5;
+            let e = 6;
+            let f = 0;
+            let z = 31082009;
+            let id = Math.floor(Math.random() * 10000);
+            // let cpu = Math.floor(Math.random() * 3);
+            let cpu5 = 5;
+            let score = 100;
+            let nav = document.querySelector(".nav");
+            let ul = document.querySelector(".ul");
+            let maincontainer = document.querySelector(".main");
+            let inputdiv = document.querySelector(".inputdiv");
+            let infodiv = document.querySelector(".infodiv");
+            let lifeline = document.querySelector(".lifeline");
+            let input1 = document.querySelector(".input");
+            let info1 = document.querySelector("#info1");
+            let info2 = document.querySelector("#info2");
+            let info3 = document.querySelector("#info3");
+            let info4 = document.querySelector("#info4");
+            let info5 = document.querySelector("#info5");
+            let entersent = document.querySelector("#entersent");
+            let extrainfo = document.querySelector(".extrainfo");
+            input1.focus();
+            console.log(cpu1);
+            //Lifeline 
+
+            lifeline.addEventListener("click", function () {
+                lifeline.style.display = "none";
+                let conf = confirm("Are you sure to use the lifeline??")
+                if (conf) {
+                    let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    if (a % numbers[8] == 0) {
+                        wordd = `The number is divisible by ${numbers[8]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[7] == 0) {
+                        wordd = `The number is divisible by ${numbers[7]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[6] == 0) {
+                        wordd = `The number is divisible by ${numbers[6]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[5] == 0) {
+                        wordd = `The number is divisible by ${numbers[5]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[4] == 0) {
+                        wordd = `The number is divisible by ${numbers[4]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[3] == 0) {
+                        wordd = `The number is divisible by ${numbers[3]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[2] == 0) {
+                        wordd = `The number is divisible by ${numbers[2]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[1] == 0) {
+                        wordd = `The number is divisible by ${numbers[1]}`
+                        persondecre(4)
+                    }
+                    else if (a % numbers[0] == 0) {
+                        wordd = `The number is divisible by ${numbers[0]}`
+                        persondecre(4)
+                    }
+                    else {
+                        wordd = `The number is a prime number`
+                        persondecre(4)
+                    }
+                    hint.innerHTML = wordd
+                }
+            });
+
+
+            let showpoints = document.querySelector(".showPoints")
+            showpoints.addEventListener("click", function () {
+                alert(`You have ${orpo} points!`)
+            })
+            function cpu14func(cpu1, input2, win) {
+                // Removing input2 
+                input2.style.display = "none";
+                // Creating new input for number 
+                let input3 = document.createElement("input");
+                inputdiv.appendChild(input3);
+                input3.focus();
+                entersent.innerText = "Enter a no. between 0 to 100:"
+                input3.addEventListener("keypress", (event) => {
+                    if (event.keyCode === 13) {
+                        c = c - 1;
+                        score = score - 1
+                        event.preventDefault();
+                        if (input3.value >= 0) {
+                            let p20 = document.createElement("p")
+                            information.appendChild(p20);
+
+                            p20.innerText = `${input3.value}`
+                            if (input3.value == a) {
+                                info1.innerText = "Congratulations!";
+                                clearTimeout();
+                                input3.style.display = "none"
+                                let p21 = document.createElement("p")
+                                information.appendChild(p21);
+                                p21.innerText = "Congratulations!"
+
+                                info2.innerText = `You have won ${win} rupees`
+                                personincre(input2.value)
+                            }
+                            else if (c == 0) {
+                                info1.innerText = "Chances are over!"
+                                info1.innerText = "Chances are over!"
+                                input3.style.display = "none"
+                                input3.value = "";
+                                let p28 = document.createElement("p")
+                                information.appendChild(p28);
+                                p28.innerText = "Chances are over!"
+
+                                let p31 = document.createElement("p")
+                                information.appendChild(p31);
+                                p31.innerText = `The no. was ${a}`
+                                persondecre(input2.value)
+
+                            }
+                            else if (a - input3.value == 3 || a - input3.value == 2 || a - input3.value == 1 || input3.value - a == 3 || input3.value - a == 2 || input3.value - a == 1) {
+                                if (x.matches) {
+                                    info1.innerText = "CLOSE!";
+                                }
+                                else {
+                                    info1.innerText = "You are CLOSE!";
+                                }
+                                input3.value = "";
+                                let p22 = document.createElement("p")
+                                information.appendChild(p22);
+                                if (x.matches) {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+                                else {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+
+                            }
+
+                            else if (input3.value < a && input3.value > 0) {
+                                if (x.matches) {
+                                    info1.innerText = "BIGGER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a BIGGER number!"
+                                }
+                                input3.value = "";
+                                let p29 = document.createElement("p")
+                                information.appendChild(p29);
+                                if (x.matches) {
+                                    p29.innerText = "BIGGER!"
+                                }
+                                else {
+                                    p29.innerText = "Enter a BIGGER number!"
+                                }
+
+                            }
+                            else if (input3.value > a) {
+                                if (x.matches) {
+                                    info1.innerText = "SMALLER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a SMALLER number!"
+                                }
+                                input3.value = "";
+                                let p30 = document.createElement("p")
+                                information.appendChild(p30);
+                                if (x.matches) {
+                                    p30.innerText = "SMALLER!"
+                                }
+                                else {
+                                    p30.innerText = "Enter a SMALLER number!"
+                                }
+
+                            }
+                        }
+                    }
+                })
+            }
+            function cpu15func(cpu1, input2, win) {
+                // Removing input2 
+                input2.style.display = "none";
+                // Creating new input for number 
+                let input3 = document.createElement("input");
+                inputdiv.appendChild(input3);
+                input3.focus();
+                entersent.innerText = "Enter a no. between 0 to 100:"
+                input3.addEventListener("keypress", (event) => {
+                    if (event.keyCode === 13) {
+                        d = d - 1;
+                        score = score - 1
+                        event.preventDefault();
+                        if (input3.value >= 0) {
+                            let p20 = document.createElement("p")
+                            information.appendChild(p20);
+
+                            p20.innerText = `${input3.value}`
+
+
+                            if (input3.value == a) {
+                                info1.innerText = "Congratulations!";
+                                personincre(input2.value)
+                                input3.style.display = "none"
+                                let p21 = document.createElement("p")
+                                information.appendChild(p21);
+                                p21.innerText = "Congratulations!"
+
+                                info2.innerText = `You have won ${win} rupees`
+
+                            }
+                            else if (d == 0) {
+                                info1.innerText = "Chances are over!"
+                                persondecre(input2.value)
+                                input3.style.display = "none"
+                                input3.value = "";
+                                let p28 = document.createElement("p")
+                                information.appendChild(p28);
+                                p28.innerText = "Chances are over!"
+
+                                let p31 = document.createElement("p")
+                                information.appendChild(p31);
+                                p31.innerText = `The no. was ${a}`
+
+                            }
+                            else if (a - input3.value == 3 || a - input3.value == 2 || a - input3.value == 1 || input3.value - a == 3 || input3.value - a == 2 || input3.value - a == 1) {
+                                if (x.matches) {
+                                    info1.innerText = "CLOSE!";
+                                }
+                                else {
+                                    info1.innerText = "You are CLOSE!";
+                                }
+                                input3.value = "";
+                                let p22 = document.createElement("p")
+                                information.appendChild(p22);
+                                if (x.matches) {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+                                else {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+
+                            }
+
+                            else if (input3.value < a && input3.value > 0) {
+                                if (x.matches) {
+                                    info1.innerText = "BIGGER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a BIGGER number!"
+                                }
+                                input3.value = "";
+                                let p29 = document.createElement("p")
+                                information.appendChild(p29);
+                                if (x.matches) {
+                                    p29.innerText = "BIGGER!"
+                                }
+                                else {
+                                    p29.innerText = "Enter a BIGGER number!"
+                                }
+
+                            }
+                            else if (input3.value > a) {
+                                if (x.matches) {
+                                    info1.innerText = "SMALLER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a SMALLER number!"
+                                }
+                                input3.value = "";
+                                let p30 = document.createElement("p")
+                                information.appendChild(p30);
+                                if (x.matches) {
+                                    p30.innerText = "SMALLER!"
+                                }
+                                else {
+                                    p30.innerText = "Enter a SMALLER number!"
+                                }
+
+                            }
+                        }
+                    }
+                })
+            }
+            function cpu16func(cpu1, input2, win) {
+                // Removing input2 
+                input2.style.display = "none";
+                // Creating new input for number 
+                let input3 = document.createElement("input");
+                inputdiv.appendChild(input3);
+                input3.focus();
+                entersent.innerText = "Enter a no. between 0 to 100:"
+                input3.addEventListener("keypress", (event) => {
+                    if (event.keyCode === 13) {
+                        e = e - 1;
+                        score = score - 1
+                        event.preventDefault();
+                        if (input3.value >= 0) {
+                            let p20 = document.createElement("p")
+                            information.appendChild(p20);
+
+                            p20.innerText = `${input3.value}`
+
+
+                            if (input3.value == a) {
+                                info1.innerText = "Congratulations!";
+                                personincre(input2.value)
+                                input3.style.display = "none"
+                                let p21 = document.createElement("p")
+                                information.appendChild(p21);
+                                p21.innerText = "Congratulations!"
+
+                                info2.innerText = `You have won ${win} rupees`
+
+                            }
+                            else if (e == 0) {
+                                info1.innerText = "Chances are over!"
+                                persondecre(input2.value)
+                                input3.style.display = "none"
+                                input3.value = "";
+                                let p28 = document.createElement("p")
+                                information.appendChild(p28);
+                                p28.innerText = "Chances are over!"
+
+                                let p31 = document.createElement("p")
+                                information.appendChild(p31);
+                                p31.innerText = `The no. was ${a}`
+
+                            }
+                            else if (a - input3.value == 3 || a - input3.value == 2 || a - input3.value == 1 || input3.value - a == 3 || input3.value - a == 2 || input3.value - a == 1) {
+                                if (x.matches) {
+                                    info1.innerText = "CLOSE!";
+                                }
+                                else {
+                                    info1.innerText = "You are CLOSE!";
+                                }
+                                input3.value = "";
+                                let p22 = document.createElement("p")
+                                information.appendChild(p22);
+                                if (x.matches) {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+                                else {
+                                    p22.innerText = "You are CLOSE!"
+                                }
+
+                            }
+
+                            else if (input3.value < a && input3.value > 0) {
+                                if (x.matches) {
+                                    info1.innerText = "BIGGER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a BIGGER number!"
+                                }
+                                input3.value = "";
+                                let p29 = document.createElement("p")
+                                information.appendChild(p29);
+                                if (x.matches) {
+                                    p29.innerText = "BIGGER!"
+                                }
+                                else {
+                                    p29.innerText = "Enter a BIGGER number!"
+                                }
+
+                            }
+                            else if (input3.value > a) {
+                                if (x.matches) {
+                                    info1.innerText = "SMALLER!"
+                                }
+                                else {
+                                    info1.innerText = "Enter a SMALLER number!"
+                                }
+                                input3.value = "";
+                                let p30 = document.createElement("p")
+                                information.appendChild(p30);
+                                if (x.matches) {
+                                    p30.innerText = "SMALLER!"
+                                }
+                                else {
+                                    p30.innerText = "Enter a SMALLER number!"
+                                }
+
+                            }
+                        }
+                    }
+                })
+            }
+            // let input2 = document.querySelector(".input2")
+            function logic(input2, win, cpu1) {
+                // If cpu (chances) is 4 
+                let p100 = document.createElement("p");
+                extrainfo.appendChild(p100);
+                p100.innerText = `Game ID = #${id}`;
+                let p101 = document.createElement("p");
+                extrainfo.appendChild(p101);
+                p101.innerText = `You have got ${cpu1} chances`;
+                if (cpu1 == 4) {
+                    return cpu14func(cpu1, input2, win)
+                }
+                else if (cpu1 == 5) {
+                    return cpu15func(cpu1, input2, win)
+                }
+                else if (cpu1 == 6) {
+                    return cpu16func(cpu1, input2, win)
+                }
+                else {
+                    new console.error("Invalid cpu1");
+                }
+
+            }
+            input1.addEventListener("keypress", (event) => {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    if (input1.value == z) {
+                        input1.style.display = "none";
+                        couponsDiv.style.display = "none";
+                        couponsPremiumDiv.style.display = "none"
+                        information.innerHTML = "";
+                        entersent.innerText = "Enter the amount:"
+                        let input2 = document.createElement("input");
+                        inputdiv.appendChild(input2);
+                        input2.setAttribute("class", "input2")
+                        input2.focus();
+
+                        input2.addEventListener("keypress", (event) => {
+                            if (event.keyCode === 13) {
+                                event.preventDefault();
+                                if (input2.value == 1) {
+                                    logic(input2, 2, cpu1);
+                                    if (x.matches) {
+                                        showpoints.style.bottom = "57px"
+                                        lifeline.style.top = "-50px";
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                }
+                                else if (input2.value == 2) {
+                                    logic(input2, 3, cpu1)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143px";
+                                }
+                                else if (input2.value == 3) {
+                                    logic(input2, 4, cpu1)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143px";
+                                }
+                                else if (input2.value == 4) {
+                                    logic(input2, 6, cpu5)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143px";
+                                }
+                                else if (input2.value == 5) {
+                                    logic(input2, 8, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143px";
+                                }
+                                else if (input2.value == 6) {
+                                    logic(input2, 1, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143";
+                                }
+                                else if (input2.value == 7) {
+                                    logic(input2, 1, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143";
+                                }
+                                else if (input2.value == 8) {
+                                    logic(input2, 1, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143";
+                                }
+                                else if (input2.value == 9) {
+                                    logic(input2, 1, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+
+                                }
+                                else if (input2.value == 10) {
+                                    logic(input2, 17, cpu3)
+                                    if (x.matches) {
+                                        lifeline.style.top = "-50px";
+                                        showpoints.style.bottom = "57px"
+                                    }
+                                    else {
+                                        lifeline.style.top = "-200px";
+                                        lifeline.style.position = "relative";
+                                        showpoints.style.bottom = "366px"
+                                    }
+                                    hint.style.position = "relative";
+                                    hint.style.left = "642px";
+                                    hint.style.top = "-143";
+                                }
+                                else {
+                                    let p51 = document.createElement("p")
+                                    information.appendChild(p51);
+                                    p51.innerText = "Invalid Amount!"
+                                }
+
+                            }
+                        })
+                    }
+                    else {
+                        let p50 = document.createElement("p")
+                        information.appendChild(p50);
+                        p50.innerText = "Incorrect Password! Try Again.."
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
