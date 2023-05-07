@@ -202,11 +202,70 @@
             display: none;
             height: 40px;
         }
+
+        @media only screen and (max-width: 800px) {
+            .newul {
+                list-style: none;
+                display: none;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ul {
+                justify-content: space-between;
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            #log {
+                position: relative;
+                left: 0px;
+            }
+
+            #sign {
+                position: relative;
+                left: 0px;
+            }
+
+            .game {
+                position: relative;
+                left: 0px;
+                font-size: 0.9rem;
+            }
+
+            body {
+                width: 98vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                bottom: 8px;
+            }
+
+            nav {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: rgb(35, 33, 33);
+                margin: 0px;
+            }
+
+            #email,
+            #password,#user {
+                width: 80vw;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
+        <div class="d">
         <nav class="nav">
             <ul class="ul">
                 <a href="index.html">
@@ -230,6 +289,7 @@
                 </a>
             </ul>
         </nav>
+        </div>
     </header>
     <main>
         <h2 id="headingtwo">Sign-In</h2>
@@ -263,6 +323,54 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <script>
+        let d = document.querySelector(".d");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                d.innerHTML = ""
+                d.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <li style="font-size: 1.5rem;">Play and Win</li>
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <a href="index.html" style="margin:0px;">
+                    <li class="game">Home</li>
+                </a>
+                <a href="Guess and Win.html" style="margin:0px;">
+                    <li class="game">Guess and Win</li>
+                </a>
+                <a href="Calculate and Win.html">
+                    <li class="game">Calculate and Win</li>
+                </a>
+                <a href="Unscramble and Win.html">
+                    <li class="game">Unscramble and Win</li>
+                </a>
+                <a href="Login.html">
+                    <li id="log">Log-In</li>
+                </a>
+            </ul>
+        </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                    }
+                })
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
+
         let user = document.querySelector("#user");
         let email = document.querySelector("#email");
         let password = document.querySelector("#password");
