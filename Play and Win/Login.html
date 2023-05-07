@@ -20,8 +20,7 @@
             background-size: cover;
             opacity: 1;
             margin-top: 0px;
-            /* height: 1280px;
-    width: 1390pxs; */
+            height: 100vh;
         }
 
         /* Styling Nav and header */
@@ -72,13 +71,14 @@
         }
 
         /* Styling main */
-        h2 {
+        h1 {
             text-align: center;
             color: red;
             text-decoration: underline;
             margin-bottom: 10vh;
             margin-top: 0px;
             padding-top: 22px;
+            font-size: 2rem;
         }
 
         h3 {
@@ -100,53 +100,6 @@
 
         #pa {
             margin-left: 20px;
-        }
-
-        .first {
-            width: 32vw;
-            margin-right: 1vw;
-            margin-left: 1vw;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            height: auto;
-        }
-
-        .second {
-            width: 32vw;
-            margin-right: 1vw;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            height: 650px;
-        }
-
-        .third {
-            width: 32vw;
-            margin-right: 1vw;
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 10px;
-            height: 600px;
-        }
-
-        .maincontainer2 {
-            display: flex;
-        }
-
-        .footer {
-            position: relative;
-            left: 420px;
-            bottom: 300px;
-            width: 65vw;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #copyright {
-            color: black;
         }
 
         .main,
@@ -202,37 +155,95 @@
             display: none;
             height: 40px;
         }
+
+        @media only screen and (max-width: 800px) {
+            .newul {
+                list-style: none;
+                display: none;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ul {
+                justify-content: space-between;
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            #log {
+                position: relative;
+                left: 0px;
+            }
+
+            #sign {
+                position: relative;
+                left: 0px;
+            }
+
+            .game {
+                position: relative;
+                left: 0px;
+                font-size: 0.9rem;
+            }
+
+            body {
+                width: 98vw;
+                height: 100vh;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                bottom: 8px;
+            }
+
+            nav {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: rgb(35, 33, 33);
+                margin: 0px;
+            }
+            #email,#password{
+                width: 80vw;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="nav">
-            <ul class="ul">
-                <a href="index.html">
-                    <!-- <li id="logo">PLay and Win</li> -->
-                    <img src="PlayAndWin Logo.png" alt="" width="300">
-                </a>
-                <a href="Guess and Win.html">
-                    <li class="game">Guess and Win</li>
-                </a>
-                <a href="Calculate and Win.html">
-                    <li class="game">Calculate and Win</li>
-                </a>
-                <a href="Unscramble and Win.html">
-                    <li class="game">Unscramble and Win</li>
-                </a>
-                <a href="Login.html">
-                    <li id="log" style="text-decoration:underline ;">Log-In</li>
-                </a>
-                <a href="Signin.html">
-                    <li id="sign">Sign-In</li>
-                </a>
-            </ul>
-        </nav>
+        <div class="d">
+            <nav class="nav">
+                <ul class="ul">
+                    <a href="index.html">
+                        <!-- <li id="logo">PLay and Win</li> -->
+                        <img src="PlayAndWin Logo.png" alt="" width="300">
+                    </a>
+                    <a href="Guess and Win.html">
+                        <li class="game">Guess and Win</li>
+                    </a>
+                    <a href="Calculate and Win.html">
+                        <li class="game">Calculate and Win</li>
+                    </a>
+                    <a href="Unscramble and Win.html">
+                        <li class="game">Unscramble and Win</li>
+                    </a>
+                    <a href="Login.html">
+                        <li id="log" style="text-decoration:underline ;">Log-In</li>
+                    </a>
+                    <a href="Signin.html">
+                        <li id="sign">Sign-In</li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-        <h2 id="headingtwo">Log-In</h2>
+        <h1 id="headingtwo">Log-In</h1>
         <div class="alert alert-success alert-dismissible fade show" id="success" role="alert">
             <span id="span">Logged-In <strong>succesfully!</strong></span>
             <button type="button" class="but btn-close" data-bs-dismiss="alert" aria-label="Close"
@@ -259,6 +270,54 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
     <script>
+        let d = document.querySelector(".d");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                d.innerHTML = ""
+                d.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <li style="font-size: 1.5rem;">Play and Win</li>
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <a href="index.html" style="margin:0px;">
+                    <li class="game">Home</li>
+                </a>
+                <a href="Guess and Win.html" style="margin:0px;">
+                    <li class="game">Guess and Win</li>
+                </a>
+                <a href="Calculate and Win.html">
+                    <li class="game">Calculate and Win</li>
+                </a>
+                <a href="Unscramble and Win.html">
+                    <li class="game">Unscramble and Win</li>
+                </a>
+                <a href="Signin.html">
+                    <li id="sign">Sign-In</li>
+                </a>
+            </ul>
+        </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                    }
+                })
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
+
         let user = document.querySelector("#user");
         let email = document.querySelector("#email");
         let password = document.querySelector("#password");
