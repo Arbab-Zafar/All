@@ -18,8 +18,7 @@
             background-size: cover;
             opacity: 1;
             margin-top: 0px;
-            /* height: 1280px;
-    width: 1390pxs; */
+            height: 560px;
         }
 
         /* Styling Nav and header */
@@ -196,34 +195,115 @@
         #ca {
             text-decoration: underline;
         }
+
+        @media only screen and (max-width: 800px) {
+
+            .newul {
+                list-style: none;
+                display: none;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .ul {
+                justify-content: space-between;
+                display: flex;
+                list-style: none;
+                margin-bottom: 0px;
+            }
+
+            #log {
+                position: relative;
+                left: 0px;
+            }
+
+            #sign {
+                position: relative;
+                left: 0px;
+            }
+
+            .game {
+                position: relative;
+                left: 0px;
+                font-size: 0.9rem;
+            }
+
+            #p {
+                display: none;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            body {
+                width: 98vw;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+                bottom: 8px;
+                height: 100vh;
+            }
+
+            nav {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: rgb(35, 33, 33);
+                margin: 0px;
+            }
+
+            .totalscore {
+                left: 116px;
+                position: relative;
+                bottom: 56px;
+            }
+
+            .gamearea3 {
+                /* left: 29px;
+                position: relative; */
+                left: 0px;
+                position: relative;
+                width: 98vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="nav">
-            <ul class="ul">
-                <a href="index.html">
-                    <!-- <li id="logo">Play and Win</li> -->
-                    <img src="PlayAndWin Logo.png" alt="" width="300">
-                </a>
-                <a href="Guess and Win.html">
-                    <li class="game">Guess and Win</li>
-                </a>
-                <a href="Calculate and Win.html">
-                    <li class="game" id="ca">Calculate and Win</li>
-                </a>
-                <a href="Unscramble and Win.html">
-                    <li class="game">Unscramble and Win</li>
-                </a>
-                <a href="Login.html">
-                    <li id="log">Log-In</li>
-                </a>
-                <a href="Signin.html">
-                    <li id="sign">Sign-In</li>
-                </a>
-            </ul>
-        </nav>
+        <div class="d">
+            <nav class="nav">
+                <ul class="ul">
+                    <a href="index.html">
+                        <!-- <li id="logo">Play and Win</li> -->
+                        <img src="PlayAndWin Logo.png" alt="" width="300">
+                    </a>
+                    <a href="Guess and Win.html">
+                        <li class="game">Guess and Win</li>
+                    </a>
+                    <a href="Calculate and Win.html">
+                        <li class="game" id="ca">Calculate and Win</li>
+                    </a>
+                    <a href="Unscramble and Win.html">
+                        <li class="game">Unscramble and Win</li>
+                    </a>
+                    <a href="Login.html">
+                        <li id="log">Log-In</li>
+                    </a>
+                    <a href="Signin.html">
+                        <li id="sign">Sign-In</li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <h1>Welcome to Calculate and Win</h1>
@@ -251,11 +331,59 @@
             </div>
         </div>
         <div class="totalscore">
-            <p id="totalscore"></p>
+            <p id="totalscore">5342434243</p>
         </div>
     </main>
     <script>
-        // console.log( Math.floor(Math.random() * (80 - 50 + 1)) + 50);
+        let dd = document.querySelector(".d");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                dd.innerHTML = ""
+                dd.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <li style="font-size: 1.5rem;">Play and Win</li>
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <a href="index.html">
+                    <li class="game">Home</li>
+                </a>
+                <a href="Guess and Win.html" style="margin:0px;">
+                    <li class="game">Guess and Win</li>
+                </a>
+                <a href="Unscramble and Win.html">
+                    <li class="game">Unscramble and Win</li>
+                </a>
+                <a href="Login.html">
+                    <li id="log">Log-In</li>
+                </a>
+                <a href="Signin.html">
+                    <li id="sign">Sign-In</li>
+                </a>
+            </ul>
+        </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                    }
+                })
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
+
+
         let a = Math.floor(Math.random() * (100 - 11 + 1)) + 11;
         let b = Math.floor(Math.random() * (10 - 2 + 1)) + 2;;
         // Variables of level 2
@@ -315,18 +443,18 @@
                     // When answer is correct
                     if (input.value == Math.floor(a1 / b)) {
                         para1.innerText = "Congratulations! You have passed the first level";
-                        gamearea3.style.left = "383px";
+                        // gamearea3.style.left = "383px";
                         para4.innerText = `Score : ${timeleft * 5}`;
                         let scores = timeleft * 5;
                         totalscore.innerText = `Total Score : ${scores}`
                         clearInterval(timer);
                         input.style.display = "none";
-                        hell.style.position = "relative";
-                        hell.style.bottom = "30px";
-                        gamearea.style.position = "relative";
-                        gamearea.style.bottom = "30px";
-                        gameareamain.style.position = "relative";
-                        gameareamain.style.bottom = "30px";
+                        // hell.style.position = "relative";
+                        // hell.style.bottom = "30px";
+                        // gamearea.style.position = "relative";
+                        // gamearea.style.bottom = "30px";
+                        // gameareamain.style.position = "relative";
+                        // gameareamain.style.bottom = "30px";
                         // Here is the next level(level 2 code)
                         setTimeout(() => {
                             marq.innerHTML = "Level 2";
@@ -335,9 +463,9 @@
                             para2.innerText = "";
                             para3.innerText = "";
                             para4.innerText = "";
-                            hell.style.top = "20px";
-                            gamearea.style.top = "20px";
-                            gameareamain.style.top = "20px";
+                            // hell.style.top = "20px";
+                            // gamearea.style.top = "20px";
+                            // gameareamain.style.top = "20px";
                             // Adding countdown in level 2
                             c1 = c;
                             let calc = document.querySelector(".calc");
@@ -368,20 +496,20 @@
                                     event.preventDefault()
                                     if (input1.value == Math.floor(c1 * d)) {
                                         para1.innerText = "Congratulations! You have passed the second level";
-                                        gamearea3.style.left = "383px";
+                                        // gamearea3.style.left = "383px";
                                         para4.innerText = `Score : ${timeleft * 5}`;
                                         let scores1 = timeleft * 5;
                                         totalscore.innerText = `Total Score : ${scores + scores1}`
                                         clearInterval(timer);
                                         input1.style.display = "none";
-                                        hell.style.position = "relative";
-                                        hell.style.top = "-30px";
-                                        gamearea.style.position = "relative";
-                                        gamearea.style.top = "-40px";
-                                        gameareamain.style.position = "relative";
-                                        gameareamain.style.top = "-40px";
-                                        input1.style.display = "none";
-                                        hhhhh.style.display = "none";
+                                        // hell.style.position = "relative";
+                                        // hell.style.top = "-30px";
+                                        // gamearea.style.position = "relative";
+                                        // gamearea.style.top = "-40px";
+                                        // gameareamain.style.position = "relative";
+                                        // gameareamain.style.top = "-40px";
+                                        // input1.style.display = "none";
+                                        // hhhhh.style.display = "none";
                                         // Here is the next level (level 3)
                                         setTimeout(() => {
                                             let hhhhh = document.querySelector(".hhhhh");
@@ -391,9 +519,9 @@
                                             para2.innerText = "";
                                             para3.innerText = "";
                                             para4.innerText = "";
-                                            hell.style.top = "20px";
-                                            gamearea.style.top = "20px";
-                                            gameareamain.style.top = "20px";
+                                            // hell.style.top = "20px";
+                                            // gamearea.style.top = "20px";
+                                            // gameareamain.style.top = "20px";
                                             // Adding countdown in level 2
                                             let calc = document.querySelector(".calc");
                                             calc.innerHTML = `${e} / ${t} * ${g} + ${f}`;
@@ -430,14 +558,14 @@
                                                         totalscore.innerText = `Total Score : ${scores + scores1 + scores2}`
                                                         clearInterval(timer);
                                                         input2.style.display = "none";
-                                                        hell.style.position = "relative";
-                                                        hell.style.top = "-30px";
-                                                        gamearea.style.position = "relative";
-                                                        gamearea.style.top = "-40px";
-                                                        gameareamain.style.position = "relative";
-                                                        gameareamain.style.top = "-40px";
-                                                        input2.style.display = "none";
-                                                        hhhhh.style.display = "none";
+                                                        // hell.style.position = "relative";
+                                                        // hell.style.top = "-30px";
+                                                        // gamearea.style.position = "relative";
+                                                        // gamearea.style.top = "-40px";
+                                                        // gameareamain.style.position = "relative";
+                                                        // gameareamain.style.top = "-40px";
+                                                        // input2.style.display = "none";
+                                                        // hhhhh.style.display = "none";
                                                         // Here is the next level (level 3)
 
                                                     }
@@ -445,13 +573,13 @@
                                                         para1.innerText = "You lose";
                                                         para4.innerText = `The answer was ${Math.floor(e / t) * g + f}`;
                                                         input2.style.display = "none";
-                                                        hell.style.position = "relative";
-                                                        hell.style.top = "-40px";
-                                                        gamearea.style.position = "relative";
-                                                        gamearea.style.top = "-40px";
-                                                        gameareamain.style.position = "relative";
-                                                        gameareamain.style.top = "-40px";
-                                                        gamearea3.style.left = "319px"
+                                                        // hell.style.position = "relative";
+                                                        // hell.style.top = "-40px";
+                                                        // gamearea.style.position = "relative";
+                                                        // gamearea.style.top = "-40px";
+                                                        // gameareamain.style.position = "relative";
+                                                        // gameareamain.style.top = "-40px";
+                                                        // gamearea3.style.left = "319px"
                                                         clearInterval(timer);
                                                     }
                                                 }
@@ -466,17 +594,17 @@
                                         para1.innerText = "You lose";
                                         para4.innerText = `The answer was ${c1 * d}`;
                                         input1.style.display = "none";
-                                        hell.style.position = "relative";
-                                        hell.style.top = "-28px"
-                                        hell.style.bottom = "30px";
-                                        gamearea.style.position = "relative";
-                                        gamearea.style.top = "0px"
-                                        gamearea.style.top = "-40px";
-                                        gameareamain.style.position = "relative";
-                                        gameareamain.style.top = "-40px";
-                                        gameareamain.style.top = "0px"
-                                        gamearea3.style.left = "319px"
-                                        gamearea3.style.bottom = "57px"
+                                        // hell.style.position = "relative";
+                                        // hell.style.top = "-28px"
+                                        // hell.style.bottom = "30px";
+                                        // gamearea.style.position = "relative";
+                                        // gamearea.style.top = "0px"
+                                        // gamearea.style.top = "-40px";
+                                        // gameareamain.style.position = "relative";
+                                        // gameareamain.style.top = "-40px";
+                                        // gameareamain.style.top = "0px"
+                                        // gamearea3.style.left = "319px"
+                                        // gamearea3.style.bottom = "57px"
                                         clearInterval(timer);
                                     }
                                 }
@@ -485,20 +613,20 @@
                                 }
                             }
                             )
-                        }, 3000);
+                        }, 50000);
                     }
                     // Here is the else satement for level 1
                     else {
                         para1.innerText = "You lose";
                         para4.innerText = `The answer was ${Math.floor(a1 / b)}`;
                         input.style.display = "none";
-                        hell.style.position = "relative";
-                        hell.style.bottom = "20px";
-                        gamearea.style.position = "relative";
-                        gamearea.style.bottom = "20px";
-                        gameareamain.style.position = "relative";
-                        gameareamain.style.bottom = "20px";
-                        gamearea3.style.left = "319px";
+                        // hell.style.position = "relative";
+                        // hell.style.bottom = "20px";
+                        // gamearea.style.position = "relative";
+                        // gamearea.style.bottom = "20px";
+                        // gameareamain.style.position = "relative";
+                        // gameareamain.style.bottom = "20px";
+                        // gamearea3.style.left = "319px";
                         clearInterval(timer);
                     }
 
