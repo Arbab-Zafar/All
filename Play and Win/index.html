@@ -223,7 +223,6 @@
                 margin: 0px;
             }
         }
-
     </style>
 </head>
 
@@ -263,13 +262,7 @@
                 <div class="first">
                     <h2>Guess and Win</h2>
                     <h3> About the game :-</h3>
-                    <p>To play this game press <kbd>CTRL</kbd><kbd>+</kbd><kbd>SHIFT</kbd><kbd>+</kbd><Kbd>I</Kbd>
-                        The game will generate a random number.<br><br>You have to guess the number in the given chances
-                        given according to the amount paid.<br><br>If you guess the number in the given chances then you
-                        will
-                        win.<br><br><u>Note:</u>If "You are close" displays then the random number is within the range
-                        of 3
-                    </p>
+                    <p>The game will generate a random number.<br><br>You have to guess the number in the given chances (the chances are given randomly) given according to the amount paid.<br><br>If you guess the number in the given chances then you will win.<br><br><u>Note:</u>If "You are close" displays then the random number is within the range of 3 </p>
                     <h3>The price, chances and winning amount:-</h3>
                     <p>
                         Give 1 rupee and get 4, 5 or 6 chances. If won - 2 rupees!<br><br>
@@ -356,21 +349,22 @@
                 </a>
             </ul>
         </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                    }
+                })
             }
         }
 
         var x = window.matchMedia("(max-width: 800px)")
         myFunction(x) // Call listener function at run time
         x.addListener(myFunction) // Attach listener function on state changes
-        let svg = document.querySelector("#svg");
-        svg.addEventListener("click", function () {
-            if (document.querySelector(".newul").style.display == "none") {
-                document.querySelector(".newul").style.display = "flex";
-            }
-            else {
-                document.querySelector(".newul").style.display = "none";
-            }
-        })
+
     </script>
 
 </body>
