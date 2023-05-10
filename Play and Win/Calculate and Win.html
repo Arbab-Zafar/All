@@ -287,7 +287,7 @@
             background-color: #fff;
             color: grey;
             outline: none;
-            top: calc(60vh - 63px);
+            top: calc(50vh - 63px);
             left: calc(40vw - 63px);
         }
 
@@ -385,6 +385,11 @@
         let totalscore = document.querySelector("#totalscore");
         let dd = document.querySelector(".d");
         let hell = document.querySelector(".f");
+        let audio1 = new Audio("1 second music.mp3");
+        let audio2 = new Audio("win audio.mp3");
+        let audio3 = new Audio("lose audio.mp3");
+        let audio4 = new Audio("Countdown.mp3");
+        let audio5 = new Audio("clock ticking.mp3");
         console.log(a, b, c, d, e, t, g, f)
 
         function myFunction(x) {
@@ -435,6 +440,9 @@
 
         function readyTimer() {
             let timeleft = 4;
+            setTimeout(() => {
+                audio4.play()
+            }, 1000);
             let timer = setInterval(() => {
                 console.log(timeleft)
                 if (timeleft == 0) {
@@ -443,7 +451,7 @@
                     firstLevel()
                 }
                 else if (timeleft == 1) {
-                    hell.innerHTML = `GO! GO! GO!`;
+                    hell.innerHTML = `GO!`;
                     timeleft = timeleft - 1;
                 }
                 else if (timeleft > 0) {
@@ -455,8 +463,14 @@
 
         let startBtn = document.querySelector("#btn");
         btn.addEventListener("click", function () {
-            btn.style.display = "none";
-            readyTimer()
+            if (btn.innerText == "Restart") {
+                location.reload()
+                readyTimer()
+            }
+            else {
+                btn.style.display = "none";
+                readyTimer()
+            }
         })
 
         function firstLevel() {
@@ -480,6 +494,7 @@
                     if (timeleft == 0) {
                         clearInterval(timer);
                         para1.innerText = "Oops! Time is over";
+                        audio3.play()
                         para4.innerText = `The answer was ${Math.floor(a1 / b)}`;
                         input.style.display = "none";
                     }
@@ -489,12 +504,15 @@
                     }
 
                 }, 1000);
+                audio5.play()
                 input.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
                         event.preventDefault()
                         // When answer is correct
                         if (input.value == Math.floor(a1 / b)) {
                             para1.innerText = "Congratulations! You have passed the first level";
+                            audio5.pause()
+                            audio1.play()
                             // gamearea3.style.left = "383px";
                             para4.innerText = `Score : ${timeleft * 5}`;
                             window.scores = timeleft * 5;
@@ -513,8 +531,12 @@
                         // Here is the else satement for level 1
                         else {
                             para1.innerText = "You lose";
+                            audio5.pause()
+                            audio3.play()
                             para4.innerText = `The answer was ${Math.floor(a1 / b)}`;
                             input.style.display = "none";
+                            startBtn.innerText = "Restart";
+                            startBtn.style.display = "block";
                             // hell.style.position = "relative";
                             // hell.style.bottom = "20px";
                             // gamearea.style.position = "relative";
@@ -557,6 +579,7 @@
                     if (timeleft == 0) {
                         clearInterval(timer);
                         para1.innerText = "Oops! Time is over";
+                        audio3.play()
                         para4.innerText = `The answer was ${Math.floor(c1 * d)}`;
                         input1.style.display = "none";
                     }
@@ -565,11 +588,15 @@
                         timeleft = timeleft - 1;
                     }
                 }, 1000);
+                audio5.play()
                 // Adding enter event on input
                 input1.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
+
                         event.preventDefault()
                         if (input1.value == Math.floor(c1 * d)) {
+                            audio5.pause()
+                            audio1.play()
                             para1.innerText = "Congratulations! You have passed the second level";
                             // gamearea3.style.left = "383px";
                             window.scores1 = timeleft * 5;
@@ -590,8 +617,13 @@
                         }
                         else {
                             para1.innerText = "You lose";
-                            para4.innerText = `The answer was ${Math.floor(c1 / d)}`;
+                            audio5.pause()
+                            audio3.play()
+                            para4.innerText = `The answer was ${Math.floor(c1 * d)}`;
                             input1.style.display = "none";
+                            startBtn.innerText = "Restart";
+                            startBtn.style.display = "block";
+                            clearInterval(timer);
                             // hell.style.position = "relative";
                             // hell.style.bottom = "20px";
                             // gamearea.style.position = "relative";
@@ -599,7 +631,6 @@
                             // gameareamain.style.position = "relative";
                             // gameareamain.style.bottom = "20px";
                             // gamearea3.style.left = "319px";
-                            clearInterval(timer);
                         }
                     }
                 }
@@ -634,6 +665,7 @@
                     if (timeleft == 0) {
                         clearInterval(timer);
                         para1.innerText = "Oops! Time is over";
+                        audio3.play()
                         para4.innerText = `The answer was ${Math.floor(e / t) * g + f}`;
                         input2.style.display = "none";
                     }
@@ -643,21 +675,31 @@
                     }
 
                 }, 1000);
+                audio5.play()
                 // Adding enter event on input
                 input2.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
                         event.preventDefault()
                         if (input2.value == Math.floor(e / t) * g + f) {
+                            audio5.pause()
+                            audio2.play()
                             para1.innerText = "Congratulations! You have passed the third level";
-                            gamearea3.style.left = "383px";
+                            // gamearea3.style.left = "0px";
+                            // document.querySelector(".gamearea1").style.marginLeft = "0px";
                             window.scores2 = timeleft * 5;
                             para4.innerText = `Score : ${window.scores2}`;
                             totalscore.innerText = `Total Score : ${window.scores + window.scores1 + window.scores2}`
+                            let gfh = window.scores + window.scores1 + window.scores2;
                             clearInterval(timer);
                             input2.style.display = "none";
+                            if (gfh >= 80) {
+                                alert("hrfyuryfty7etfyuy")
+                                hell.innerText = `Your total sore is greater or equal to 80 so you can colledt the prize!`
+                            }
                             // hell.style.position = "relative";
                             // hell.style.top = "-30px";
                             // gamearea.style.position = "relative";
+                            para2.innerText = "";
                             // gamearea.style.top = "-40px";
                             // gameareamain.style.position = "relative";
                             // gameareamain.style.top = "-40px";
@@ -667,25 +709,27 @@
                             input2.style.display = "none";
                             hhhhh.style.display = "flex";
                             marq.innerHTML = "";
-                            para1.innerText = "";
-                            para2.innerText = "";
-                            para3.innerText = "";
-                            para4.innerText = "";
-                            hell.innerHTML = "";
+                            // para1.innerText = "";
+                            // para2.innerText = "";
+                            // para4.innerText = "";
+                            // hell.innerHTML = "";
                             calc.innerHTML = "";
+                            startBtn.innerText = "Restart";
                             startBtn.style.display = "block";
-                            alert("You have the game! PLease collect the prize!");
                         }
                         else {
                             para1.innerText = "You lose";
+                            audio5.currentTime = 0;
+                            audio5.pause()
+                            audio3.play()
                             para4.innerText = `The answer was ${Math.floor(e / t) * g + f}`;
                             input2.style.display = "none";
                             hhhhh.style.display = "flex";
                             marq.innerHTML = "";
-                            para1.innerText = "";
+                            // para1.innerText = "";
                             para2.innerText = "";
                             para3.innerText = "";
-                            para4.innerText = "";
+                            // para4.innerText = "";
                             hell.innerHTML = "";
                             calc.innerHTML = "";
                             // hell.style.position = "relative";
@@ -696,6 +740,7 @@
                             // gameareamain.style.top = "-40px";
                             // gamearea3.style.left = "319px"
                             clearInterval(timer);
+                            startBtn.innerHTML = "Restart";
                             startBtn.style.display = "block";
                         }
                     }
