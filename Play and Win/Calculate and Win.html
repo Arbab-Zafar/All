@@ -190,7 +190,7 @@
             bottom: 376px;
             left: 52px;
             font-size: 23px;
-            color: #22c722;
+            color: #7822c7;
         }
 
         #ca {
@@ -258,7 +258,8 @@
             .totalscore {
                 left: 116px;
                 position: relative;
-                bottom: 56px;
+                bottom: 126px;
+                font-size: 0.9rem;
             }
 
             .gamearea3 {
@@ -299,6 +300,25 @@
         main {
             overflow: hidden;
             height: 560px;
+        }
+
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -360,6 +380,11 @@
             <p id="totalscore">Total Score:0</p>
         </div>
         <button id="btn">Start</button>
+        <div class="outer-watermark-div">
+            <div class="inner-watermark-div">
+                <img src="WaterMark-2.png" alt="" width="200">
+            </div>
+        </div>
     </main>
     <script>
         let a = Math.floor(Math.random() * (100 - 11 + 1)) + 11;
@@ -693,7 +718,6 @@
                             clearInterval(timer);
                             input2.style.display = "none";
                             if (gfh >= 80) {
-                                alert("hrfyuryfty7etfyuy")
                                 hell.innerText = `Your total sore is greater or equal to 80 so you can colledt the prize!`
                             }
                             // hell.style.position = "relative";
@@ -714,6 +738,9 @@
                             // para4.innerText = "";
                             // hell.innerHTML = "";
                             calc.innerHTML = "";
+                            if (x.matches) {
+                                startBtn.style.top = "calc(41vh - 63px)";
+                            }
                             startBtn.innerText = "Restart";
                             startBtn.style.display = "block";
                         }
@@ -740,6 +767,9 @@
                             // gameareamain.style.top = "-40px";
                             // gamearea3.style.left = "319px"
                             clearInterval(timer);
+                            if (x.matches) {
+                                startBtn.style.top = "calc(41vh - 63px)";
+                            }
                             startBtn.innerHTML = "Restart";
                             startBtn.style.display = "block";
                         }
