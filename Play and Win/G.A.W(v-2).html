@@ -161,16 +161,18 @@
             left: 795px;
             display: inline-block;
             cursor: pointer;
+            display: none;
         }
 
         .showPoints {
-            position: relative;
-            bottom: 270px;
-            left: 844px;
+            position: absolute;
+            bottom: 430px;
+            left: 889px;
             outline: none;
             border: 0.5px solid black;
             border-radius: 4px;
             cursor: pointer;
+            display: none;
         }
 
         .hint {
@@ -542,6 +544,7 @@
         let a = Math.random() * 100
         a = Number.parseInt(a);
         couponsDiv.addEventListener("click", function () {
+            audio1.play()
             let html = `<div class="coupons">
                 <div>
         <h3>Coupons</h3>
@@ -645,6 +648,7 @@
         });
 
         couponsPremiumDiv.addEventListener("click", function () {
+            audio2.play()
             let html = `<div class="coupons">
                 <div>
             <h3>Coupons-Premium</h3>
@@ -797,7 +801,7 @@
             let d = 5;
             let e = 6;
             let f = 0;
-            let z = 31082009;
+            let z = 31;
             let id = Math.floor(Math.random() * 10000);
             // let cpu = Math.floor(Math.random() * 3);
             let cpu5 = 5;
@@ -816,6 +820,10 @@
             let info5 = document.querySelector("#info5");
             let entersent = document.querySelector("#entersent");
             let extrainfo = document.querySelector(".extrainfo");
+            let audio1 = new Audio("1 second music.mp3");
+            let audio2 = new Audio("punch(musicEffect).mp3");
+            let audio3 = new Audio("win audio.mp3");
+            let audio4 = new Audio("lose audio.mp3");
             input1.focus();
             console.log(cpu1);
             //Lifeline 
@@ -824,6 +832,7 @@
                 lifeline.style.display = "none";
                 let conf = confirm("Are you sure to use the lifeline??")
                 if (conf) {
+                    audio1.play()
                     let numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10]
                     if (a % numbers[8] == 0) {
                         wordd = `The number is divisible by ${numbers[8]}`
@@ -884,6 +893,8 @@
                 entersent.innerText = "Enter a no. between 0 to 100:"
                 input3.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
+                        audio1.currentTime = 0;
+                        audio1.play()
                         c = c - 1;
                         score = score - 1
                         event.preventDefault();
@@ -893,6 +904,8 @@
 
                             p20.innerText = `${input3.value}`
                             if (input3.value == a) {
+                                audio3.currentTime = 0;
+                                audio3.play()
                                 info1.innerText = "Congratulations!";
                                 clearTimeout();
                                 input3.style.display = "none"
@@ -905,7 +918,7 @@
                             }
                             else if (c == 0) {
                                 info1.innerText = "Chances are over!"
-                                info1.innerText = "Chances are over!"
+                                audio4.play()
                                 input3.style.display = "none"
                                 input3.value = "";
                                 let p28 = document.createElement("p")
@@ -987,6 +1000,8 @@
                 entersent.innerText = "Enter a no. between 0 to 100:"
                 input3.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
+                        audio1.currentTime = 0;
+                        audio1.play()
                         d = d - 1;
                         score = score - 1
                         event.preventDefault();
@@ -998,6 +1013,8 @@
 
 
                             if (input3.value == a) {
+                                audio3.currentTime = 0;
+                                audio3.play()
                                 info1.innerText = "Congratulations!";
                                 personincre(input2.value)
                                 input3.style.display = "none"
@@ -1010,6 +1027,7 @@
                             }
                             else if (d == 0) {
                                 info1.innerText = "Chances are over!"
+                                audio4.play()
                                 persondecre(input2.value)
                                 input3.style.display = "none"
                                 input3.value = "";
@@ -1091,17 +1109,18 @@
                 entersent.innerText = "Enter a no. between 0 to 100:"
                 input3.addEventListener("keypress", (event) => {
                     if (event.keyCode === 13) {
+                        audio1.currentTime = 0;
+                        audio1.play()
                         e = e - 1;
                         score = score - 1
                         event.preventDefault();
                         if (input3.value >= 0) {
                             let p20 = document.createElement("p")
                             information.appendChild(p20);
-
                             p20.innerText = `${input3.value}`
-
-
                             if (input3.value == a) {
+                                audio3.currentTime = 0;
+                                audio3.play()
                                 info1.innerText = "Congratulations!";
                                 personincre(input2.value)
                                 input3.style.display = "none"
@@ -1114,6 +1133,7 @@
                             }
                             else if (e == 0) {
                                 info1.innerText = "Chances are over!"
+                                audio4.play()
                                 persondecre(input2.value)
                                 input3.style.display = "none"
                                 input3.value = "";
@@ -1210,8 +1230,12 @@
             }
             input1.addEventListener("keypress", (event) => {
                 if (event.keyCode === 13) {
+                    audio2.currentTime = 0;
+                    audio2.play()
                     event.preventDefault();
                     if (input1.value == z) {
+                        document.querySelector(".lifeline").style.display = "inline-block";
+                        showpoints.style.display = "block";
                         input1.style.display = "none";
                         couponsDiv.style.display = "none";
                         couponsPremiumDiv.style.display = "none"
@@ -1224,148 +1248,150 @@
 
                         input2.addEventListener("keypress", (event) => {
                             if (event.keyCode === 13) {
+                                audio2.currentTime = 0;
+                                audio2.play()
                                 event.preventDefault();
                                 if (input2.value == 1) {
                                     logic(input2, 2, cpu1);
-                                    if (x.matches) {
-                                        showpoints.style.bottom = "57px"
-                                        lifeline.style.top = "-50px";
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "57px"
-                                    }
+                                //     if (x.matches) {
+                                //         showpoints.style.bottom = "57px"
+                                //         lifeline.style.top = "-50px";
+                                //     }
+                                //     else {
+                                //         lifeline.style.top = "-200px";
+                                //         lifeline.style.position = "relative";
+                                //         showpoints.style.bottom = "57px"
+                                //     }
                                 }
                                 else if (input2.value == 2) {
                                     logic(input2, 3, cpu1)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "366px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "57px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143px";
                                 }
                                 else if (input2.value == 3) {
                                     logic(input2, 4, cpu1)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "366px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "57px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143px";
                                 }
                                 else if (input2.value == 4) {
                                     logic(input2, 6, cpu5)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143px";
                                 }
                                 else if (input2.value == 5) {
                                     logic(input2, 8, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143px";
                                 }
                                 else if (input2.value == 6) {
                                     logic(input2, 1, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143";
                                 }
                                 else if (input2.value == 7) {
                                     logic(input2, 1, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143";
                                 }
                                 else if (input2.value == 8) {
                                     logic(input2, 1, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143";
                                 }
                                 else if (input2.value == 9) {
                                     logic(input2, 1, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
 
                                 }
                                 else if (input2.value == 10) {
                                     logic(input2, 17, cpu3)
-                                    if (x.matches) {
-                                        lifeline.style.top = "-50px";
-                                        showpoints.style.bottom = "57px"
-                                    }
-                                    else {
-                                        lifeline.style.top = "-200px";
-                                        lifeline.style.position = "relative";
-                                        showpoints.style.bottom = "366px"
-                                    }
+                                    // if (x.matches) {
+                                    //     lifeline.style.top = "-50px";
+                                    //     showpoints.style.bottom = "57px"
+                                    // }
+                                    // else {
+                                    //     lifeline.style.top = "-200px";
+                                    //     lifeline.style.position = "relative";
+                                    //     showpoints.style.bottom = "366px"
+                                    // }
                                     hint.style.position = "relative";
                                     hint.style.left = "642px";
                                     hint.style.top = "-143";
