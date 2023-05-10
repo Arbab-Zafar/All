@@ -166,7 +166,7 @@
         .showPoints {
             position: absolute;
             bottom: 430px;
-            left: 889px;
+            left: 970px;
             outline: none;
             display: none;
             border: 0.5px solid black;
@@ -352,14 +352,17 @@
 
             .lifeline {
                 position: relative;
-                bottom: 76px;
-                left: 5px;
+                top: -49px;
+                left: 121px;
             }
 
             .showPoints {
+                /* position: absolute;
+                bottom: 1051px;
+                left: 7px; */
                 position: relative;
-                bottom: 57px;
-                left: -21px;
+                bottom: 76px;
+                left: 5px;
             }
 
             h1 {
@@ -416,6 +419,23 @@
             .radios {
                 font-size: 10px;
             }
+        }
+        .outer-watermark-div{
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+        .inner-watermark-div{
+            display: flex;
+            justify-content: center;
+            align-items: center;   
         }
     </style>
 </head>
@@ -485,10 +505,13 @@
     <footer>
         <div class="couponsDiv">Coupons</div>
         <div class="couponsPremiumDiv">Coupons-Premium</div>
-
     </footer>
+    <div class="outer-watermark-div">
+        <div class="inner-watermark-div">
+            <img src="WaterMark-2.png" alt="" width="200">
+        </div>
+    </div>
     <script>
-        // whichVersion()
         let version = prompt("Enter the version:");
         console.log(version, typeof (version))
         let firstVersion = "1.0.00";//actual thi sone with names!!
