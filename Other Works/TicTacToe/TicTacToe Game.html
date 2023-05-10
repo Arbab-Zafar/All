@@ -239,6 +239,62 @@
             display: none;
             transition: width ease-out 1s;
         }
+
+        @media only screen and (max-width: 800px) {
+            .mainbox {
+                grid-template-columns: repeat(3, 18vh);
+                grid-template-rows: repeat(3, 21vh);
+                margin: 20px 10px;
+            }
+
+            .oscore {
+                position: relative;
+                top: -5px;
+                right: 113px;
+            }
+
+            .xscore {
+                position: relative;
+                top: 30px;
+                right: 176px;
+            }
+
+            #p {
+                position: relative;
+                top: 13px;
+                right: -193px;
+            }
+
+            #wel {
+                display: none;
+            }
+
+            #winGif {
+                position: relative;
+                bottom: -49px;
+                left: 20px;
+                width: 67px;
+            }
+        }
+
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -250,7 +306,7 @@
     </header>
     <main>
         <div class="gameinfo">
-            <p style="margin-top:20px ;">Welcome to my TICTACTOE game</p>
+            <p style="margin-top:20px ;" id="wel">Welcome to my TICTACTOE game</p>
         </div>
         <div class="m">
             <div class="popupdiv">
@@ -287,6 +343,11 @@
         <p class="xscore prevent-select">X : 0</p>
         <button id="restart">Restart</button>
         <img src="win gif.gif" alt="" id="winGif">
+        <div class="outer-watermark-div">
+            <div class="inner-watermark-div">
+                <img src="WaterMark-2.png" alt="" width="200">
+            </div>
+        </div>
     </main>
     <script>
         window.turn = "X";
