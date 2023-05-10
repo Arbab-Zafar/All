@@ -223,6 +223,24 @@
                 margin: 0px;
             }
         }
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -314,6 +332,11 @@
             </div>
             <div class="footer">
                 <p id="copyright">Copyright &copy; Play and Win</p>
+            </div>
+        </div>
+        <div class="outer-watermark-div">
+            <div class="inner-watermark-div">
+                <img src="WaterMark-2.png" alt="" width="200">
             </div>
         </div>
     </main>
