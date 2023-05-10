@@ -418,6 +418,25 @@
                 font-size: 10px;
             }
         }
+
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -479,8 +498,12 @@
     <footer>
         <div class="couponsDiv">Coupons</div>
         <div class="couponsPremiumDiv">Coupons-Premium</div>
-
     </footer>
+    <div class="outer-watermark-div">
+        <div class="inner-watermark-div">
+            <img src="WaterMark-2.png" alt="" width="200">
+        </div>
+    </div>
     <script>
         let d = document.querySelector(".d");
         function myFunction(x) {
@@ -1252,15 +1275,15 @@
                                 event.preventDefault();
                                 if (input2.value == 1) {
                                     logic(input2, 2, cpu1);
-                                //     if (x.matches) {
-                                //         showpoints.style.bottom = "57px"
-                                //         lifeline.style.top = "-50px";
-                                //     }
-                                //     else {
-                                //         lifeline.style.top = "-200px";
-                                //         lifeline.style.position = "relative";
-                                //         showpoints.style.bottom = "57px"
-                                //     }
+                                    //     if (x.matches) {
+                                    //         showpoints.style.bottom = "57px"
+                                    //         lifeline.style.top = "-50px";
+                                    //     }
+                                    //     else {
+                                    //         lifeline.style.top = "-200px";
+                                    //         lifeline.style.position = "relative";
+                                    //         showpoints.style.bottom = "57px"
+                                    //     }
                                 }
                                 else if (input2.value == 2) {
                                     logic(input2, 3, cpu1)
