@@ -167,7 +167,7 @@
             left: 337px;
             display: inline-block;
             font-size: 24px;
-            bottom: 10px;
+            bottom: 40px;
         }
 
         #marq {
@@ -229,7 +229,6 @@
                 font-size: 0.9rem;
             }
 
-
             #p {
                 display: none;
             }
@@ -265,8 +264,9 @@
             .gamearea3 {
                 /* left: 29px;
                 position: relative; */
-                left: 0px;
                 position: relative;
+                bottom: 40px;
+                left: 0px;
                 width: 98vw;
                 display: flex;
                 justify-content: center;
@@ -522,6 +522,7 @@
                         audio3.play()
                         para4.innerText = `The answer was ${Math.floor(a1 / b)}`;
                         input.style.display = "none";
+                        audio5.pause()
                     }
                     if (timeleft != 0) {
                         hell.innerHTML = `Timeleft : ${timeleft - 1} seconds`;
@@ -605,6 +606,7 @@
                         clearInterval(timer);
                         para1.innerText = "Oops! Time is over";
                         audio3.play()
+                        audio5.pause()
                         para4.innerText = `The answer was ${Math.floor(c1 * d)}`;
                         input1.style.display = "none";
                     }
@@ -691,6 +693,7 @@
                         clearInterval(timer);
                         para1.innerText = "Oops! Time is over";
                         audio3.play()
+                        audio5.pause()
                         para4.innerText = `The answer was ${Math.floor(e / t) * g + f}`;
                         input2.style.display = "none";
                     }
