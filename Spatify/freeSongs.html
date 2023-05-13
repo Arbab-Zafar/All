@@ -35,7 +35,6 @@
 
         .navbar img {
             margin: 10px;
-            width: 15vw;
         }
 
         .background {
@@ -101,8 +100,10 @@
 
 
         #search {
-            height: 6vh;
-            width: 22vw;
+            /* height: 6vh;
+            width: 22vw; */
+            height: 32px;
+            width: 300px;
             border-radius: 5px;
             border: 1px solid black;
             padding: 0px 15px 0px 15px;
@@ -156,12 +157,194 @@
         span {
             margin: 10px;
         }
+
+        svg {
+            color: white;
+        }
+
+        #gh {
+            margin-right: 337px;
+            display: flex;
+            align-items: center;
+        }
+
+        #jhg {
+            margin-right: 224px;
+            display: flex;
+            align-items: center;
+        }
+
+        .divv {
+            float: left;
+            margin-right: 43px;
+            margin-left: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        #jk {
+            float: right;
+            display: flex;
+            align-items: center;
+        }
+
+        #jk span {
+            margin: 2px;
+        }
+
+        @media only screen and (max-width: 800px) {
+
+            .newul {
+                list-style: none;
+                display: none;
+                width: 100%;
+                align-items: center;
+                flex-direction: column;
+                position: absolute;
+                top: 63px;
+                margin-top: 10px;
+            }
+
+            .ul {
+                justify-content: space-between;
+                width: 95%;
+                display: flex;
+                list-style: none;
+                align-items: center;
+                margin-bottom: 0px;
+                position: absolute;
+                top: 0;
+            }
+
+            .n {
+                width: 100%;
+            }
+
+            svg {
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            .navbar {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: black;
+                margin: 0px;
+                width: 100%;
+                height: 13vh;
+            }
+
+            .aDiv:hover {
+                background-color: black;
+            }
+
+            .aDiv {
+                width: 40vw;
+                height: 5vh;
+            }
+
+            .background {
+                width: 95%;
+                height: 100%;
+                background-size: cover;
+            }
+
+            .songItem {
+                margin: 10px;
+                width: auto;
+            }
+
+            .songName {
+                font-size: 0.76rem;
+            }
+
+            .coverImage {
+                width: 20px;
+            }
+
+            #progressBar {
+                position: absolute;
+                top: 9px;
+            }
+
+            .divv,
+            #musicPlayingName {
+                font-size: 0.75rem;
+            }
+
+            #musicPlayingName {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #gh {
+                display: flex;
+                position: absolute;
+                align-items: center;
+                margin-right: 0px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            #jhg {
+                margin-right: 0px;
+                position: absolute;
+                width: 95vw;
+                left: 5px;
+                bottom: 43px;
+            }
+
+            .divv {
+                display: flex;
+                align-items: center;
+                float: right;
+            }
+
+            #autoPlaySpan {
+                color: black;
+                width: 60px;
+            }
+
+            #jk {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                right: 15px;
+                font-size: 0.75rem;
+                top: 26px;
+            }
+        }
+
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="navbar">
-        <img src="Images/SpatifyLogo (2).png" alt="" id="logoImage">
+        <img src="Images/SpatifyLogo (2).png" alt="" id="logoImage" style="cursor: pointer;" width="200">
         <div class="aDiv" style="background-color: #3c3636;">
             <a style="font-size: 1.17rem;text-decoration: none;color: white;" href="freeSongs.html">Free Songs</a>
         </div>
@@ -178,7 +361,11 @@
     </div>
     <div class="freeTime">
         <span style="font-size: 1rem;color: black;">Free Time</span>
-        <span id="freeTimeLeft" style="font-size: 1rem;"></span>
+        <span id="freeTimeLeft" style="font-size: 1rem;color: black;"></span>
+    </div>
+    <div class="divv">
+        <span id="autoPlaySpan" style="margin-right: 10px;">Auto Play:</span>
+        <i class="fa-solid fa-toggle-off fa-2xl" id="autoPlay" style="color: #000000;"></i>
     </div>
     <div class="background">
         <h2 style="margin:15px 10px 20px 30px;">Free Songs</h2>
@@ -196,20 +383,20 @@
     <div class="bottom">
         <input type="range" name="range" min="0" max="100" id="progressBar" value="0"><br>
         <div class="operations">
-            <div style="float: left;margin-right: 43px;margin-left: 25px;display: flex;align-items: center;" id="divv">
+            <div class="divv">
                 <span id="autoPlaySpan" style="margin-right: 10px;">Auto Play:</span>
-                <i class="fa-solid fa-toggle-off fa-2xl" id="autoPlay"></i>
+                <i class="fa-solid fa-toggle-off fa-2xl" id="autoPlay" style="color: #000000;"></i>
             </div>
-            <div style="margin-right: 224px;display: flex;align-items: center;">
+            <div id="jhg">
                 <img src=" Images/musicPlaying.gif" alt="" width="50" id="gif">
                 <span id="musicPlayingName">Sanam Re</span>
             </div>
-            <div style="margin-right: 337px;display: flex;align-items: center;">
+            <div id="gh">
                 <i class=" fa-solid fa-backward fa-2xl icon" id="backward"></i>
                 <i class="fa-solid fa-play fa-2xl icon" id="masterPlay"></i>
                 <i class="fa-solid fa-forward fa-2xl icon" id="forward"></i>
             </div>
-            <div style="float: right;display: flex;align-items: center;">
+            <div id="jk">
                 <span id="songCurrentTime"></span>
                 <span id="songLength"></span>
             </div>
@@ -217,10 +404,73 @@
     </div>
     <script src="https://kit.fontawesome.com/84df3e5878.js" crossorigin="anonymous"></script>
     <script>
+        let navbar = document.querySelector(".navbar");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                navbar.innerHTML = ""
+                navbar.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <img src="Images/SpatifyLogo (2).png" alt="" width="200" id="logoImage" style="cursor: pointer;">
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" style="fill:#ffff" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="index.html">Home</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="create.html">Create</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="price.html">Price</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="contact.html">Contact</a>
+        </div>
+        <input type="search" id="search" placeholder="Search by name..">
+            </ul>
+        </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".navbar").style.height = "39vh";
+                        document.querySelector(".newul").style.display = "flex";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                        document.querySelector(".navbar").style.height = "13vh";
+                    }
+                })
+                let icons = document.querySelectorAll(".icon");
+                Array.from(icons).forEach(function (element, index) {
+                    element.classList.remove("fa-2xl");
+                    element.classList.add("fa-xl");
+                })
+                document.querySelectorAll(".divv")[1].style.display = "none";
+                document.querySelectorAll(".divv")[0].style.display = "flex";
+            }
+            else {
+                document.querySelectorAll(".divv")[0].style.display = "none";
+                document.querySelectorAll(".divv")[1].style.display = "flex";
+                document.querySelectorAll(".divv")[1].innerHTML = "";
+                document.querySelectorAll(".divv")[1].innerHTML = `<span id="autoPlaySpan" style="margin-right: 10px;">Auto Play:</span>
+                <i class="fa-solid fa-toggle-off fa-2xl" id="autoPlay" style="color: white;"></i>`;
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
         document.querySelector("#logoImage").addEventListener("click", function () {
             let url = "index.html"
             window.open(url, "_self")
         })
+
+
         window.audioElement = new Audio("Songs/Sanam Re.mp3");
         let masterPlay = document.querySelector("#masterPlay");
         let progressBar = document.querySelector("#progressBar");
@@ -230,10 +480,10 @@
         let songCurrentTime = document.querySelector("#songCurrentTime");
         let autoPlay = document.querySelector("#autoPlay");
         let search = document.querySelector("#search");
-        let divv = document.querySelector("#divv")
+        let divv = document.querySelectorAll(".divv")
         let freeTimeLeft = document.querySelector("#freeTimeLeft");
         let playIcon = document.querySelectorAll(".playIcon");
-        
+
         function timer() {
             let freeTime = 3599;//seconds 1 hr, 60X60s
             let dfg = setInterval(() => {
@@ -296,13 +546,13 @@
             document.querySelector(".songList").innerHTML += html;
         }
         let songItem = document.querySelectorAll(".songItem");
-        
+
         Array.from(songItem).forEach(function (element, index) {//for each song item
             element.getElementsByTagName("span")[0].innerHTML = songs[index].songName//song item ke span ko le lo i.e name of the song aur usko = kar do songs ke array[index] ke name ke with the help of index
             element.getElementsByTagName("img")[0].src = songs[index].coverPath//cover image
         });
-        
-        
+
+
         Array.from(document.querySelectorAll(".playIcon")).forEach(function (element, index) {//har song item ke play icon
             element.addEventListener("click", function () {
                 if (window.audioElement.paused || window.audioElement.currentTime <= 0) {//agar gaana ruka hua h ya phir start hi nahi hua
