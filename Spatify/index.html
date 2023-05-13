@@ -77,11 +77,12 @@
             display: inline-block;
         }
 
-        .background span {
+        .background a {
             position: relative;
             left: -257px;
             top: 270px;
             text-decoration: underline;
+            color: white;
         }
 
         #search {
@@ -107,12 +108,116 @@
         .aDiv:hover {
             background-color: #3c3636;
         }
+
+        @media only screen and (max-width: 800px) {
+
+            .newul {
+                list-style: none;
+                display: none;
+                width: 100%;
+                align-items: center;
+                flex-direction: column;
+                position: absolute;
+                top: 63px;
+                margin-top: 10px;
+            }
+
+            .ul {
+                justify-content: space-between;
+                width: 95%;
+                display: flex;
+                list-style: none;
+                align-items: center;
+                margin-bottom: 0px;
+                position: absolute;
+                top: 0;
+            }
+
+            .n {
+                width: 100%;
+            }
+
+            svg {
+                margin-top: 10px;
+            }
+
+            nav ul li {
+                color: white;
+                margin-bottom: 4px;
+            }
+
+            .navbar {
+                box-shadow: none;
+                border-bottom: 2px solid black;
+                background-color: black;
+                margin: 0px;
+                width: 100%;
+                height: 13vh;
+            }
+
+            .aDiv:hover {
+                background-color: black;
+            }
+
+            .background h2 {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                left: 0px;
+                top: 110px;
+            }
+            .background a {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                left: 0px;
+                top: 300px;
+            }
+            .background p {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                left: 0px;
+                top: 215px;
+                margin: 0px 10px 0px 20px;
+            }
+
+            .background {
+                width: 85%;
+                height: 100%;
+            }
+        }
+
+        svg {
+            color: white;
+        }
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="navbar">
-        <img src="Images/SpatifyLogo (2).png" alt="" width="200">
+        <img src="Images/SpatifyLogo (2).png" alt="" width="200" style="cursor: pointer;">
         <div class="aDiv">
             <a style="font-size: 17px;text-decoration: none;color: white;" href="freeSongs.html">Free
                 Songs</a>
@@ -132,11 +237,65 @@
         <div class="background">
             <h2 id="head">Welcome to Spatify</h2>
             <p>World's largest free album of over 1 million songs!</p>
-            <span>Try out some songs-</span>
+            <a href="freeSongs.html">Try out some songs-</a>
 
         </div>
     </div>
+    <div class="outer-watermark-div">
+        <div class="inner-watermark-div">
+            <img src="WaterMark-2.png" alt="" width="200">
+        </div>
+    </div>
     <script>
+        let navbar = document.querySelector(".navbar");
+        function myFunction(x) {
+            if (x.matches) { // If media query matches
+                navbar.innerHTML = ""
+                navbar.innerHTML = `<nav class="n">
+            <ul class="ul">
+                <img src="Images/SpatifyLogo (2).png" alt="" width="200" style="cursor: pointer;">
+                <li style="margin-right: 1vw;"><svg xmlns="http://www.w3.org/2000/svg" style="fill:#ffff" viewBox="0 0 50 50"
+                        width="30px" height="30px" id="svg">
+                        <path
+                            d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z" />
+                    </svg></li>
+            </ul>
+            <ul class="newul">
+                <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="freeSongs.html">Free
+                Songs</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="create.html">Create</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="price.html">Price</a>
+        </div>
+        <div class="aDiv">
+            <a style="font-size: 17px;text-decoration: none;color: white;" href="contact.html">Contact</a>
+        </div>
+        <input type="search" id="search" placeholder="Search by name..">
+            </ul>
+        </nav>`
+                let svg = document.querySelector("#svg");
+                svg.addEventListener("click", function () {
+                    if (document.querySelector(".newul").style.display == "none") {
+                        document.querySelector(".newul").style.display = "flex";
+                        document.querySelector(".navbar").style.height = "39vh";
+                    }
+                    else {
+                        document.querySelector(".newul").style.display = "none";
+                        document.querySelector(".navbar").style.height = "13vh";
+                    }
+                })
+            }
+        }
+
+        var x = window.matchMedia("(max-width: 800px)")
+        myFunction(x) // Call listener function at run time
+        x.addListener(myFunction) // Attach listener function on state changes
+
+
         let head = document.querySelector("#head");
         let i = 0;
         setInterval(() => {
