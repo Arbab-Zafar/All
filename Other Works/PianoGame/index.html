@@ -29,7 +29,7 @@
         }
 
         .grid {
-            background-color: red;
+            /* background-color: red; */
             width: 90%;
             height: 90%;
             display: grid;
@@ -129,6 +129,37 @@
             border: 3px solid yellow;
             cursor: pointer;
         }
+
+        @media only screen and (max-width: 800px) {
+            .mainDiv {
+                float: right;
+                width: 60vw;
+            }
+
+            .infoDiv {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: relative;
+            }
+
+            .grid {
+                width: 90%;
+                height: 90%;
+                display: grid;
+                grid-template-columns: repeat(5, 10.8vw);
+                grid-template-rows: repeat(4, 22.5vh);
+            }
+
+            #timePerTilesSpan,
+            #timer,
+            #expected,
+            #levelSpan {
+                font-size: 0.8rem;
+                margin: 10px 0px 10px 0px;
+            }
+        }
     </style>
 </head>
 
@@ -185,16 +216,26 @@
         let started = false;
         let startTimer = document.querySelector("#startTimer");
         let audio = new Audio("../TicTacToe/1 second music.mp3");
+        let x = window.matchMedia("(max-width: 800px)")
+
         restart.addEventListener("click", function () {
             location.reload();
         });
+        if (x.matches) {
+            document.querySelector(".infoDiv").style.bottom = "-250px";
+        }
         let i = 0;
         function stopGame() {
             if (!started) {
                 timePerTiles(stoped);
                 startButton.style.display = "none";
                 document.querySelector(".mainDiv").style.display = "none";
-                document.querySelector(".infoDiv").style.bottom = "0px";
+                if (x.matches) {
+                    document.querySelector(".infoDiv").style.bottom = "-250px";
+                }
+                else {
+                    document.querySelector(".infoDiv").style.bottom = "0px";
+                }
                 startTimer.style.display = "block";
                 let jhjh = setInterval(() => {
                     console.log("Running")
@@ -228,9 +269,17 @@
 
         function startGame() {
             if (started) {
+                document.querySelector("#startTimer").style.display = "none"
                 startButton.style.display = "none";
                 document.querySelector(".mainDiv").style.display = "flex";
-                document.querySelector(".infoDiv").style.bottom = "300px";
+                if (x.matches) {
+                    document.querySelector(".infoDiv").style.bottom = "0px";
+                    document.querySelector(".infoDiv").style.width = "40vw";
+                    document.querySelector(".infoDiv").style.height = "100vh";
+                }
+                else {
+                    document.querySelector(".infoDiv").style.bottom = "300px";
+                }
                 document.querySelector("#levelSpan").innerHTML = `Level: ${level}`
                 changeColor();
                 timePerTiles(start)
