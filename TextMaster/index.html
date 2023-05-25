@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text Master</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan&family=Comme&family=Lato&family=Lobster&family=Montserrat&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300;400&family=Raleway&family=Roboto:wght@300;400;700&display=swap');
+
         body {
             margin: 0px;
             padding: 0px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(37, 5, 53);
+            color: white;
         }
 
         h2,
@@ -100,6 +104,17 @@
 
         #capitalize {
             color: rgb(234, 27, 134);
+        }
+
+        #textarea {
+            border: 5px solid black;
+        }
+
+        @media only screen and (max-width:800px) {
+            #textarea {
+                width: 80vw;
+                height: 20vh;
+            }
         }
     </style>
 </head>
