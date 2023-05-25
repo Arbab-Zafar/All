@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan&family=Comme&family=Lato&family=Lobster&family=Montserrat&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300;400&family=Raleway&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0px;
+            height: 0px;
+            color: white;
+        }
+
+        body {
+            background-color: rgb(6, 6, 49);
+        }
+
+        h1 {
+            font-size: 1.7rem;
+            text-align: center;
+        }
+
+        .mainDiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100vw;
+            height: 70vh;
+            margin-top: 11vh;
+        }
+
+        .left {
+            width: 50vw;
+            height: 80vh;
+            margin-top: 10vh;
+            margin-left: 3vw;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .right {
+            width: 30vw;
+            height: 90vh;
+            margin-right: 3vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+
+        select {
+            width: 70%;
+            height: 5vh;
+            color: black;
+        }
+
+        option {
+            color: black;
+        }
+
+        .inputs {
+            width: 70%;
+            height: 5vh;
+            color: black;
+            border: 1.5px solid black;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #formulate {
+            height: 5vh;
+            color: white;
+            background-color: rgb(6, 6, 49);
+            position: absolute;
+            bottom: 20vh;
+        }
+
+        #formulate2 {
+            height: 5vh;
+            color: white;
+            background-color: rgb(6, 6, 49);
+            position: absolute;
+            bottom: 15vh;
+        }
+
+        .allInputsDiv {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 800px) {
+            .right {
+                display: none;
+            }
+
+            body {
+                background-image: url(bg.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position-y: -50%;
+                height: 100vh;
+                width: 98vw;
+            }
+
+            .left {
+                width: 98vw;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .mainDiv {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                height: 30vh;
+                margin-top: 0px;
+            }
+
+            #formulate {
+                color: white;
+                background-color: rgb(6, 6, 49);
+                position: absolute;
+                bottom: -3vh;
+            }
+
+            #formulate2 {
+                color: white;
+                background-color: rgb(6, 6, 49);
+                position: absolute;
+                bottom: -9vh;
+            }
+        }
+
+        #warn {
+            font-size: 0.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Formulator</h1><br><br>
+    <p id="warn">We do not gurantee that the answers are 100% correct!!</p>
+    <div class="mainDiv">
+        <div class="left">
+            <form action="">
+                <label for="figureType">Select the figure:</label><br>
+                <select name="figureType" id="figureType">
+                    <option value="">Select</option>
+                    <option value="">Triangle</option>
+                    <option value="">Square</option>
+                    <option value="">Rectangle</option>
+                    <option value="">Circle</option>
+                    <option value="">Sphere</option>
+                    <option value="">Cube</option>
+                    <option value="">Cuboid</option>
+                    <option value="">Cylinder</option>
+                    <option value="">Cone</option>
+                    <option value="">Parallelogram</option>
+                    <option value="">Trapezium</option>
+                    <option value="">Rhombus</option>
+                    <option value="">Regular Pentagon</option>
+                    <option value="">Regular Hexagon</option>
+                    <option value="">Regular Heptagon</option>
+                    <option value="">Regular Octagon</option>
+                    <option value="">Regular Nonagon</option>
+                    <option value="">Regular Decagon</option>
+                </select><br><br>
+                <label for="formulaType">Select what you want to find out:</label><br>
+                <select name="formulaType" id="formulaType">
+                    <option value="">Select</option>
+                    <!-- <option value="">Perimeter</option>
+                    <option value="">Area</option>
+                    <option value="">Volume</option>
+                    <option value="">Surface Area</option>
+                    <option value="">Lateral Surafce Area</option>
+                    <option value="">Length</option>
+                    <option value="">Breadth</option>
+                    <option value="">Height</option>
+                    <option value="">Diagonal</option>
+                    <option value="">Base</option>
+                    <option value="">Side</option>
+                    <option value="">Edge</option>
+                    <option value="">Radius</option>
+                    <option value="">Circumference</option> -->
+                </select><br><br>
+                <div class="allInputsDiv">
+                    <!-- <input type="number" class="inputs"><br><br>
+                    <input type="number" class="inputs"><br><br>
+                    <input type="number" class="inputs"><br><br>
+                    <input type="number" class="inputs"><br><br>
+                    <input type="number" class="inputs"><br><br> -->
+                </div>
+                <p id="formulate"></p>
+                <p id="formulate2"></p>
+            </form>
+        </div>
+        <div class="right">
+            <img src="bg.png" alt="">
+        </div>
+    </div>
+    <script>
+        let figureType = document.querySelector("#figureType");
+        let formulaType = document.querySelector("#formulaType");
+        let formulateSpan = document.querySelector("#formulate");
+        let formulate2Span = document.querySelector("#formulate2");
+        let allInputsDiv = document.querySelector(".allInputsDiv");
+        let inputs = document.querySelectorAll(".inputs")
+
+        window.formulaText = formulaType.options[formulaType.selectedIndex].text;
+        window.figureText = figureType.options[figureType.selectedIndex].text;
+
+        figureType.addEventListener('change', function () {
+            window.figureText = figureType.options[figureType.selectedIndex].text;
+            forLooperStart = true;
+            allInputsDiv.innerHTML = ""
+            givingCustomizeOptions()
+        })
+
+        formulaType.addEventListener("change", function () {
+            if (window.figureText == "Select") {
+                alert("First select figure:")
+            }
+            else {
+                window.formulaText = formulaType.options[formulaType.selectedIndex].text;
+                forLooperStart = true;
+                formulateSpan.style.display = "none";
+                formulate2Span.style.display = "none";
+                addInputs()
+            }
+        })
+
+        function addListenerOnInputs() {
+            Array.from(document.querySelectorAll(".inputs")).forEach(function (element, index) {
+                element.addEventListener("keydown", function (e) {
+                    if (e.keyCode === 13) {
+                        if (index < 3) {
+                            document.querySelectorAll(".inputs")[index + 1].focus()
+                        }
+                    }
+                })
+            });
+        }
+
+        let TRIANGLE = ["Area", "Perimeter", "Base", "Height", "Side"];
+        let SQUARE = ["Area", "Perimeter", "Side", "Diagonal"];
+        let RECTANGLE = ["Area", "Perimeter", "Length", "Breadth", "Diagonal"];
+        let CIRCLE = ["Area", "Circumference", "Radius"];
+        let SPHERE = ["Volume", "Surface Area", "Radius"];
+        let CUBE = ["Volume", "Surface Area", "Lateral Surface Area", "Edge", "Diagonal"];
+        let CUBOID = ["Volume", "Surface Area", "Lateral Surface Area", "Length", "Breadth", "Height", "Diagonal"];
+        let CYLINDER = ["Volume", "Surface Area", "Lateral Surface Area", "Radius", "Height"];
+        let CONE = ["Volume", "Surface Area", "Radius", "Height"];
+        let PARALLELOGRAM = ["Area", "Perimeter", "Base", "Height", "Side"];
+        let TRAPEZIUM = ["Area", "Height", "Side"];
+        let RHOMBUS = ["Area", "Perimeter", "Side", "Diagonal"];
+        let PENTAGON = ["Area", "Perimeter", "Side", "Breadth", "Diagonal"];
+        let HEXAGON = ["Area", "Perimeter", "Side"];
+        let HEPTAGON = ["Area", "Perimeter", "Side"];
+        let OCTAGON = ["Area", "Perimeter", "Side"];
+        let NONAGON = ["Area", "Perimeter", "Side"];
+        let DECAGON = ["Area", "Perimeter", "Side"];
+
+        function customizeOptions(figure) {
+            formulaType.innerHTML = `<option value="">Select</option>`;
+            for (let i = 0; i < figure.length; i++) {
+                let html = `<option value="">${figure[i]}</option>`;
+                console.log("hjgtuy")
+                formulaType.innerHTML += html;
+            }
+        }
+
+        function givingCustomizeOptions() {
+            console.log("fgerytrytwyyuwttwyetyu")
+            if (window.figureText == "Triangle") {
+                customizeOptions(TRIANGLE);
+            }
+            else if (window.figureText == "Square") {
+                customizeOptions(SQUARE)
+            }
+            else if (window.figureText == "Rectangle") {
+                customizeOptions(RECTANGLE)
+            }
+            else if (window.figureText == "Circle") {
+                customizeOptions(CIRCLE)
+            }
+            else if (window.figureText == "Sphere") {
+                customizeOptions(SPHERE)
+            }
+            else if (window.figureText == "Cube") {
+                customizeOptions(CUBE)
+            }
+            else if (window.figureText == "Cuboid") {
+                customizeOptions(CUBOID)
+            }
+            else if (window.figureText == "Cylinder") {
+                customizeOptions(CYLINDER)
+            }
+            else if (window.figureText == "Cone") {
+                customizeOptions(CONE)
+            }
+            else if (window.figureText == "Parallelogram") {
+                customizeOptions(PARALLELOGRAM)
+            }
+            else if (window.figureText == "Trapezium") {
+                customizeOptions(TRAPEZIUM)
+            }
+            else if (window.figureText == "Rhombus") {
+                customizeOptions(RHOMBUS)
+            }
+            else if (window.figureText == "Regular Pentagon") {
+                customizeOptions(PENTAGON)
+            }
+            else if (window.figureText == "Regular Hexagon") {
+                customizeOptions(HEXAGON)
+            }
+            else if (window.figureText == "Regular Heptagon") {
+                customizeOptions(HEPTAGON)
+            }
+            else if (window.figureText == "Regular Octagon") {
+                customizeOptions(OCTAGON)
+            }
+            else if (window.figureText == "Regular Nonagon") {
+                customizeOptions(NONAGON)
+            }
+            else if (window.figureText == "Regular Decagon") {
+                customizeOptions(DECAGON)
+
+            }
+        }
+
+        function forLooper(numberoOfTimes) {
+            allInputsDiv.innerHTML = "";
+            for (let i = 0; i < numberoOfTimes; i++) {
+                let input = document.createElement("input");
+                input.setAttribute("class", "inputs");
+                input.setAttribute("type", "number");
+                allInputsDiv.appendChild(input);
+            }
+            storingValue(numberoOfTimes)
+        }
+
+        function storingValue(number) {
+            document.querySelectorAll(".inputs")[0].addEventListener("input", function () {
+                formulateSpan.style.display = "block";
+                formulate2Span.style.display = "block";
+                window.input1Val = parseInt(document.querySelectorAll(".inputs")[0].value);
+                addInputs()
+            })
+            if (number >= 2) {
+                document.querySelectorAll(".inputs")[1].addEventListener("input", function () {
+                    formulateSpan.style.display = "block";
+                    formulate2Span.style.display = "block";
+                    window.input2Val = parseInt(document.querySelectorAll(".inputs")[1].value);
+                    addInputs()
+                })
+            }
+            if (number == 3) {
+                document.querySelectorAll(".inputs")[2].addEventListener("input", function () {
+                    formulateSpan.style.display = "block";
+                    formulate2Span.style.display = "block";
+                    window.input3Val = parseInt(document.querySelectorAll(".inputs")[2].value);
+                    addInputs()
+                })
+            }
+        }
+
+        let forLooperStart = true;
+
+        function addInputs() {
+            if (window.figureText == "Triangle") {
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Base";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    triangleFormulator({ base: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Side 2";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Side 3";
+                    triangleFormulator({ side1: window.input1Val, side2: window.input2Val, side3: window.input3Val })
+                }
+                else if (window.formulaText == "Base") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    triangleFormulator({ area: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Height") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Base";
+                    triangleFormulator({ area: window.input1Val, base: window.input2Val })
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Side1";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Side2";
+                    triangleFormulator({ perimeter: window.input1Val, side1: window.input2Val, side2: window.input3Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Square") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    squareFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    squareFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Perimeter";
+                    squareFormulator({ area: window.input1Val, perimeter: window.input2Val })
+                }
+                else if (window.formulaText == "Diagonal") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    squareFormulator({ area: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Rectangle") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    rectangleFormulator({ length: window.input1Val, breadth: window.input2Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    rectangleFormulator({ length: window.input1Val, breadth: window.input2Val })
+                }
+                else if (window.formulaText == "Length") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    rectangleFormulator({ perimeter: window.input1Val, breadth: window.input2Val })
+
+                }
+                else if (window.formulaText == "Breadth") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Length";
+                    rectangleFormulator({ perimeter: window.input1Val, length: window.input2Val })
+                }
+                else if (window.formulaText == "Diagonal") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    rectangleFormulator({ length: window.input1Val, breadth: window.input2Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Circle") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    circleFormulator({ radius: window.input1Val })
+                }
+                else if (window.formulaText == "Circumference") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    circleFormulator({ radius: window.input1Val })
+                }
+                else if (window.formulaText == "Radius") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Circumference OR";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Area";
+                    circleFormulator({ circumference: window.input1Val, area: window.input2Val });
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Sphere") {
+
+                if (window.formulaText == "Surface Area") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    sphereFormulator({ radius: window.input1Val })
+                }
+                else if (window.formulaText == "Radius") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    sphereFormulator({ area: window.input1Val })
+                }
+                else if (window.formulaText == "Volume") {
+                    if (forLooperStart) {
+                        forLooper(1);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    sphereFormulator({ radius: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Cube") {
+
+                if (forLooperStart) {
+                    forLooper(1);
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Surface Area") {
+                    document.querySelectorAll(".inputs")[1].placeholder = "Edge";
+                    cubeFormulator({ edge: window.input1Val })
+                }
+                else if (window.formulaText == "Lateral Surafce Area") {
+                    document.querySelectorAll(".inputs")[1].placeholder = "Edge";
+                    cubeFormulator({ edge: window.input1Val })
+                }
+                else if (window.formulaText == "Edge") {
+                    document.querySelectorAll(".inputs")[1].placeholder = "Surface Area";
+                    cubeFormulator({ surfaceArea: window.input1Val })
+                }
+                else if (window.formulaText == "Volume") {
+                    document.querySelectorAll(".inputs")[1].placeholder = "Edge";
+                    cubeFormulator({ edge: window.input1Val })
+                }
+                else if (window.formulaText == "Diagonal") {
+                    document.querySelectorAll(".inputs")[1].placeholder = "Edge";
+                    cubeFormulator({ edge: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Cuboid") {
+
+                if (window.formulaText == "Surface Area") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ length: window.input1Val, breadth: input2Val, height: input3Val })
+                }
+                else if (window.formulaText == "Length") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ volume: window.input1Val, breadth: input2Val, height: input3Val })
+
+                }
+                else if (window.formulaText == "Breadth") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ volume: window.input1Val, length: input2Val, height: input3Val })
+                }
+                else if (window.formulaText == "Height") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Breadth";
+                    cuboidFormulator({ volume: window.input1Val, length: input2Val, breadth: input3Val })
+                }
+                else if (window.formulaText == "Lateral Surafce Area") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ length: window.input1Val, breadth: input2Val, height: input3Val })
+                }
+                else if (window.formulaText == "Volume") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ length: window.input1Val, breadth: input2Val, height: input3Val })
+                }
+                else if (window.formulaText == "Diagonal") {
+                    if (forLooperStart) {
+                        forLooper(3);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Length";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Breadth";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    cuboidFormulator({ length: window.input1Val, breadth: input2Val, height: input3Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Cylinder") {
+                if (forLooperStart) {
+                    forLooper(2);
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Volume") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    cylinderFormulator({ radius: window.input1Val, height: window.input2Val });
+                }
+                else if (window.formulaText == "Radius") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    cylinderFormulator({ volume: window.input1Val, height: window.input2Val });
+                }
+                else if (window.formulaText == "Height") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Radius";
+                    cylinderFormulator({ volume: window.input1Val, radius: window.input2Val });
+                }
+                else if (window.formulaText == "Surface Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    cylinderFormulator({ radius: window.input1Val, height: window.input2Val });
+                }
+                else if (window.formulaText == "Lateral Surface Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    cylinderFormulator({ radius: window.input1Val, height: window.input2Val });
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Cone") {
+
+                if (window.formulaText == "Volume") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    coneFormulator({ radius: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Radius") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    coneFormulator({ volume: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Height") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Volume";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Radius";
+                    coneFormulator({ volume: window.input1Val, radius: window.input2Val })
+                }
+                else if (window.formulaText == "Suraface Area") {
+                    if (forLooperStart) {
+                        forLooper(2);
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Radius";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    coneFormulator({ radius: window.input1Val, height: window.input2Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Parallelogram") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Base";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    parallelogramFormulator({ base: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Base") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Height";
+                    parallelogramFormulator({ area: window.input1Val, height: window.input2Val })
+                }
+                else if (window.formulaText == "Height") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Base";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Area";
+                    parallelogramFormulator({ base: window.input1Val, area: window.input2Val })
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Base";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Perimeter";
+                    parallelogramFormulator({ base: window.input1Val, perimeter: window.input2Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Base";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Side";
+                    parallelogramFormulator({ base: window.input1Val, side: window.input2Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Trapezium") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Parallel 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Parallel 2";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    trapeziumFormulator({ parallel1: window.input1Val, parallel2: window.input2Val, height: window.input3Val })
+                }
+                else if (window.formulaText == "Height") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Parallel 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Parallel 2";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Area";
+                    trapeziumFormulator({ parallel1: window.input1Val, parallel2: window.input2Val, area: window.input3Val })
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Parallel 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Area";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Height";
+                    trapeziumFormulator({ parallel1: window.input1Val, area: window.input2Val, height: window.input3Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Rhombus") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Diagonal 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Diagonal 2";
+                    rhombusFormulator({ d1: window.input1Val, d2: window.input2Val });
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(3)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Diagonal 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Diagonal 2 OR";
+                    document.querySelectorAll(".inputs")[2].placeholder = "Perimeter";
+                    rhombusFormulator({ d1: window.input1Val, d2: window.input2Val, perimeter: window.input3Val });
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(1)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    rhombusFormulator({ side: window.input1Val });
+                }
+                else if (window.formulaText == "Diagonal") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Diagonal 1";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Area";
+                    rhombusFormulator({ d1: window.input1Val, area: window.input2Val });
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Pentagon") {
+
+                if (window.formulaText == "Area") {
+                    if (forLooperStart) {
+                        forLooper(1)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    pentagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area OR";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Perimeter";
+                    pentagonFormulator({ area: window.input1Val, perimeter: window.input2Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    if (forLooperStart) {
+                        forLooper(1)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    pentagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Breadth") {
+                    if (forLooperStart) {
+                        forLooper(2)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    document.querySelectorAll(".inputs")[1].placeholder = "Length";
+                    pentagonFormulator({ perimeter: window.input1Val, length: window.input2Val })
+                }
+                else if (window.formulaText == "Diagonal") {
+                    if (forLooperStart) {
+                        forLooper(1)
+                        forLooperStart = false;
+                    }
+                    document.querySelectorAll(".inputs")[0].placeholder = "Area";
+                    pentagonFormulator({ area: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Hexagon") {
+
+                if (forLooperStart) {
+                    forLooper(1)
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    hexagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    hexagonFormulator({ perimeter: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    hexagonFormulator({ side: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Heptagon") {
+
+                if (forLooperStart) {
+                    forLooper(1)
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    heptagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    heptagonFormulator({ perimeter: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    heptagonFormulator({ side: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Octagon") {
+
+                if (forLooperStart) {
+                    forLooper(1)
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    octagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    octagonFormulator({ perimeter: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    octagonFormulator({ side: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Nonagon") {
+
+                if (forLooperStart) {
+                    forLooper(1)
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    nonagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    nonagonFormulator({ perimeter: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    nonagonFormulator({ side: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+            else if (window.figureText == "Regular Decagon") {
+
+                if (forLooperStart) {
+                    forLooper(1)
+                    forLooperStart = false;
+                }
+                if (window.formulaText == "Area") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    decagonFormulator({ side: window.input1Val })
+                }
+                else if (window.formulaText == "Side") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Perimeter";
+                    decagonFormulator({ perimeter: window.input1Val })
+                }
+                else if (window.formulaText == "Perimeter") {
+                    document.querySelectorAll(".inputs")[0].placeholder = "Side";
+                    decagonFormulator({ side: window.input1Val })
+                }
+                addListenerOnInputs()
+            }
+        }
+
+        //ALL THE CALCULATORS
+
+        function triangleFormulator({ area, perimeter, base, height, side1, side2, side3, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + 0.5 * base * height;
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + (side1 + side2 + side3);
+            }
+            else if (window.formulaText == "Base") {
+                formulateSpan.innerHTML = "Base = " + area * 2 / height;
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + area * 2 / base;
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + (perimeter - (side1 + side2));
+            }
+        }
+        function squareFormulator({ area, perimeter, side, diagonal }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + side * side;
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + side * 4;
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side using Area = " + area ** 0.5;
+                // OR 
+                formulate2Span.innerHTML = "Side using Perimeter = " + perimeter / 4;
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + (area * 2) ** 0.5;
+            }
+        }
+        function rectangleFormulator({ area, perimeter, length, breadth, diagonal }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + (length * breadth);
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 2 * (length + breadth);
+            }
+            else if (window.formulaText == "Length") {
+                formulateSpan.innerHTML = "Length = " + (perimeter / 2 - breadth);
+            }
+            else if (window.formulaText == "Breadth") {
+                formulateSpan.innerHTML = "Breadth = " + (perimeter / 2 - length);
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + ((length ** 2 + breadth ** 2) ** 0.5);
+            }
+        }
+        function circleFormulator({ area, circumference, radius }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((3.14159265359 * radius ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Circumference") {
+                formulateSpan.innerHTML = "Circumference = " + parseFloat((2 * 3.14159265359 * radius).toFixed(5));
+            }
+            else if (window.formulaText == "Radius") {
+                formulateSpan.innerHTML = "Radius using circumference = " + parseFloat((circumference / 2 * 3.14159265359).toFixed(5));
+                // or 
+                formulate2Span.innerHTML = "Radius using area = " + parseFloat(((area / 3.14159265359) ** 0.5).toFixed(5))
+            }
+        }
+        function sphereFormulator({ radius, volume }) {
+            if (window.formulaText == "Surface Area") {
+                formulateSpan.innerHTML = "Surface Area = " + parseFloat((4 * 3.14159265359 * radius ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Radius") {
+                formulateSpan.innerHTML = "Radius = " + parseFloat((0.5 * (area / 3.14159265359) ** 0.5).toFixed(5))
+            }
+            else if (window.formulaText == "Volume") {
+                formulateSpan.innerHTML = "Volume = " + parseFloat((4 / 3 * 3.14159265359 * radius ** 3).toFixed(5));
+            }
+        }
+
+        function cubeFormulator({ surfaceArea, edge, volume }) {
+            if (window.formulaText == "Surface Area") {
+                formulateSpan.innerHTML = "Surface Area = " + 6 * edge ** 2;
+            }
+            else if (window.formulaText == "Lateral Surafce Area") {
+                formulateSpan.innerHTML = "L.S.A = " + parseFloat((4 * edge ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Edge") {
+                formulateSpan.innerHTML = "Edge = " + parseFloat(((surfaceArea / 6) ** 0.5).toFixed(5));
+            }
+            else if (window.formulaText == "Volume") {
+                formulateSpan.innerHTML = "Volume = " + edge ** 3;
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + parseFloat(((3 * edge) ** 0.5).toFixed(5));
+            }
+        }
+        function cuboidFormulator({ length, breadth, height, volume }) {
+            if (window.formulaText == "Surface Area") {
+                formulateSpan.innerHTML = "Surface Area = " + 2 * (length * breadth + breadth * height + length * height);
+            }
+            else if (window.formulaText == "Length") {
+                formulateSpan.innerHTML = "Length = " + parseFloat((volume / breadth * height).toFixed(5));
+            }
+            else if (window.formulaText == "Breadth") {
+                formulateSpan.innerHTML = "Breadth = " + parseFloat((volume / length * height).toFixed(5));
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + parseFloat((volume / breadth * length).toFixed(5));
+            }
+            else if (window.formulaText == "Lateral Surafce Area") {
+                formulateSpan.innerHTML = "L.S.A = " + parseFloat((2 * (length + breadth) * height).toFixed(5));
+            }
+            else if (window.formulaText == "Volume") {
+                formulateSpan.innerHTML = "Volume = " + length * breadth * height;
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + parseFloat(((length ** 2 + breadth ** 2 + height ** 2) ** 0.5).toFixed(5));
+            }
+        }
+
+        function cylinderFormulator({ volume, radius, height }) {
+            if (window.formulaText == "Volume") {
+                formulateSpan.innerHTML = "Volume = " + parseFloat((3.14159265359 * radius ** 2 * height).toFixed(5));
+            }
+            else if (window.formulaText == "Radius") {
+                formulateSpan.innerHTML = "Radius = " + parseFloat(((volume / (3.14159265359 * height)) ** 0.5).toFixed(5));
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + parseFloat((volume / (3.14159265359 * radius ** 2)).toFixed(5));
+            }
+            else if (window.formulaText == "Surface Area") {
+                formulateSpan.innerHTML = "Surface Area = " + parseFloat((2 * 3.14159265359 * radius * (radius + height)).toFixed(5));
+            }
+            else if (window.formulaText == "Lateral Surface Area") {
+                formulateSpan.innerHTML = "Lateral Surface Area = " + parseFloat((2 * 3.14159265359 * radius * height).toFixed(5));
+            }
+        }
+
+        function coneFormulator({ length, radius, height, volume }) {
+            if (window.formulaText == "Volume") {
+                formulateSpan.innerHTML = "Volume = " + parseFloat((3.14159265359 * radius ** 2 * height / 3).toFixed(5));
+            }
+            else if (window.formulaText == "Radius") {
+                formulateSpan.innerHTML = "Radius = " + parseFloat(((3 * (volume / 3.14159265359 * height)) ** 0.5).toFixed(5));
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + parseFloat((3 * (volume / 3.14159265359 * radius ** 2)).toFixed(5));
+            }
+            else if (window.formulaText == "Surface Area") {
+                formulateSpan.innerHTML = "Surface Area = " + parseFloat((3.14159265359 * radius * (radius + (height ** 2 + radius ** 2) ** 0.5)).toFixed(5));
+            }
+        }
+        function parallelogramFormulator({ base, height, area, side, perimeter }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + base * height;
+            }
+            else if (window.formulaText == "Base") {
+                formulateSpan.innerHTML = "Base = " + parseFloat((area / height).toFixed(5));
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + parseFloat((area / base).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 2 - base).toFixed(5));
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 2 * (side + base);
+            }
+        }
+        function trapeziumFormulator({ parallel1, height, area, parallel2, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + 0.5 * (parallel1 + parallel2) * height;
+            }
+            else if (window.formulaText == "Height") {
+                formulateSpan.innerHTML = "Height = " + parseFloat((2 * (area / (parallel1 + parallel2)).toFixed(5)));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((2 * (area / height) - parallel1).toFixed(5));
+            }
+        }
+        function rhombusFormulator({ d1, d2, area, side, perimeter }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + 0.5 * d1 * d2;
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side using diagonals = " + parseFloat(((d1 ** 2 + d2 ** 2) ** 0.5 / 2).toFixed(5));
+                // or 
+                formulate2Span.innerHTML = "Side using perimeter = " + perimeter / 4
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + side * 4;
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + parseFloat((2 * (area / d1)).toFixed(5));
+            }
+        }
+        function pentagonFormulator({ area, perimeter, diagonal, side }) {
+            if (window.formulaText == "Area") {
+                // https://www.google.com/search?q=area+of+pentagon&ei=ObtpZNn5KJqfseMPmZWQ6A4&ved=0ahUKEwiZ-tKo5YX_AhWaT2wGHZkKBO0Q4dUDCA8&uact=5&oq=area+of+pentagon&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIKCAAQigUQsQMQQzIHCAAQigUQQzIFCAAQgAQyBwgAEIoFEEMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CggAEEcQ1gQQsAM6CggAEIoFELADEEM6CggAEA0QgAQQsQM6BwgAEA0QgARKBAhBGABQygRY7QdgtgpoAnABeACAAdUBiAHiBZIBBTAuMy4xmAEAoAEByAEKwAEB&sclient=gws-wiz-serp
+                formulateSpan.innerHTML = "Area = " + parseFloat((0.25 * (5 * (5 + 2 * (5 ** 0.5)) ** 0.5 * side ** 2).toFixed(5)));
+            }
+            else if (window.formulaText == "Side") {
+                // 2x5^3/4 sqrt(area)/5(sqrt(20)+5)^1/4
+                // https://www.google.com/search?q=perimeter+of+pentagon&oq=primeter+of+penta&aqs=chrome.1.69i57j0i10i433i512j0i10i512l8.4732j0j7&sourceid=chrome&ie=UTF-8
+                formulateSpan.innerHTML = "Side using Area = " + parseFloat(((2 * 5 ** 0.75) * (area ** 0.5) / (5 * ((20 ** 0.5) + 5) ** 0.25)).toFixed(5))
+                // OR
+                formulate2Span.innerHTML = "Side using Perimeter = " + perimeter / 5;
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 5 * side;
+            }
+            else if (window.formulaText == "Breadth") {
+                formulateSpan.innerHTML = "Breadth = " + perimeter / 2 - length;
+            }
+            else if (window.formulaText == "Diagonal") {
+                formulateSpan.innerHTML = "Diagonal = " + parseFloat((((1 + 5 ** 0.5) / 2) * area).toFixed(5));
+            }
+        }
+
+        function hexagonFormulator({ area, perimeter, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((3 * 3 ** 0.5 / 2 * side ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 6).toFixed(5))
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 6 * side;
+            }
+        }
+        function heptagonFormulator({ area, perimeter, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((3.634 * side ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 7).toFixed(5))
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 7 * side;
+            }
+        }
+        function octagonFormulator({ area, perimeter, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((2 * (1 + 2 ** 0.5) * side ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 8).toFixed(5))
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 8 * side;
+            }
+        }
+        function nonagonFormulator({ area, perimeter, side }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((6.182 * side ** 2).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 9).toFixed(5))
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + 9 * side;
+            }
+        }
+        function decagonFormulator({ area, side, perimeter }) {
+            if (window.formulaText == "Area") {
+                formulateSpan.innerHTML = "Area = " + parseFloat((2.5 * side ** 2 * (5 + 2 * 5 ** 0.5) ** 0.5).toFixed(5));
+            }
+            else if (window.formulaText == "Side") {
+                formulateSpan.innerHTML = "Side = " + parseFloat((perimeter / 10).toFixed(5))
+            }
+            else if (window.formulaText == "Perimeter") {
+                formulateSpan.innerHTML = "Perimeter = " + parseFloat((side * 10).toFixed(5));
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
