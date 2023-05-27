@@ -1,90 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- https://www.freeformatter.com/html-escape.html -->
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All</title>
+    <title>All My Websites</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anuphan&family=Comme&family=Lato&family=Lobster&family=Montserrat&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300&family=Lato&family=Lobster&family=Montserrat&family=Noto+Sans:ital,wght@1,300&family=Open+Sans&family=PT+Sans&family=Poppins:wght@300&family=Roboto:wght@300;400;700&display=swap');
 
         body {
-            font-size: 0.9rem;
-            font-family: 'Comme', sans-serif;
-            margin: 5px;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0px;
+            padding: 0px;
         }
 
-        h1 {
-            text-align: center;
-            color: red;
-            text-decoration: underline;
-            font-size: 1.5rem;
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 20px;
+            background-color: rgb(230, 130, 76);
         }
 
-        span {
+        nav div,
+        input {
+            margin: 15px;
+        }
+
+        .allCard {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            width: 40vw;
+            height: 70vh;
+            margin: 2vw;
+            border: 1.5px solid black;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .cardImage {
+            width: 100%;
+            height: 55%;
+            vertical-align: top;
+            margin-bottom: 7px;
+        }
+
+        .cardTitle {
+            margin-bottom: 7px;
+            font-size: 25px;
+        }
+
+        .cardDescription {
+            margin-bottom: 7px;
+        }
+
+        .cardVisit {
+            margin-bottom: 7px;
+            background-color: rgb(56, 56, 228);
+            color: white;
+            width: 120px;
+            height: 35px;
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid white;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        .cardDescription {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 15px 0px 15px;
+        }
+
+        .codeTitle {
+            margin-left: 100px;
+            font-size: 25px;
+        }
+
+        #search {
+            width: 300px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 7px;
+            padding-left: 15px;
+        }
+
+        .footer {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        big {
-            font-size: 1rem;
-            text-decoration: underline;
-            font-weight: bold;
+        .outer-watermark-div {
+            background-color: #fffefe;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.5;
+            height: 30px;
+        }
+
+        .inner-watermark-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loaderMain {
+            width: 98vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            border: 15px solid white;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            border-top: 15px solid orange;
+            border-bottom: 15px solid orange;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 
-<body>
-    <h1>All my good websites</h1>
-    <span>Copy paste link to go-</span>
-    <br>
-    <div class="ad">
-        <big>Hotsos</big> - https://arbab-zafar.github.io/All/Hotsos/ <a
-            href="https://arbab-zafar.github.io/All/Hotsos/" target="_blank">Hotsos</a><br>
-
-        <big>Magic Notes</big> - https://arbab-zafar.github.io/All/Magic Notes/ <a
-            href="https://arbab-zafar.github.io/All/Magic Notes/" target="_blank">Magic Notes</a><br>
-
-        <big>Memory Game</big> - https://arbab-zafar.github.io/All/Memory game/ <a
-            href="https://arbab-zafar.github.io/All/Memory game/" target="_blank">Memory Game</a><br>
-
-        <big>Piano Game</big> - https://arbab-zafar.github.io/All/Other Works/PianoGame/ <a
-            href="https://arbab-zafar.github.io/All/Other Works/PianoGame/" target="_blank">Piano Game</a><br>
-
-        <big>Rock Paper Scissors</big> - https://arbab-zafar.github.io/All/Other
-        Works/RockPaperScissor/RockPaperScissor.html <a
-            href="https://arbab-zafar.github.io/All/Other Works/RockPaperScissor/RockPaperScissor.html"
-            target="_blank">Rock Paper
-            Scissor</a><br>
-        <big>Text Master</big> - https://arbab-zafar.github.io/All/TextMaster/ <a
-            href="https://arbab-zafar.github.io/All/TextMaster/" target="_blank">TextMaster</a><br>
-        <big>Formulator</big> - https://arbab-zafar.github.io/All/Formulator/ <a
-            href="https://arbab-zafar.github.io/All/Formulator/" target="_blank">Formulator</a><br>
-
-        <big>Sasta Google</big> - https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Google.html <a
-            href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Google.html" target="_blank">Sasta
-            Google</a><br>
-
-        <big>Sasta Flipkart</big> - https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Flipkart.html <a
-            href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Flipkart.html" target="_blank">Sasta
-            Flipkart</a><br>
-
-        <big>Tic Tac Toe</big> - https://arbab-zafar.github.io/All/Other Works/TicTacToe/TicTacToe Game.html <a
-            href="https://arbab-zafar.github.io/All/Other Works/TicTacToe/TicTacToe Game.html"
-            target="_blank">TicTacToe</a><br>
-
-        <big>Play and Win</big> - https://arbab-zafar.github.io/All/Play and Win/ <a
-            href="https://arbab-zafar.github.io/All/Play and Win/" target="_blank">Play and Win</a><br>
-
-        <big>Porfolio</big> - https://arbab-zafar.github.io/All/Portfolio/ <a
-            href="https://arbab-zafar.github.io/All/Portfolio/" target="_blank">Portfolio</a><br>
-
-        <big>Spatify</big> - https://arbab-zafar.github.io/All/Spatify/ <a
-            href="https://arbab-zafar.github.io/All/Spatify/" target="_blank">Spatify</a><br>
-
+<body onload="load()">
+    <div class="loaderMain">
+        <div class="loader"></div>
     </div>
+    <nav>
+        <a href="index.html" style="color: white;text-decoration: underline;margin-left: 40px;">All My Websites</a>
+        <input type="search" placeholder="Search by name.." id="search">
+    </nav>
+    <div class="allCard">
+        <div class="card">
+            <img src="/WebImages/PlayAndWin.png" alt="" class="cardImage">
+            <span class="cardTitle">Play and Win</span>
+            <span class="cardDescription">It is the best website I have made till now. It is a website of many
+                games!</span>
+            <span class="dateCreated">Date Created : 16 September 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Play and Win/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/MagicNotes.png" alt="" class="cardImage">
+            <span class="cardTitle">Magic Notes</span>
+            <span class="cardDescription">It is a website where you can write, edit and delete your notes!!. You can
+                filter your notes by content, name, title and date.</span>
+            <span class="dateCreated">Date Created : 12 October 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Magic Notes/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Hotsos.png" alt="" class="cardImage">
+            <span class="cardTitle">Hotsos</span>
+            <span class="cardDescription">It was the first website that I had made with my friends:- Shubh and Ritesh.It
+                contains essay, short notes, application writing and so on.</span>
+            <span class="dateCreated">Date Created : 6 August 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Hotsos/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/TicTacToe.png" alt="" class="cardImage">
+            <span class="cardTitle">Tic and Tac for Toe</span>
+            <span class="cardDescription">As the name suggests it is TicTacToe in which I have added versus
+                Computer.</span>
+            <span class="dateCreated">Date Created : 3 August 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/TicTacToe/TicTacToe Game.html"
+                    class="cardVisit" style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Spatify.png" alt="" class="cardImage">
+            <span class="cardTitle">Spatify</span>
+            <span class="cardDescription">It is music streaming platform. One of the best websites I have made. It has
+                limited songs.</span>
+            <span class="dateCreated">Date Created : 25 March 2023</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Spatify/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/PianoTiles.png" alt="" class="cardImage">
+            <span class="cardTitle">Piano Game</span>
+            <span class="cardDescription">It is a game in which there are 4 levels in which some black tiles will be
+                shown and you have to click them before the time given. As level increases black tiles also increases
+                making it hard!!</span>
+            <span class="dateCreated">Date Created : 7 April 2023</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/PianoGame/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/MemoryGame.png" alt="" class="cardImage">
+            <span class="cardTitle">Memory Game</span>
+            <span class="cardDescription">In this game there are cards. You can see 2 cards at once then they will be
+                hide and you have to click two same cards. When you will click same cards then the same cards will be
+                removed!!</span>
+            <span class="dateCreated">Date Created : 12 March 2023</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Memory game/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/SastaFlipkart.png" alt="" class="cardImage">
+            <span class="cardTitle">Sasta Flipkart</span>
+            <span class="cardDescription">It was the project after learning CSS. It was the first website in which I
+                have written CSS(Website styling language)</span>
+            <span class="dateCreated">Date Created : 3 July 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Flipkart.html"
+                 class="cardVisit" style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/SastaGoogle.png" alt="" class="cardImage">
+            <span class="cardTitle">Sasta Google</span>
+            <span class="cardDescription">Copy of Google with actual searching.</span>
+            <span class="dateCreated">Date Created : 4 September 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Google.html"
+                    class="cardVisit" style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Portfolio.png" alt="" class="cardImage">
+            <span class="cardTitle">Portfolio</span>
+            <span class="cardDescription">My Portfolio.</span>
+            <span class="dateCreated">Date Created : 24 October 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Portfolio/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Text Master.png" alt="" class="cardImage">
+            <span class="cardTitle">Text Master</span>
+            <span class="cardDescription">Edit your text as you want!</span>
+            <span class="dateCreated">Date Created : 25 April 2023</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/TextMaster/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Formulator.png" alt="" class="cardImage">
+            <span class="cardTitle">Formulator</span>
+            <span class="cardDescription">Find out the solution of any formula.</span>
+            <span class="dateCreated">Date Created : 25 May 2023</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Formulator/" class="cardVisit"
+                    style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/WebImages/Rock Paper scissor.png" alt="" class="cardImage">
+            <span class="cardTitle">Rock, Paper and Scissor</span>
+            <span class="cardDescription">Rock, Paper and Scissor</span>
+            <span class="dateCreated">Date Created : 07 April 2022</span>
+            <div style="display: flex;align-items: center;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/RockPaperScissor/RockPaperScissor.html"
+                 class="cardVisit" style="margin-right: 50px;">Visit</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- <div class="footer"><img src="WaterMark-2.png" alt="" width="200"></div> -->
+    <div class="outer-watermark-div">
+        <div class="inner-watermark-div">
+            <img src="/WebImages/WaterMark-2.png" alt="" width="200">
+        </div>
+    </div>
+    <script>
+        let search = document.querySelector('#search');
+        let cards = document.querySelectorAll(".card");
+        search.addEventListener("input", function () {
+            inputval = search.value
+            inputval = inputval.toLowerCase()
+            Array.from(cards).forEach(function (element, index) {
+                let txt = element.getElementsByTagName("span")[0].innerHTML;
+                txt = txt.toLowerCase()
+                if (txt.includes(inputval)) {
+                    element.style.display = "flex";
+                }
+                else {
+                    element.style.display = "none";
+                }
+            })
+        });
+        function load() {
+            document.querySelector(".loaderMain").style.display = "none";
+        }
+    </script>
 </body>
 
 </html>
