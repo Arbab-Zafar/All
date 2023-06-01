@@ -14,6 +14,10 @@
             font-family: 'Poppins', sans-serif;
             background-color: rgb(37, 5, 53);
             color: white;
+            background-image: url(bg.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: top -142px right -2px;
         }
 
         h2,
@@ -28,19 +32,20 @@
         }
 
         .btnDiv {
-            margin-top: 30px;
+            margin-top: 10px;
             width: 98vw;
             flex-wrap: wrap;
-            height: 30vh;
+            height: 20vh;
         }
 
         button {
             outline: none;
             border: 1.5px solid black;
             border-radius: 7px;
-            padding: 9px;
-            font-size: 15px;
-            margin: 10px;
+            padding: 5px 8px;
+            font-size: 0.85rem;
+            margin: 7px;
+            font-weight: 500;
         }
 
         #lowerCase:hover {
@@ -78,6 +83,26 @@
             color: white;
         }
 
+        #copy:hover {
+            background-color: rgb(42, 165, 136);
+            color: white;
+        }
+
+        #clear:hover {
+            background-color: red;
+            color: white;
+        }
+
+        #spacesAfterPunc:hover {
+            background-color: purple;
+            color: white;
+        }
+
+        #replaceWord:hover {
+            background-color: rgb(221, 99, 23);
+            color: white;
+        }
+
         #lowerCase {
             color: rgb(54, 54, 196);
         }
@@ -107,7 +132,27 @@
         }
 
         #textarea {
-            border: 5px solid black;
+            border: 3px solid rgb(255, 254, 254);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.099);
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        #copy {
+            color: rgb(42, 165, 136);
+        }
+
+        #clear {
+            color: red;
+        }
+
+        #spacesAfterPunc {
+            color: purple;
+        }
+
+        #replaceWord {
+            color: rgb(221, 99, 23);
         }
 
         @media only screen and (max-width:800px) {
@@ -115,6 +160,89 @@
                 width: 80vw;
                 height: 20vh;
             }
+        }
+
+        .replaceMainDiv {
+            z-index: 100;
+            width: 100vw;
+            height: 100vh;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            color: black;
+        }
+
+        .replaceInputDiv {
+            background-color: white;
+            width: 25%;
+            height: 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid grey;
+            border-radius: 10px;
+            z-index: 200;
+        }
+
+        .input {
+            width: 80%;
+            height: 25%;
+            border: 1.5px solid grey;
+            border-radius: 7px;
+            margin-bottom: 7%;
+            padding-left: 7px;
+        }
+
+        .inputDiv {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #h3 {
+            margin-bottom: 15%;
+            margin-right: 10%;
+        }
+
+        #h3andsvgDiv {
+            width: 80%;
+            height: 30%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        svg {
+            position: absolute;
+            right: 0;
+            top: 25%;
+        }
+
+        #ok {
+            width: 20%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #088178;
+            background-color: white;
+            border: 1px solid grey;
+            border-radius: 7px;
+        }
+
+        #ok:hover {
+            width: 21%;
+            height: 11%;
+            background-color: #088178;
+            color: white;
         }
     </style>
 </head>
@@ -124,17 +252,42 @@
     <p>Edit your text as you want!!</p>
     <div class="flex" style="flex-direction: column;">
         <textarea name="" id="textarea" cols="150" rows="10"></textarea>
-        <span id="charCount"></span>
-        <span id="wordCount"></span>
+        <span id="charCount">Characters: 0</span>
+        <span id="wordCount">Words: 0</span>
     </div>
     <div class="flex btnDiv">
+        <button id="copy">Copy Text</button>
+        <button id="clear">Clear Text</button>
         <button id="lowerCase">To Lower Case</button>
         <button id="upperCase">To Upper Case</button>
         <button id="removeAllSpaces">Remove All Spaces</button>
         <button id="removeSpaces">Remove Extra Spaces</button>
+        <button id="spacesAfterPunc">Give Space After Punctuation Marks(.,!?)</button>
         <button id="removeWord">Remove any word</button>
+        <button id="replaceWord">Replace word</button>
         <button id="makeFirstLetterCapital">Capitalize the first letter after each full stop</button>
         <button id="capitalize">Capitalize the first letter of each word</button>
+    </div>
+    <div class="replaceMainDiv">
+        <div class="replaceInputDiv">
+            <div id="h3andsvgDiv">
+                <h3 id="h3">Replace</h3>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20px" height="20px">
+                    <path
+                        d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z" />
+                </svg>
+            </div>
+            <div class="inputDiv">
+                <input type="text" id="input1" class="input" placeholder="Find">
+                <input type="text" id="input2" class="input" placeholder="Replace">
+                <p style="color: red;" id="noWordFound"></p>
+            </div>
+            <button id="ok">Done</button>
+        </div>
+    </div>
+    <div class="previewDiv">
+        <h2>Preview</h2>
+        <p id="preview">Nothing to Preview</p>
     </div>
     <script>
         let lowerCaseBtn = document.querySelector("#lowerCase");
@@ -144,28 +297,41 @@
         let removeWordBtn = document.querySelector("#removeWord");
         let makeFirstLetterCapital = document.querySelector("#makeFirstLetterCapital");
         let capitalize = document.querySelector("#capitalize");
+        let copy = document.querySelector("#copy");
+        let clear = document.querySelector("#clear");
+        let spacesAfterPunc = document.querySelector("#spacesAfterPunc");
+        let replaceWord = document.querySelector("#replaceWord");
         let textarea = document.querySelector("#textarea");
-        let charCount = document.querySelector("#charCount")
-        let wordCount = document.querySelector("#wordCount")
-        lowerCaseBtn.addEventListener("click", function () {
+        let charCount = document.querySelector("#charCount");
+        let wordCount = document.querySelector("#wordCount");
+        let replaceMainDiv = document.querySelector(".replaceMainDiv");
+        let replaceInputDiv = document.querySelector(".replaceInputDiv");
+        let svg = document.getElementsByTagName("svg")[0];
+        let okBtn = document.querySelector("#ok");
+        let input1 = document.querySelector("#input1");
+        let input2 = document.querySelector("#input2");
+        let preview = document.querySelector("#preview");
+
+        // All Functions
+
+        const lowerCaseFunc = () => {
             textarea.value = textarea.value.toLowerCase();
-        })
-        upperCaseBtn.addEventListener("click", function () {
+        }
+        const upperCaseFunc = () => {
             textarea.value = textarea.value.toUpperCase();
-        })
-        removeSpacesBtn.addEventListener("click", function () {
+        }
+        const removeSpacesFunc = () => {
             // https://stackoverflow.com/questions/16974664/how-to-remove-the-extra-spaces-in-a-string
             textarea.value = textarea.value.replace(/\s{2,}/g, ' ').trim()
-        })
-        removeAllSpacesBtn.addEventListener("click", function () {
+        }
+        const removeAllSpacesFunc = () => {
             textarea.value = textarea.value.replaceAll(" ", "");
-        })
-        removeWordBtn.addEventListener("click", function () {
+        }
+        const removeWordFunc = () => {
             let b = prompt("Enter the word which is to be removed:")
             textarea.value = textarea.value.replaceAll(b, "")
-
-        })
-        makeFirstLetterCapital.addEventListener("click", function () {
+        }
+        const makeFirstLetterCapitalFunc = () => {
             let mySentence = textarea.value;
             let words = mySentence.split(".");
             for (let i = 0; i < words.length; i++) {
@@ -190,8 +356,8 @@
             words = words.replaceAll('"', '');
             console.log(words)
             textarea.value = words
-        })
-        capitalize.addEventListener("click", function () {
+        }
+        const capitalizeTheFirstLetterAfterFullStopFunc = () => {
             let mySentence = textarea.value;
             let words = mySentence.split(" ");
             console.log(words)
@@ -216,14 +382,78 @@
             words = words.replaceAll(",", " ");
             words = words.replaceAll('"', '');
             console.log(words)
-            textarea.value = words
-        })
-        textarea.addEventListener("input", function () {
+            textarea.value = words;
+        }
+        const wordAndCharacterCountFunc = () => {
             charCount.innerHTML = `Charcters: ${textarea.value.length}`
             //Counting Words
-            let newsen = textarea.value.replace(/\s{2,}/g, ' ').trim()
-            let wordsss = newsen.split(" ");
-            wordCount.innerHTML = wordsss.length
+            spaceAfterPuncFunc()
+            // let wordsss = textarea.value.split(/\s+/).filter((e) => { return e.length != 0 });
+            wordsss = gf.split(" ").filter((e) => { return e.length != 0 });;
+            wordCount.innerHTML = "Words: " + wordsss.length;
+            preview.innerHTML = textarea.value
+        }
+        const copyFunc = () => {
+            navigator.clipboard.writeText(textarea.value);
+            textarea.focus()
+        }
+        const clearFunc = () => {
+            let conf = confirm("This process is irreversible! Are you sure to clear all the text?");
+            if (conf) {
+                textarea.value = "";
+                textarea.focus()
+            }
+        }
+        const spaceAfterPuncFunc = (value) => {
+            let worss = textarea.value.split(".").filter((e) => { return e.length != 0 });
+            let newArray = worss.map((e) => { return " " + e });
+            let Str = newArray.join(".").slice(1);
+            worss = Str.split(",").filter((e) => { return e.length != 0 });;
+            newArray = worss.map((e) => { return " " + e });
+            Str = newArray.join(",").slice(1);
+            worss = Str.split("!").filter((e) => { return e.length != 0 });;
+            newArray = worss.map((e) => { return " " + e });
+            Str = newArray.join("!").slice(1);
+            worss = Str.split("?").filter((e) => { return e.length != 0 });;
+            newArray = worss.map((e) => { return " " + e });
+            Str = newArray.join("?").slice(1);
+            if (value == true) {
+                textarea.value = Str;
+            }
+            else {
+                gf = Str;
+            }
+        }
+        lowerCaseBtn.addEventListener("click", lowerCaseFunc)
+        upperCaseBtn.addEventListener("click", upperCaseFunc)
+        removeSpacesBtn.addEventListener("click", removeSpacesFunc)
+        removeAllSpacesBtn.addEventListener("click", removeAllSpacesFunc)
+        removeWordBtn.addEventListener("click", removeWordFunc)
+        makeFirstLetterCapital.addEventListener("click", makeFirstLetterCapitalFunc)
+        capitalize.addEventListener("click", capitalizeTheFirstLetterAfterFullStopFunc)
+        textarea.addEventListener("input", wordAndCharacterCountFunc)
+        copy.addEventListener("click", copyFunc)
+        clear.addEventListener("click", clearFunc);
+
+        let valueAlso = "valueAlso"
+        spacesAfterPunc.addEventListener("click", function () {
+            spaceAfterPuncFunc(true)
+        });
+        svg.addEventListener("click", function () {
+            replaceMainDiv.style.display = "none";
+        })
+        replaceWord.addEventListener("click", function () {
+            replaceMainDiv.style.display = "flex";
+        });
+        okBtn.addEventListener("click", () => {
+            if (textarea.value.includes(input1.value)) {
+                let finalVal = textarea.value.replaceAll(input1.value, input2.value);
+                textarea.value = finalVal;
+                replaceMainDiv.style.display = "none";
+            }
+            else {
+                document.querySelector("#noWordFound").innerHTML = "No word found!";
+            }
         })
     </script>
 </body>
