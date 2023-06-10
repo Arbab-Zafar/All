@@ -711,39 +711,26 @@
                 addListenerOnInputs()
             }
             else if (window.figureText == "Cone") {
-
+                if (forLooperStart) {
+                    forLooper(2);
+                    forLooperStart = false;
+                }
                 if (window.formulaText == "Volume") {
-                    if (forLooperStart) {
-                        forLooper(2);
-                        forLooperStart = false;
-                    }
                     document.querySelectorAll(".inputs")[0].placeholder = "Radius";
                     document.querySelectorAll(".inputs")[1].placeholder = "Height";
                     coneFormulator({ radius: window.input1Val, height: window.input2Val })
                 }
                 else if (window.formulaText == "Radius") {
-                    if (forLooperStart) {
-                        forLooper(2);
-                        forLooperStart = false;
-                    }
                     document.querySelectorAll(".inputs")[0].placeholder = "Volume";
                     document.querySelectorAll(".inputs")[1].placeholder = "Height";
                     coneFormulator({ volume: window.input1Val, height: window.input2Val })
                 }
                 else if (window.formulaText == "Height") {
-                    if (forLooperStart) {
-                        forLooper(2);
-                        forLooperStart = false;
-                    }
                     document.querySelectorAll(".inputs")[0].placeholder = "Volume";
                     document.querySelectorAll(".inputs")[1].placeholder = "Radius";
                     coneFormulator({ volume: window.input1Val, radius: window.input2Val })
                 }
-                else if (window.formulaText == "Suraface Area") {
-                    if (forLooperStart) {
-                        forLooper(2);
-                        forLooperStart = false;
-                    }
+                else if (window.formulaText == "Surface Area") {
                     document.querySelectorAll(".inputs")[0].placeholder = "Radius";
                     document.querySelectorAll(".inputs")[1].placeholder = "Height";
                     coneFormulator({ radius: window.input1Val, height: window.input2Val })
