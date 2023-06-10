@@ -29,6 +29,10 @@
             margin: 15px;
         }
 
+        nav a {
+            margin-left: 40px;
+        }
+
         .allCard {
             display: flex;
             justify-content: center;
@@ -41,8 +45,8 @@
             justify-content: space-between;
             align-items: center;
             flex-direction: column;
-            width: 40vw;
-            height: 70vh;
+            width: 40%;
+            /* height: 70vh; */
             margin: 2vw;
             border: 1.5px solid black;
         }
@@ -60,19 +64,21 @@
 
         .cardTitle {
             margin-bottom: 7px;
-            font-size: 25px;
+            font-size: 1.5rem;
         }
 
         .cardDescription {
             margin-bottom: 7px;
+            font-size: 0.85rem;
         }
 
         .cardVisit {
             margin-bottom: 7px;
             background-color: rgb(56, 56, 228);
             color: white;
-            width: 120px;
-            height: 35px;
+            width: 100px;
+            height: 27px;
+            margin-top: 1vh;
             font-size: 17px;
             display: flex;
             justify-content: center;
@@ -87,6 +93,11 @@
             justify-content: center;
             align-items: center;
             margin: 0px 15px 0px 15px;
+        }
+
+        .dateCreated {
+            margin-top: 1vh;
+            font-size: 0.8rem;
         }
 
         .codeTitle {
@@ -159,6 +170,33 @@
                 transform: rotate(360deg);
             }
         }
+
+        @media only screen and (max-width:900px) {
+            .card {
+                width: 90%;
+            }
+
+            .cardVisit {
+                width: 20vw;
+                height: 4vh;
+                margin-top: 1vh;
+                font-size: 15px;
+            }
+
+            nav div,
+            input {
+                margin: 5px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 0.87rem;
+            }
+
+            #search {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 
@@ -167,7 +205,7 @@
         <div class="loader"></div>
     </div>
     <nav>
-        <a href="index.html" style="color: white;text-decoration: underline;margin-left: 40px;">All My Websites</a>
+        <a href="index.html" style="color: white;text-decoration: underline;">All My Websites</a>
         <input type="search" placeholder="Search by name.." id="search">
     </nav>
     <div class="allCard">
@@ -177,9 +215,9 @@
             <span class="cardDescription">It is the best website I have made till now. It is a website of many
                 games!</span>
             <span class="dateCreated">Date Created : 16 September 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Play and Win/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -188,9 +226,9 @@
             <span class="cardDescription">It is a website where you can write, edit and delete your notes!!. You can
                 filter your notes by content, name, title and date.</span>
             <span class="dateCreated">Date Created : 12 October 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Magic Notes/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -199,9 +237,9 @@
             <span class="cardDescription">It was the first website that I had made with my friends:- Shubh and Ritesh.It
                 contains essay, short notes, application writing and so on.</span>
             <span class="dateCreated">Date Created : 6 August 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Hotsos/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -210,9 +248,9 @@
             <span class="cardDescription">As the name suggests it is TicTacToe in which I have added versus
                 Computer.</span>
             <span class="dateCreated">Date Created : 3 August 2022</span>
-            <div style="display: flex;align-items: center;">
-                <a href="https://arbab-zafar.github.io/All/Other Works/TicTacToe/TicTacToe Game.html"
-                    class="cardVisit" style="margin-right: 50px;">Visit</a>
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
+                <a href="https://arbab-zafar.github.io/All/Other Works/TicTacToe/TicTacToe Game.html" class="cardVisit"
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -221,9 +259,9 @@
             <span class="cardDescription">It is music streaming platform. One of the best websites I have made. It has
                 limited songs.</span>
             <span class="dateCreated">Date Created : 25 March 2023</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Spatify/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -233,9 +271,9 @@
                 shown and you have to click them before the time given. As level increases black tiles also increases
                 making it hard!!</span>
             <span class="dateCreated">Date Created : 7 April 2023</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Other Works/PianoGame/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -245,9 +283,9 @@
                 hide and you have to click two same cards. When you will click same cards then the same cards will be
                 removed!!</span>
             <span class="dateCreated">Date Created : 12 March 2023</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Memory game/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -256,9 +294,9 @@
             <span class="cardDescription">It was the project after learning CSS. It was the first website in which I
                 have written CSS(Website styling language)</span>
             <span class="dateCreated">Date Created : 3 July 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Flipkart.html"
-                 class="cardVisit" style="margin-right: 50px;">Visit</a>
+                    class="cardVisit" >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -266,9 +304,9 @@
             <span class="cardTitle">Sasta Google</span>
             <span class="cardDescription">Copy of Google with actual searching.</span>
             <span class="dateCreated">Date Created : 4 September 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Other Works/SastiWebsites/Sasta Google.html"
-                    class="cardVisit" style="margin-right: 50px;">Visit</a>
+                    class="cardVisit" >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -276,9 +314,9 @@
             <span class="cardTitle">Portfolio</span>
             <span class="cardDescription">My Portfolio.</span>
             <span class="dateCreated">Date Created : 24 October 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Portfolio/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -286,9 +324,9 @@
             <span class="cardTitle">Text Master</span>
             <span class="cardDescription">Edit your text as you want!</span>
             <span class="dateCreated">Date Created : 25 April 2023</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/TextMaster/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -296,9 +334,9 @@
             <span class="cardTitle">Formulator</span>
             <span class="cardDescription">Find out the solution of any formula.</span>
             <span class="dateCreated">Date Created : 25 May 2023</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Formulator/" class="cardVisit"
-                    style="margin-right: 50px;">Visit</a>
+                    >Visit</a>
             </div>
         </div>
         <div class="card">
@@ -306,9 +344,9 @@
             <span class="cardTitle">Rock, Paper and Scissor</span>
             <span class="cardDescription">Rock, Paper and Scissor</span>
             <span class="dateCreated">Date Created : 07 April 2022</span>
-            <div style="display: flex;align-items: center;">
+            <div style="display: flex;align-items: center;justify-content: center;width: 100%;">
                 <a href="https://arbab-zafar.github.io/All/Other Works/RockPaperScissor/RockPaperScissor.html"
-                 class="cardVisit" style="margin-right: 50px;">Visit</a>
+                    class="cardVisit" >Visit</a>
             </div>
         </div>
     </div>
