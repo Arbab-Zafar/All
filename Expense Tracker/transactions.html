@@ -209,7 +209,7 @@
                 trans[index].getElementsByClassName("transPerson")[0].innerText = element.person;
                 trans[index].getElementsByClassName("transDate")[0].innerText = newDate;
                 trans[index].getElementsByClassName("transMoney")[0].innerText = element.amount;
-                if (element.amount.includes("-")) {
+                if (element.amount.includes("-") || element.amount.includes(".")) {
                     trans[index].style.borderLeft = "10px solid red"
                     trans[index].style.borderRight = "10px solid red"
                 }
