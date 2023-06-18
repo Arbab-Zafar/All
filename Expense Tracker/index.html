@@ -456,7 +456,7 @@
                 <p class="inputType">Date</p>
                 <input type="date" id="dateInput" class="input"><br>
                 <p class="inputType">Amount</p>
-                <p class="info">(Negative-expense, positive-income)</p>
+                <p class="info">(Negative or dot-expense, positive-income)</p>
                 <input type="number" placeholder="Enter amount..." id="amountInput" class="input"><br>
                 <button id="addTransBtn" disabled>Add transaction</button>
             </div>
@@ -593,7 +593,7 @@
                         trans[index].getElementsByClassName("transName")[0].innerText = element.text.length > 20 ? element.text.slice(0, 20) + "..." : element.text;
                         trans[index].getElementsByClassName("transDate")[0].innerText = newDate;
                         trans[index].getElementsByClassName("transMoney")[0].innerText = element.amount;
-                        if (element.amount.includes("-")) {
+                        if (element.amount.includes("-") || element.amount.includes(".")) {
                             trans[index].style.borderRight = "5px solid red"
                         }
                         else {
