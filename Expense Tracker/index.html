@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Expense Tracker made by Arbab Zafar and deployed using github.io."/>
+    <meta name="description" content="Expense Tracker made by Arbab Zafar and deployed using github.io." />
     <title>Expense Tracker - By Arbab Zafar</title>
+    <link rel="icon" type="image/x-icon" href="ExpenseTrackerLogo.ico">
     <style>
         /* Global CSS */
 
@@ -128,7 +128,7 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            padding: 8px 48px;
+            padding: 8px 44px;
             box-sizing: border-box;
         }
 
@@ -270,6 +270,33 @@
             margin-bottom: 3px;
         }
 
+        .loaderMain {
+            width: 98vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            border: 15px solid white;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            border-top: 15px solid rgb(116 72 238);
+            border-bottom: 15px solid rgb(116 72 238);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
         @media only screen and (max-width:800px) {
             .ALLDIV {
@@ -333,12 +360,31 @@
                 justify-content: center;
                 flex-direction: column;
             }
+
+            .expandIconDiv {
+                display: flex;
+            }
+        }
+
+        .editDiv {
+            display: inline;
+            position: relative;
+            top: -32px;
+            left: 50px;
+            cursor: pointer;
         }
     </style>
 </head>
 
-<body>
+<body onload="load()">
+    <div class="loaderMain">
+        <div class="loader"></div>
+    </div>
     <h3 style="margin: 10px 0px 10px 0px;text-align: center;">Expense Tracker</h3>
+    <div class="editDiv">
+        <i class="fa-regular fa-pen-to-square editIcon" style="color: #000000;"></i>
+        <span class="editSpan">Edit purse money</span>
+    </div>
     <div class="notificationDiv">
         <span id="notificationSpan"></span>
     </div>
@@ -350,15 +396,15 @@
                 <div id="balanceTypeDiv">
                     <div class="balanceTypes">
                         <span class="balanceTypeSpan">Purse</span>
-                        <h4 class="balanceMoney">₹657</h4>
+                        <h4 class="balanceMoney" id="purseMoneySpan">₹0</h4>
                     </div>
                     <div class="balanceTypes">
                         <span class="balanceTypeSpan">Account</span>
-                        <h4 class="balanceMoney">₹3000</h4>
+                        <h4 class="balanceMoney" id="accountMoneySpan">₹0</h4>
                     </div>
                     <div class="balanceTypes">
                         <span class="balanceTypeSpan">All</span>
-                        <h4 class="balanceMoney">₹3657</h4>
+                        <h4 class="balanceMoney" id="allMoneySpan">₹0</h4>
                     </div>
                 </div>
             </div>
@@ -366,12 +412,12 @@
             <div class="incomeAndExpense">
                 <div class="income">
                     <span class="incomeAndExpenseType">INCOME</span>
-                    <span id="incomeRupee">₹500</span>
+                    <span id="incomeRupee">₹0</span>
                 </div>
                 <div class="line"></div>
                 <div class="expense">
                     <span class="incomeAndExpenseType">EXPENSE</span>
-                    <span id="expenseRupee">₹249</span>
+                    <span id="expenseRupee">₹0</span>
                 </div>
             </div>
 
@@ -465,210 +511,335 @@
     <!-- <script type="text/javascript"  src="app.js"></script> -->
     <script>
         let password = 1221;
-        let b = parseInt(prompt("Enter the password:"));
-        if (b === password) {
-            //Extracting DOM elements
-            let textInput = document.querySelector("#textInput");
-            let personInput = document.querySelector("#personInput");
-            let dateInput = document.querySelector("#dateInput");
-            let amountInput = document.querySelector("#amountInput");
-            let addTransBtn = document.querySelector("#addTransBtn");
-            let notificationDiv = document.querySelector(".notificationDiv");
-            let notificationSpan = document.querySelector("#notificationSpan");
-            let allTransDiv = document.querySelector(".allTransDiv");
-            let inputs = document.querySelectorAll(".input");
-            let closeMainDiv = document.querySelector(".closeMainDiv");
-            //Variables for efficiency
-            let success = `Transaction added successfully!`
-            let greenColor = "#0faf6b";
-            let normalColor = "rgb(245, 245, 245)";
-
-            //320-362 Button will be clicked when there is something in text input as well as amount input.We will not be doing the same  on person input as it is optional.  
-
-            amountInput.addEventListener("input", () => {
-                if (amountInput.value != "") {//Jab kudh khaali nhi h
-                    if (textInput.value != "" && dateInput.value != "") {//Jab text input aur date input khaali nhi h
-                        addTransBtn.disabled = false;//disable se hata do
+        function load() {
+            document.querySelector(".loaderMain").style.display = "none";
+            setTimeout(() => {
+                mainEngine()
+            }, 100);
+        }
+        function mainEngine() {
+            let b = parseInt(prompt("Enter the password:"));
+            if (b === password) {
+                window.noMorePassword = true;
+                let purseMoneySpan = document.querySelector("#purseMoneySpan");
+                let allMoneySpan = document.querySelector("#allMoneySpan");
+                let Condition = localStorage.getItem("Condition");
+                let editDiv = document.querySelector('.editDiv');
+                editDiv.addEventListener('click', () => {
+                    let conf = confirm('Are you sure to edit the purse money? This process is irreversible:');
+                    if (conf) {
+                        localStorage.removeItem('purseMoney');
+                        setPurseMoney()
+                    }
+                })
+                function setPurseMoney() {
+                    let purseMoney = localStorage.getItem('purseMoney');
+                    if (purseMoney == null) {
+                        let moneyPrompt = prompt("Enter the money you have in purse:");
+                        localStorage.setItem("purseMoney", moneyPrompt);
+                        purseMoneySpan.innerHTML = "₹" + moneyPrompt;
+                        allMoneySpan.innerHTML = "₹" + JSON.stringify(parseInt(moneyPrompt) + 3000);
                     }
                     else {
-                        addTransBtn.disabled = true;//Aur agar text input aur date input khaali h to disable kardo
+                        purseMoneySpan.innerHTML = "₹" + purseMoney;
+                        allMoneySpan.innerHTML = "₹" + JSON.stringify(Number(JSON.parse(purseMoney)) + 3000);
                     }
-                } else {
-                    addTransBtn.disabled = true;//Aur agar khud khaali h to disable kardo
                 }
-            });
+                setPurseMoney()
+                // if (Condition == null) {
+                //     let moneyPrompt = prompt("Enter the money you have:");
+                //     localStorage.setItem("purseMoney", moneyPrompt);
+                //     localStorage.setItem("Condition", false);
+                //     purseMoneySpan.innerHTML = "₹" + moneyPrompt;
+                //     allMoneySpan.innerHTML = "₹" + JSON.stringify(parseInt(moneyPrompt) + 3000);
+                // }
+                // else {
+                //     let purseMoney = Number(JSON.parse(localStorage.getItem('purseMoney')));
+                //     purseMoneySpan.innerHTML = "₹" + purseMoney;
+                //     allMoneySpan.innerHTML = "₹" + JSON.stringify(purseMoney + 3000);
+                // }
 
-            textInput.addEventListener("input", () => {//Same goes here
-                if (textInput.value != "") {
-                    if (amountInput.value != "" && dateInput.value != "") {
-                        addTransBtn.disabled = false;
+                function changePurseMoneyFunc(value) {
+                    if (value.includes(".")) {
+                        value = value.replace(".", "-");
                     }
-                    else {
+                    value = parseInt(value);
+                    let purseMoneyLoc = Number(JSON.parse(localStorage.getItem('purseMoney')));
+                    console.log("Purse Money", purseMoneyLoc, "Type Of", typeof (purseMoney), "type of value", typeof (value));
+                    let purseMoneyVal = purseMoneyLoc + value;
+                    purseMoneySpan.innerHTML = "₹" + JSON.stringify(purseMoneyVal);
+                    allMoneySpan.innerHTML = "₹" + JSON.stringify(purseMoneyVal + 3000);
+                    console.log("Edited Purse Money Value", purseMoneyVal);
+                    localStorage.setItem("purseMoney", JSON.stringify(purseMoneyVal));
+                }
+
+                let incomeRupee = document.querySelector('#incomeRupee');
+                let expenseRupee = document.querySelector('#expenseRupee');
+
+                function changeIncomeExpenseFunc() {
+                    let transArr = JSON.parse(localStorage.getItem('addTrans'));
+                    let Day = new Date();
+                    Day.setDate(Day.getMonth() + 1 - 1);
+                    console.log("Day:-", Day);
+                    if (transArr != null) {
+                        transArr = transArr.filter((d) => {
+                            let dated = new Date(d.date);
+                            return dated >= Day;
+                        })
+                        let incomeArr = transArr.filter(function (el) {
+                            return !el.amount.includes('-') && !el.amount.includes('.');
+                        });
+                        let expenseArr = transArr.filter(function (el) {
+                            return el.amount.includes('-') || el.amount.includes('.');
+                        });
+                        console.log('income', incomeArr)
+                        console.log('expenseArr', expenseArr)
+                        let actualIncomeArr = incomeArr.map((item) => {
+                            return parseInt(item.amount);
+                        })
+                        let actualExpenseArr = expenseArr.map((item) => {
+                            return parseInt(item.amount);
+                        })
+                        let INCOME = 0;
+                        let EXPENSE = 0;
+                        actualIncomeArr.forEach((e, i) => {
+                            INCOME += e;
+                        })
+                        actualExpenseArr.forEach((e, i) => {
+                            EXPENSE += e;
+                            console.log("FIRST")
+                            if (i == actualExpenseArr.length - 1) {
+                                console.log("LAST")
+                            }
+                        });
+                        expenseRupee.innerHTML = '₹' + JSON.stringify(EXPENSE)
+                        incomeRupee.innerHTML = '₹' + JSON.stringify(INCOME)
+                    }
+                }
+                changeIncomeExpenseFunc()
+                //Extracting DOM elements
+                let textInput = document.querySelector("#textInput");
+                let personInput = document.querySelector("#personInput");
+                let dateInput = document.querySelector("#dateInput");
+                let amountInput = document.querySelector("#amountInput");
+                let addTransBtn = document.querySelector("#addTransBtn");
+                let notificationDiv = document.querySelector(".notificationDiv");
+                let notificationSpan = document.querySelector("#notificationSpan");
+                let allTransDiv = document.querySelector(".allTransDiv");
+                let inputs = document.querySelectorAll(".input");
+                let closeMainDiv = document.querySelector(".closeMainDiv");
+                //Variables for efficiency
+                let success = `Transaction added successfully!`
+                let greenColor = "#0faf6b";
+                let normalColor = "rgb(245, 245, 245)";
+
+                //320-362 Button will be clicked when there is something in text input as well as amount input.We will not be doing the same  on person input as it is optional.  
+
+                amountInput.addEventListener("input", () => {
+                    if (amountInput.value != "") {//Jab kudh khaali nhi h
+                        if (textInput.value != "" && dateInput.value != "") {//Jab text input aur date input khaali nhi h
+                            addTransBtn.disabled = false;//disable se hata do
+                        }
+                        else {
+                            addTransBtn.disabled = true;//Aur agar text input aur date input khaali h to disable kardo
+                        }
+                    } else {
+                        addTransBtn.disabled = true;//Aur agar khud khaali h to disable kardo
+                    }
+                });
+
+                textInput.addEventListener("input", () => {//Same goes here
+                    if (textInput.value != "") {
+                        if (amountInput.value != "" && dateInput.value != "") {
+                            addTransBtn.disabled = false;
+                        }
+                        else {
+                            addTransBtn.disabled = true;
+                        }
+                    } else {
                         addTransBtn.disabled = true;
                     }
-                } else {
-                    addTransBtn.disabled = true;
-                }
-            });
+                });
 
-            dateInput.addEventListener("input", () => {//Same goes here
-                if (dateInput.value != "") {
-                    if (amountInput.value != "" && textInput.value != "") {
-                        addTransBtn.disabled = false;
-                    }
-                    else {
+                dateInput.addEventListener("input", () => {//Same goes here
+                    if (dateInput.value != "") {
+                        if (amountInput.value != "" && textInput.value != "") {
+                            addTransBtn.disabled = false;
+                        }
+                        else {
+                            addTransBtn.disabled = true;
+                        }
+                    } else {
                         addTransBtn.disabled = true;
                     }
-                } else {
-                    addTransBtn.disabled = true;
-                }
-            });
+                });
 
-            //348-363 Making object of all the information and pushing it in array and then pushing array in local storage. 
+                //348-363 Making object of all the information and pushing it in array and then pushing array in local storage. 
 
-            function addTransFunc() {
-                let addTrans = localStorage.getItem("addTrans");//Getting local storage
-                if (addTrans == null) {//Agar null h to Arr banao (pehli baar me to null hi rahega)
-                    window.addTransArr = [];
-                }
-                else {//Agar null nhi h to local storage ko parse (object) karke Arr me daal do.
-                    window.addTransArr = JSON.parse(addTrans);
-                }
-                addTransObj = {//Making object of all the information.
-                    text: textInput.value,
-                    person: personInput.value,
-                    date: dateInput.value,
-                    amount: amountInput.value
-                }
-                window.addTransArr.push(addTransObj);//Pushing (adding) object in array
-                localStorage.setItem("addTrans", JSON.stringify(window.addTransArr));//Finally setting the fresh local storage
-                textInput.value = ""; personInput.value = "Unknown"; dateInput.value = ""; amountInput.value = ""; addTransBtn.disabled = true;//Clearing all values and disabling button.
-                notificationSpan.innerHTML = success;
-                notificationDiv.style.backgroundColor = greenColor;
-                setTimeout(() => {
-                    notificationSpan.innerHTML = "";
-                    notificationDiv.style.backgroundColor = normalColor;
-                }, 1000);
-                addTransDiv()
-            }
+                function addTransFunc() {
+                    changePurseMoneyFunc(amountInput.value)
 
-            addTransBtn.addEventListener("click", addTransFunc)
+                    let addTrans = localStorage.getItem("addTrans");//Getting local storage
+                    if (addTrans == null) {//Agar null h to Arr banao (pehli baar me to null hi rahega)
+                        window.addTransArr = [];
+                    }
+                    else {//Agar null nhi h to local storage ko parse (object) karke Arr me daal do.
+                        window.addTransArr = JSON.parse(addTrans);
+                    }
 
-            let transHTML = `<div class="trans">
+                    let amival = "";
+                    amountInput.value.includes('.') ? amival = amountInput.value.replace('.', '-') : amival = amountInput.value
+                    addTransObj = {//Making object of all the information.
+                        text: textInput.value,
+                        person: personInput.value,
+                        date: dateInput.value,
+                        amount: amival
+                    }
+                    window.addTransArr.push(addTransObj);//Pushing (adding) object in array
+                    localStorage.setItem("addTrans", JSON.stringify(window.addTransArr));//Finally setting the fresh local storage
+                    textInput.value = ""; personInput.value = "Unknown"; dateInput.value = ""; amountInput.value = ""; addTransBtn.disabled = true;//Clearing all values and disabling button.
+                    notificationSpan.innerHTML = success;
+                    notificationDiv.style.backgroundColor = greenColor;
+
+                    setTimeout(() => {
+                        notificationSpan.innerHTML = "";
+                        notificationDiv.style.backgroundColor = normalColor;
+                    }, 1000);
+                    console.log(typeof (amountInput.value))
+                    changeIncomeExpenseFunc()
+                    addTransDiv()
+                }
+
+                addTransBtn.addEventListener("click", addTransFunc)
+
+                let transHTML = `<div class="trans">
                             <span class="transName"></span>
                             <span class="transDate"></span>
                             <span class="transMoney"></span>
                         </div>`;
 
-            let closeHTML = `<i class="fa-regular fa-circle-xmark close" style="color: #ff0000;"></i>`;
+                let closeHTML = `<i class="fa-regular fa-circle-xmark close" style="color: #ff0000;"></i>`;
 
-            window.addTransArr = JSON.parse(localStorage.getItem("addTrans"));//getting array from localstorage
-
-            function addTransDiv() {//Creating transaction div as per the need and appending it in all transaction div
-                allTransDiv.innerHTML = "";//Making all transaction div's innerHTML blank to avoid repetion of div
-                closeMainDiv.innerHTML = "";
-                for (let i = 0; i < window.addTransArr.length; i++) {
-                    allTransDiv.innerHTML += transHTML;
-                    closeMainDiv.innerHTML += closeHTML;
-                };
-                showTrans()//Calling show trans function
-                addEventsOnClose()//Calling addEventsOnClose function
-            }
-
-            function showTrans() {//This func will add name, date and amount to transaction div
-                let trans = document.querySelectorAll(".trans");//Getting all transaction div
                 window.addTransArr = JSON.parse(localStorage.getItem("addTrans"));//getting array from localstorage
-                console.log(window.addTransArr)
-                if (window.addTransArr != null) {
-                    window.addTransArr.sort(function (a, b) {
-                        return new Date(a.date) - new Date(b.date);
-                    });//Sorting by date. Credit-https://www.geeksforgeeks.org/sort-an-object-array-by-date-in-javascript/
-                    window.addTransArr = window.addTransArr.slice(-9).reverse();//This will get last 9 transaction and reverse it.
-                    window.addTransArr.forEach((element, index) => {
-                        let modifiedDate = new Date(element.date);//Making date from string.
-                        let date = JSON.stringify(modifiedDate.getDate());//Extracting date from modified date
-                        let month = JSON.stringify(modifiedDate.getMonth() + 1);//Extracting month from modified date
-                        let year = JSON.stringify(modifiedDate.getFullYear()).slice(-2);//Extracting year from modified date and getting last two digit like 23 of 2023.
-                        newDate = date + "/" + month + "/" + year;//Getting date month and year at one place
-                        trans[index].getElementsByClassName("transName")[0].innerText = element.text.length > 20 ? element.text.slice(0, 20) + "..." : element.text;
-                        trans[index].getElementsByClassName("transDate")[0].innerText = newDate;
-                        trans[index].getElementsByClassName("transMoney")[0].innerText = element.amount;
-                        if (element.amount.includes("-") || element.amount.includes(".")) {
-                            trans[index].style.borderRight = "5px solid red"
-                        }
-                        else {
-                            trans[index].style.borderRight = "5px solid rgb(6, 151, 66)"
-                        }
-                    });
+
+                function addTransDiv() {//Creating transaction div as per the need and appending it in all transaction div
+                    allTransDiv.innerHTML = "";//Making all transaction div's innerHTML blank to avoid repetion of div
+                    closeMainDiv.innerHTML = "";
+                    window.addTransArr = window.addTransArr.slice(-9);
+                    for (let i = 0; i < window.addTransArr.length; i++) {
+                        allTransDiv.innerHTML += transHTML;
+                        closeMainDiv.innerHTML += closeHTML;
+                        console.log("added")
+                    };
+                    showTrans()//Calling show trans function
+                    addEventsOnClose()//Calling addEventsOnClose function
                 }
 
-            }
-            if (localStorage.getItem("addTrans") != null) {
-                addTransDiv();
-            }
-            Array.from(inputs).forEach((element, index) => {
-                element.addEventListener("keydown", (e) => {
-                    if (e.keyCode === 13) {
-                        if (index == 3) {
-                            addTransBtn.focus();
-                        }
-                        else {
-                            inputs[index + 1].focus();
-                        }
+                function showTrans() {//This func will add name, date and amount to transaction div
+                    let trans = document.querySelectorAll(".trans");//Getting all transaction div
+                    window.addTransArr = JSON.parse(localStorage.getItem("addTrans"));//getting array from localstorage
+                    console.log(window.addTransArr)
+                    if (window.addTransArr != null) {
+                        window.addTransArr.sort(function (a, b) {
+                            return new Date(a.date) - new Date(b.date);
+                        });//Sorting by date. Credit-https://www.geeksforgeeks.org/sort-an-object-array-by-date-in-javascript/
+                        window.addTransArr = window.addTransArr.slice(-9).reverse();//This will get last 9 transaction and reverse it.
+                        window.addTransArr.forEach((element, index) => {
+                            let modifiedDate = new Date(element.date);//Making date from string.
+                            let date = JSON.stringify(modifiedDate.getDate());//Extracting date from modified date
+                            let month = JSON.stringify(modifiedDate.getMonth() + 1);//Extracting month from modified date
+                            let year = JSON.stringify(modifiedDate.getFullYear()).slice(-2);//Extracting year from modified date and getting last two digit like 23 of 2023.
+                            newDate = date + "/" + month + "/" + year;//Getting date month and year at one place
+                            if (element.amount.includes(".")) {
+                                am = element.amount.replace(".", "-");
+                            }
+                            else {
+                                am = element.amount;
+                            }
+                            trans[index].getElementsByClassName("transName")[0].innerText = element.text.length > 20 ? element.text.slice(0, 20) + "..." : element.text;
+                            trans[index].getElementsByClassName("transDate")[0].innerText = newDate;
+                            trans[index].getElementsByClassName("transMoney")[0].innerText = am;
+                            if (element.amount.includes("-") || element.amount.includes(".")) {
+                                trans[index].style.borderRight = "5px solid red";
+                            }
+                            else {
+                                trans[index].style.borderRight = "5px solid rgb(6, 151, 66)";
+                            }
+                        });
                     }
-                })
-            });
-            personInput.addEventListener("focus", () => {
-                document.getElementById('personInput').select();
-            })
 
-            function addEventsOnClose() {
-                let close = document.querySelectorAll(".close");
-                function closeAllNone() {
-                    Array.from(close).forEach((e, i) => {
-                        e.style.visibility = "hidden";
-                    })
                 }
-                closeAllNone()
-                Array.from(document.querySelectorAll(".trans")).forEach((e, index) => {
-                    e.addEventListener("mouseover", () => {
-                        close[index].style.visibility = "initial";
-                    })
-                    e.addEventListener("mouseout", () => {
-                        closeAllNone();
-                    })
-                })
-                Array.from(close).forEach((e, index) => {
-                    e.addEventListener("mouseover", () => {
-                        close[index].style.visibility = "initial";
-                    })
-                    e.addEventListener("mouseout", () => {
-                        closeAllNone();
-                    })
-                    e.addEventListener('click', () => {
-                        password = 1221;
-                        let c = confirm('Are you sure to delete this transaction?');
-                        if (c) {
-                            let d = parseInt(prompt('Enter the password:'));
-                            if (d == password) {
-                                console.log("Start", window.addTransArr);
-                                window.addTransArr.splice(index, 1);
-                                console.log("Final", window.addTransArr)
-                                localStorage.setItem("addTrans", JSON.stringify(window.addTransArr));
-                                addTransDiv();
-                                console.log(index)
-                                if (index == 0) {
-                                    allTransDiv.innerHTML = "Nothing to show here!";
-                                }
+                if (localStorage.getItem("addTrans") != null) {
+                    addTransDiv();
+                }
+                Array.from(inputs).forEach((element, index) => {
+                    element.addEventListener("keydown", (e) => {
+                        if (e.keyCode === 13) {
+                            if (index == 3) {
+                                addTransBtn.focus();
+                            }
+                            else {
+                                inputs[index + 1].focus();
                             }
                         }
                     })
+                });
+                personInput.addEventListener("focus", () => {
+                    document.getElementById('personInput').select();
                 })
+
+                function addEventsOnClose() {
+                    let close = document.querySelectorAll(".close");
+                    function closeAllNone() {
+                        Array.from(close).forEach((e, i) => {
+                            e.style.visibility = "hidden";
+                        })
+                    }
+                    closeAllNone()
+                    Array.from(document.querySelectorAll(".trans")).forEach((e, index) => {
+                        e.addEventListener("mouseover", () => {
+                            close[index].style.visibility = "initial";
+                        })
+                        e.addEventListener("mouseout", () => {
+                            closeAllNone();
+                        })
+                    })
+                    Array.from(close).forEach((e, index) => {
+                        e.addEventListener("mouseover", () => {
+                            close[index].style.visibility = "initial";
+                        })
+                        e.addEventListener("mouseout", () => {
+                            closeAllNone();
+                        })
+                        e.addEventListener('click', () => {
+                            password = 1221;
+                            let c = confirm('Are you sure to delete this transaction?');
+                            if (c) {
+                                // let d = parseInt(prompt('Enter the password:'));
+                                // if (d == password) {
+                                let transMoney = document.querySelectorAll(".transMoney");
+                                let money = transMoney[index].innerHTML;
+                                if (money.includes("-") || money.includes('.')) {
+                                    money = money.replace('.', "");
+                                    money = money.replace('-', "");
+                                }
+                                else {
+                                    money = "-" + money;
+                                }
+                                changePurseMoneyFunc(money)
+                                window.addTransArr.splice(index, 1);
+                                localStorage.setItem("addTrans", JSON.stringify(window.addTransArr));
+                                addTransDiv();
+                                changeIncomeExpenseFunc()
+                            }
+                        })
+                    })
+                }
             }
-        }
-        else {
-            let chances = 5;
-            document.body.innerHTML = `Password is incorrect!`
+            else {
+                let chances = 5;
+                document.body.innerHTML = `Password is incorrect!`
+            }
         }
     </script>
     <script src="https://kit.fontawesome.com/84df3e5878.js" crossorigin="anonymous"></script>
