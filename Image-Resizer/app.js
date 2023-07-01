@@ -10,6 +10,8 @@ let customHeight = document.getElementById('customHeight');
 let download = document.querySelector('#download');
 let convert = document.querySelector('#convert');
 download.style.visibility = "hidden";
+console.log(type.value)
+
 type.addEventListener('change', () => {
     if (type.value == "ico") {
         customHeight.value = 32;
@@ -156,7 +158,7 @@ function convertFunc() {
                                 let u = e.target.result;
                                 imageElement.src = u;
                                 imgDiv.appendChild(imageElement)
-                                download.setAttribute('download', `${window.actualImage.name.slice(0, -4)}`);
+                                // download.setAttribute('download', `${window.actualImage.name.slice(0, -4)}`);
                                 download.setAttribute('href', u);
                                 download.style.visibility = "initial";
                             }
