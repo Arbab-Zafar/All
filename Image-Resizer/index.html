@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbab Resizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Arbab Resizer</h1>
+    <div class="flex" id="mainDiv">
+        <label for="input" id="drop-container">
+            <span id="title">Drop files here..</span><br>
+            OR
+            <input type="file" id="input" accept="image/*" multiple="multiple">
+        </label>
+    </div>
+    <div class="showDiv">
+        <div class="show">photo.png</div>
+    </div>
+    <!-- <div class="showMainDiv"> -->
+    <!-- <div class="line"></div> -->
+    <div class="info flex">
+        <div class="typeDiv">
+            <label for="type">Convert to: </label>
+            <select name="type" id="type">
+                <option value="png">png</option>
+                <option value="jpeg">jpeg</option>
+                <option value="webp">webp</option>
+                <option value="avif">avif</option>
+                <option value="x-icon">ico</option>
+                <option value="gif">gif</option>
+                <option value="svg+xml">svg</option>
+            </select>
+        </div>
+        <div class="typeDiv">
+            <label for="qualityInp">Enter quality of image: </label>
+            <!-- <input type="number" id="qualityInp" value="100"> -->
+        </div>
+        <div class="flex enterWidth">
+            <div class="maintain flex">
+                <span>Maintain aspect ratio: </span><br><br>
+                <input type="number" placeholder="Width in px: " id="maintainWidthInPx" max="10000" min="0"><br><br>
+                OR <br><br>
+                <input type="number" placeholder="Width in percentage: " id="maintainWidthInPer" max="100" min="1">
+            </div>
+            OR
+            <div class="custom flex">
+                <span>Custom: </span><br><br>
+                <input type="number" placeholder="Width in px: " id="customWidth" max="10000" min="0"><br><br>
+                <br>
+                <input type="number" placeholder="Height in px: " id="customHeight" max="10000" min="0">
+            </div>
+        </div>
+        <button id="convert">Convert</button>
+    </div>
+    <!-- </div> -->
+    <div id="previewMainDiv">
+        <h3>Preview image:</h3>
+        <div id="preview"></div>
+    </div>
+    <h3>Final image:</h3>
+    <div id="imgDiv">
+
+    </div>
+    <a href="" id="download" download="">Download</a>
+    <script src="app.js"></script>
+</body>
+
+</html>
