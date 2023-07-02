@@ -370,8 +370,9 @@
             display: inline;
             position: relative;
             top: -32px;
-            left: 50px;
+            left: 15px;
             cursor: pointer;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -518,7 +519,8 @@
             }, 100);
         }
         function mainEngine() {
-            let b = parseInt(prompt("Enter the password:"));
+            // let b = parseInt(prompt("Enter the password:"));
+            let b = 1221;
             if (b === password) {
                 window.noMorePassword = true;
                 let purseMoneySpan = document.querySelector("#purseMoneySpan");
@@ -543,21 +545,10 @@
                     else {
                         purseMoneySpan.innerHTML = "₹" + purseMoney;
                         allMoneySpan.innerHTML = "₹" + JSON.stringify(Number(JSON.parse(purseMoney)) + 3000);
+                        accountMoneySpan.innerHTML = "₹3000"
                     }
                 }
                 setPurseMoney()
-                // if (Condition == null) {
-                //     let moneyPrompt = prompt("Enter the money you have:");
-                //     localStorage.setItem("purseMoney", moneyPrompt);
-                //     localStorage.setItem("Condition", false);
-                //     purseMoneySpan.innerHTML = "₹" + moneyPrompt;
-                //     allMoneySpan.innerHTML = "₹" + JSON.stringify(parseInt(moneyPrompt) + 3000);
-                // }
-                // else {
-                //     let purseMoney = Number(JSON.parse(localStorage.getItem('purseMoney')));
-                //     purseMoneySpan.innerHTML = "₹" + purseMoney;
-                //     allMoneySpan.innerHTML = "₹" + JSON.stringify(purseMoney + 3000);
-                // }
 
                 function changePurseMoneyFunc(value) {
                     if (value.includes(".")) {
@@ -579,13 +570,13 @@
                 function changeIncomeExpenseFunc() {
                     let transArr = JSON.parse(localStorage.getItem('addTrans'));
                     let Day = new Date();
-                    Day.setDate(Day.getMonth() + 1 - 1);
-                    console.log("Day:-", Day);
+                    Day.setMonth(Day.getMonth() - 1);
                     if (transArr != null) {
                         transArr = transArr.filter((d) => {
                             let dated = new Date(d.date);
                             return dated >= Day;
                         })
+                        console.log("transArrrrr", transArr)
                         let incomeArr = transArr.filter(function (el) {
                             return !el.amount.includes('-') && !el.amount.includes('.');
                         });
