@@ -9,11 +9,16 @@ let customWidth = document.getElementById('customWidth');
 let customHeight = document.getElementById('customHeight');
 let download = document.querySelector('#download');
 let convert = document.querySelector('#convert');
+let operations = document.querySelector('.operations');
+let showInChrome = document.querySelector('#showInChrome');
+
+operations.style.visibility = "hidden";
+showInChrome.style.visibility = "hidden";
 download.style.visibility = "hidden";
 console.log(type.value)
 
 type.addEventListener('change', () => {
-    if (type.value == "ico") {
+    if (type.value == "x-icon") {
         customHeight.value = 32;
         customWidth.value = 32;
         maintainWidthInPx.value = 32;
@@ -156,10 +161,12 @@ function convertFunc() {
                             rea.readAsDataURL(file)
                             rea.onload = (e) => {
                                 let u = e.target.result;
+                                // console.log(u)
                                 imageElement.src = u;
                                 imgDiv.appendChild(imageElement)
                                 // download.setAttribute('download', `${window.actualImage.name.slice(0, -4)}`);
                                 download.setAttribute('href', u);
+                                showInChrome.style.visibility = "initial";
                                 download.style.visibility = "initial";
                             }
                             // window.location = URL.createObjectURL(file);
@@ -175,6 +182,7 @@ function convertFunc() {
 }
 
 input.addEventListener('change', (e) => {
+    operations.style.visibility = "initial";
     window.actualImage = e.target.files[0];
     console.log(e.target.files)
     document.querySelectorAll('.show')[0].innerHTML = window.actualImage.name + " ( Size: " + JSON.stringify(Math.floor(window.actualImage.size / 1024)) + "KB )"
